@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1655920308539956457, guid: f18dbfb2ff0e3644d8099e50e27e80c4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8907015057044918926, guid: f18dbfb2ff0e3644d8099e50e27e80c4, type: 3}
       propertyPath: m_Name
       value: Player
@@ -654,9 +658,9 @@ MonoBehaviour:
   maxHealth: 3
   patrolSpeed: 2.5
   chaseSpeed: 4.5
-  detectionRadius: 5
-  attackRange: 1
-  attackCooldown: 1.5
+  detectionRadius: 4
+  attackRange: 1.5
+  attackCooldown: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
