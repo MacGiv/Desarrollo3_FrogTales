@@ -8,7 +8,7 @@ namespace FrogGame.Enemies
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class FoxBrain : MonoBehaviour, IDamageable
+    public class FoxBrain : MonoBehaviour, IDamageable, IStunnable
     {
         [Header("Stats")]
         [SerializeField] private int maxHealth = 3;
@@ -36,11 +36,11 @@ namespace FrogGame.Enemies
         public float AttackCooldown => attackCooldown;
         public Transform[] Waypoints => waypoints;
         public Transform TargetPlayer { get; private set; }
-
         // States
         public FoxPatrolState PatrolState { get; private set; }
         public FoxChaseState ChaseState { get; private set; }
         public FoxAttackState AttackState { get; private set; }
+        public FoxStunnedState StunnedState { get; private set; }
 
         private void Awake()
         {
@@ -55,6 +55,7 @@ namespace FrogGame.Enemies
             PatrolState = new FoxPatrolState(this);
             ChaseState = new FoxChaseState(this);
             AttackState = new FoxAttackState(this);
+            StunnedState = new FoxStunnedState(this);
         }
 
         private void Start()
@@ -98,6 +99,12 @@ namespace FrogGame.Enemies
             {
                 Die();
             }
+        }
+
+        public void ApplyStun(float duration)
+        {
+            StunnedState.SetStunDuration(duration);
+            FSM.ChangeState(StunnedState);
         }
 
         private void Die()
