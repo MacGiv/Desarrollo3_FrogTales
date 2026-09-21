@@ -52,13 +52,14 @@ namespace FrogGame.Gameplay
         {
             int colLayer = 1 << collision.gameObject.layer;
 
-            // 1. Check if hit obstacle/wall / Choque contra pared u obstáculo
+            // 1. Check if hit obstacle/wall/shield
             if ((colLayer & obstacleLayer) != 0)
             {
+                Destroy(gameObject); // Destruye la flecha al chocar contra el escudo u obstáculo
                 return;
             }
 
-            // 2. Check if hit enemy / Impacto contra enemigo
+            // 2. Check if hit enemy
             if ((colLayer & enemyLayer) != 0)
             {
                 IDamageable damageable = collision.GetComponent<IDamageable>();
