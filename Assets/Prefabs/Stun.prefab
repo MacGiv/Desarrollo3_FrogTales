@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2706564503472252979}
   - component: {fileID: 3505244180208186240}
   - component: {fileID: 8986904639749565746}
-  - component: {fileID: 2567516138062355924}
+  - component: {fileID: 3867702881725209112}
   m_Layer: 13
-  m_Name: Arrow
+  m_Name: Stun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2567516138062355924
+--- !u!114 &3867702881725209112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,15 +117,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5044923897897041203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91e314de07279c746a76f8080ca44ffd, type: 3}
+  m_Script: {fileID: 11500000, guid: 98dff1ab148a7594f98730652a857958, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.Arrow
-  speed: 12
-  damage: 1
-  maxLifetime: 3
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.StunProjectile
+  speed: 10
+  stunDuration: 3
+  maxLifetime: 4
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 36992
+    m_Bits: 128
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -210,8 +210,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5381005670774197975, guid: a095aadeee262fd42ab0237cd67c4c7f, type: 3}
-  m_Color: {r: 1, g: 0.8177949, b: 0.33490568, a: 1}
+  m_Sprite: {fileID: 5173600607334644292, guid: a095aadeee262fd42ab0237cd67c4c7f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -4,17 +4,17 @@ namespace FrogGame.Gameplay
     using FrogGame.Core;
 
     /// <summary>
-    /// Projectile script that moves in a direction and damages enemies.
-    /// Script del proyectil que avanza, inflige daño a enemigos.
+    /// Special projectile (booger/snot) that stuns enemies on impact.
+    /// Proyectil especial (moco) que aturde a los enemigos al impactar.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
-    public class Arrow : MonoBehaviour
+    public class StunProjectile : MonoBehaviour
     {
         [Header("Projectile Settings")]
-        [SerializeField] private float speed = 12f;
-        [SerializeField] private int damage = 1;
-        [SerializeField] private float maxLifetime = 3f;
+        [SerializeField] private float speed = 10f;
+        [SerializeField] private float stunDuration = 3f;
+        [SerializeField] private float maxLifetime = 4f;
 
         [Header("Collision Layers")]
         [SerializeField] private LayerMask obstacleLayer;
@@ -33,17 +33,14 @@ namespace FrogGame.Gameplay
         }
 
         /// <summary>
-        /// Initializes arrow velocity and rotation direction.
-        /// Inicializa la velocidad y la orientación de la flecha.
+        /// Initializes projectile direction and velocity.
+        /// Inicializa la dirección y velocidad del proyectil.
         /// </summary>
         public void Setup(Vector2 direction)
         {
             Vector2 normalizedDir = direction.normalized;
-
-            // Set physics velocity / Asignar velocidad física
             rb.linearVelocity = normalizedDir * speed;
 
-            // Rotate visual arrow to facing direction / Orientar sprite hacia la dirección de vuelo
             float angle = Mathf.Atan2(normalizedDir.y, normalizedDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
@@ -52,20 +49,19 @@ namespace FrogGame.Gameplay
         {
             int colLayer = 1 << collision.gameObject.layer;
 
-            // 1. Check if hit obstacle/wall/shield
+            // 1. Check obstacle collision / Choque contra pared u obstáculo
             if ((colLayer & obstacleLayer) != 0)
             {
-                Destroy(gameObject); // Destruye la flecha al chocar contra el escudo u obstáculo
+                Destroy(gameObject);
                 return;
             }
 
-            // 2. Check if hit enemy
+            // 2. Check enemy/stunnable collision / Impacto contra enemigo o entidad aturdible
             if ((colLayer & enemyLayer) != 0)
             {
-                IDamageable damageable = collision.GetComponent<IDamageable>();
-                if (damageable != null)
+                if (collision.TryGetComponent<IStunnable>(out var stunnable))
                 {
-                    damageable.TakeDamage(damage);
+                    stunnable.ApplyStun(stunDuration);
                 }
 
                 Destroy(gameObject);
