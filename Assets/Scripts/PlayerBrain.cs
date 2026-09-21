@@ -12,6 +12,7 @@ namespace FrogGame.Gameplay
     public class PlayerBrain : MonoBehaviour
     {
         [SerializeField] private GameObject arrowPrefab;
+        [SerializeField] private GameObject stunPrefab;
         [SerializeField] public Transform arrowSpawnPoint;
         public FiniteStateMachine FSM { get; private set; }
         public PlayerInputHandler InputHandler { get; private set; }
@@ -23,7 +24,9 @@ namespace FrogGame.Gameplay
         public PlayerShootTongueState TongueState { get; private set; }
         public PlayerArrowAttackState ArrowState { get; private set; }
         public PlayerGrappleState GrappleState { get; private set; }
-
+        public PlayerStunAttackState StunAttackState { get; private set; }
+        public Transform ArrowSpawnPoint => arrowSpawnPoint;
+        public GameObject StunPrefab => stunPrefab;
         public GameObject ArrowPrefab => arrowPrefab;
 
         private void Awake()
@@ -39,6 +42,7 @@ namespace FrogGame.Gameplay
             TongueState = new PlayerShootTongueState(this);
             ArrowState = new PlayerArrowAttackState(this);
             GrappleState = new PlayerGrappleState(this);
+            StunAttackState = new PlayerStunAttackState(this);
         }
 
         private void Start()
