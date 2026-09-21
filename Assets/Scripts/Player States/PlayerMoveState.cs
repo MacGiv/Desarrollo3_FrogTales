@@ -28,6 +28,12 @@ namespace FrogGame.Gameplay
             {
                 brain.FSM.ChangeState(brain.IdleState);
             }
+
+            if (brain.InputHandler.StunPressed)
+            {
+                brain.FSM.ChangeState(brain.StunAttackState);
+                return;
+            }
         }
 
         public void PhysicsUpdate()
