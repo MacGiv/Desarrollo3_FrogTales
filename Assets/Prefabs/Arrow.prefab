@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3505244180208186240}
   - component: {fileID: 8986904639749565746}
   - component: {fileID: 2567516138062355924}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8853420713146432777}
@@ -69,7 +69,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.01}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -79,7 +79,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.5, y: 0.25}
   m_EdgeRadius: 0
 --- !u!50 &8986904639749565746
 Rigidbody2D:
@@ -96,7 +96,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -125,7 +125,7 @@ MonoBehaviour:
   maxLifetime: 3
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 1152
+    m_Bits: 36992
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8853420713146432777}
   - component: {fileID: 1419336527592335229}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -5381005670774197975, guid: a095aadeee262fd42ab0237cd67c4c7f, type: 3}
   m_Color: {r: 1, g: 0.8177949, b: 0.33490568, a: 1}
   m_FlipX: 0
   m_FlipY: 0

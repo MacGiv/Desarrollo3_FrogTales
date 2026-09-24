@@ -144,7 +144,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 0.1.1
+  bundleVersion: 0.2.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -794,8 +794,8 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Desarrollo3_FrogTales
-  metroPackageVersion: 
+  metroPackageName: Desarrollo3FrogTales
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -803,7 +803,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Desarrollo3_FrogTales
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: Desarrollo3_FrogTales
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
