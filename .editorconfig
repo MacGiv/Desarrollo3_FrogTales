@@ -1,0 +1,122 @@
+root = true
+
+[*.cs]
+
+# --- INDENTATION AND FORMATTING ---
+
+indent_style = space
+indent_size = 4
+tab_width = 4
+end_of_line = crlf
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# --- SYNTAX C# ---
+
+dotnet_style_require_accessibility_modifiers = always:warning
+
+csharp_using_directive_placement = inside_namespace:warning
+dotnet_sort_system_directives_first = true:suggestion
+
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = false:suggestion
+
+dotnet_style_predefined_type_for_locals_declaration = true:warning
+dotnet_style_predefined_type_for_member_access = true:warning
+
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_style_expression_bodied_properties = when_on_single_line:suggestion
+csharp_style_expression_bodied_constructors = when_on_single_line:suggestion
+
+# --- BRACKET AND SPACING FORMAT ---
+
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+
+csharp_space_after_cast = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+
+# --- NOMENCLATURE AND STYLE ---
+
+# Constants
+dotnet_naming_rule.constants_must_be_upper_snake_case.severity = warning
+dotnet_naming_rule.constants_must_be_upper_snake_case.symbols = constants
+dotnet_naming_rule.constants_must_be_upper_snake_case.style = upper_snake_case_style
+
+# Types
+dotnet_naming_rule.types_must_be_pascal_case.severity = warning
+dotnet_naming_rule.types_must_be_pascal_case.symbols = types
+dotnet_naming_rule.types_must_be_pascal_case.style = pascal_case_style
+
+# Enum Members
+dotnet_naming_rule.enum_members_must_be_pascal_case.severity = warning
+dotnet_naming_rule.enum_members_must_be_pascal_case.symbols = enum_members
+dotnet_naming_rule.enum_members_must_be_pascal_case.style = pascal_case_style
+
+# Interfaces
+dotnet_naming_rule.interfaces_must_start_with_i.severity = warning
+dotnet_naming_rule.interfaces_must_start_with_i.symbols = interfaces
+dotnet_naming_rule.interfaces_must_start_with_i.style = interface_style
+
+# Private Fields
+dotnet_naming_rule.private_fields_must_be_camel_case.severity = warning
+dotnet_naming_rule.private_fields_must_be_camel_case.symbols = private_fields
+dotnet_naming_rule.private_fields_must_be_camel_case.style = camel_case_style
+
+# Parameters and Local Variables
+dotnet_naming_rule.parameters_and_locals_must_be_camel_case.severity = warning
+dotnet_naming_rule.parameters_and_locals_must_be_camel_case.symbols = parameters_and_locals
+dotnet_naming_rule.parameters_and_locals_must_be_camel_case.style = camel_case_style
+
+# Public Members
+dotnet_naming_rule.public_members_must_be_pascal_case.severity = warning
+dotnet_naming_rule.public_members_must_be_pascal_case.symbols = public_members
+dotnet_naming_rule.public_members_must_be_pascal_case.style = pascal_case_style
+
+# --- SYMBOLS ---
+
+dotnet_naming_symbols.constants.applicable_kinds = field, local
+dotnet_naming_symbols.constants.required_modifiers = const
+
+dotnet_naming_symbols.types.applicable_kinds = class, struct, enum, delegate
+
+dotnet_naming_symbols.enum_members.applicable_kinds = enum_member
+
+dotnet_naming_symbols.interfaces.applicable_kinds = interface
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private, protected
+
+dotnet_naming_symbols.parameters_and_locals.applicable_kinds = parameter, local
+
+dotnet_naming_symbols.public_members.applicable_kinds = property, method, field, event
+dotnet_naming_symbols.public_members.applicable_accessibilities = public, internal
+
+# --- STYLES ---
+
+dotnet_naming_style.upper_snake_case_style.capitalization = all_upper
+dotnet_naming_style.upper_snake_case_style.word_separator = _
+
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+
+dotnet_naming_style.camel_case_style.capitalization = camel_case
+
+dotnet_naming_style.interface_style.capitalization = pascal_case
+dotnet_naming_style.interface_style.required_prefix = I
+
+# --- CODE ANALYSIS AND RELEVANT WARNINGS FOR UNITY ---
+
+# Disable warning CS0649: Field is never assigned to, and will always have its default value
+dotnet_diagnostic.CS0649.severity = none
+
+# Disable IDE0051: Unused private members (Unity lifecycle methods like Awake, Start, Update)
+dotnet_diagnostic.IDE0051.severity = none
+
+# Downgrade IDE0044: Make field readonly (prevents conflicts with [SerializeField])
+dotnet_diagnostic.IDE0044.severity = suggestion
