@@ -7,7 +7,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Manages the player's health, damage reception, invincibility frames, and healing.
-    /// Gestiona la vida del jugador, recepciÛn de daÒo, cuadros de invencibilidad y curaciÛn.
+    /// Gestiona la vida del jugador, recepci√≥n de da√±o, cuadros de invencibilidad y curaci√≥n.
     /// </summary>
     public class PlayerHealthSystem : MonoBehaviour, IDamageable
     {
@@ -18,7 +18,7 @@ namespace FrogGame.Gameplay
         [Header("Visual Feedback")]
         [SerializeField] private SpriteRenderer playerSprite;
 
-        private int currentHealth;
+        [SerializeField] private int currentHealth;
         private bool isInvincible = false;
 
         public int CurrentHealth => currentHealth;
@@ -42,7 +42,7 @@ namespace FrogGame.Gameplay
 
         /// <summary>
         /// Decreases player health if not invincible.
-        /// Recibe daÒo si el jugador no est· en periodo de invulnerabilidad.
+        /// Recibe da√±o si el jugador no est√° en periodo de invulnerabilidad.
         /// </summary>
         public void TakeDamage(int damageAmount)
         {
@@ -65,7 +65,7 @@ namespace FrogGame.Gameplay
 
         /// <summary>
         /// Restores player health up to maxHealth.
-        /// Restaura vida al jugador hasta el m·ximo permitido.
+        /// Restaura vida al jugador hasta el m√°ximo permitido.
         /// </summary>
         public void Heal(int healAmount)
         {
