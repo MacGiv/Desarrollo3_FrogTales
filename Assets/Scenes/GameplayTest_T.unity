@@ -40811,17 +40811,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 655de2ec201b47244a40a4b5414ff571, type: 3}
---- !u!114 &2146363129 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 526163401280184896, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
-  m_PrefabInstance: {fileID: 1251556510997789640}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622dded93c1416041888dcd96c9f3bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.GrabbableItem
 --- !u!1001 &1251556510997789640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40830,34 +40819,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 526163401280184896, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
-      propertyPath: onGrabbed.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 526163401280184896, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
-      propertyPath: onGrabbed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 526163401280184896, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
-      propertyPath: onGrabbed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2146363129}
-    - target: {fileID: 526163401280184896, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
-      propertyPath: onGrabbed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 526163401280184896, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
-      propertyPath: onGrabbed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Grab
-      objectReference: {fileID: 0}
-    - target: {fileID: 526163401280184896, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
-      propertyPath: onGrabbed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FrogGame.Gameplay.GrabbableItem, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 526163401280184896, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
-      propertyPath: onGrabbed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Transform, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3692937087133386978, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.64
@@ -40897,10 +40858,6 @@ PrefabInstance:
     - target: {fileID: 3692937087133386978, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5011335851680731320, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
-      propertyPath: m_Constraints
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8453645683967367874, guid: 163915cb14a1b9d4ebbe4a5283e7cb65, type: 3}
       propertyPath: m_Name
