@@ -15,12 +15,18 @@ namespace FrogGame.Gameplay
             brain.InputHandler.ConsumeTongueInput();
             brain.MovementHandler.Stop();
 
-            Vector2 direction = brain.MovementHandler.FacingDirection;
-
-            // Start tongue coroutine via TongueController
-            tongueCoroutine = brain.StartCoroutine(
-                brain.TongueController.ShootTongueRoutine(direction, OnTongueComplete)
-            );
+            // Start tongue coroutine via TongueController or drop carried box
+            if (brain.CarryHandler != null && brain.CarryHandler.IsCarrying)
+            {
+                brain.CarryHandler.TryDropBox();
+                brain.FSM.ChangeState(brain.IdleState);
+                return; // Redundant just in case
+            }
+            else
+            {
+                Vector2 direction = brain.MovementHandler.FacingDirection;
+                tongueCoroutine = brain.StartCoroutine(brain.TongueController.ShootTongueRoutine(direction, OnTongueComplete));
+            }
         }
 
         private void OnTongueComplete(TongueController.TongueHitResult result, Vector2 targetPos)

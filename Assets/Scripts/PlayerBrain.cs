@@ -1,8 +1,9 @@
-using UnityEngine;
-using FrogGame.Core;
 
 namespace FrogGame.Gameplay
 {
+    using UnityEngine;
+    using FrogGame.Core;
+
     /// <summary>
     /// Central context for Player FSM and components.
     /// Contexto central para la FSM y componentes del jugador.
@@ -13,11 +14,13 @@ namespace FrogGame.Gameplay
     {
         [SerializeField] private GameObject arrowPrefab;
         [SerializeField] private GameObject stunPrefab;
-        [SerializeField] public Transform arrowSpawnPoint;
+        [SerializeField] private Transform arrowSpawnPoint;
+        [SerializeField] private PlayerCarryHandler carryHandler;
         public FiniteStateMachine FSM { get; private set; }
         public PlayerInputHandler InputHandler { get; private set; }
         public PlayerMovementHandler MovementHandler { get; private set; }
         public TongueController TongueController { get; private set; }
+        public PlayerCarryHandler CarryHandler { get; private set; }
         // States instances / Instancias de Estados
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
@@ -34,9 +37,9 @@ namespace FrogGame.Gameplay
             InputHandler = GetComponent<PlayerInputHandler>();
             MovementHandler = GetComponent<PlayerMovementHandler>();
             TongueController = GetComponent<TongueController>();
+            CarryHandler = GetComponent<PlayerCarryHandler>();
 
             FSM = new FiniteStateMachine();
-
             IdleState = new PlayerIdleState(this);
             MoveState = new PlayerMoveState(this);
             TongueState = new PlayerShootTongueState(this);
