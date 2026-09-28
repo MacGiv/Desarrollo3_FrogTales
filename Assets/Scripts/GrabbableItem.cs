@@ -1,21 +1,19 @@
 namespace FrogGame.Gameplay
 {
     using System.Collections;
-    using FrogGame.Core;
     using UnityEngine;
     using UnityEngine.Events;
+    using FrogGame.Core;
 
-    /// <summary>
-    /// Component for items or objects that can be pulled or grabbed by the frog's tongue.
-    /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class GrabbableItem : MonoBehaviour
     {
         public enum ItemType
         {
-            Collectible, // Flies, keys, health
-            Shield,      // Enemy shields
-            HeavyBlock   // Box or blocks that can be attracted to player
+            Collectible,
+            Shield,
+            HeavyBlock,
+            CarriableBox // Nueva opción: caja que la rana levanta y lleva encima
         }
 
         [Header("Item Settings")]
@@ -32,15 +30,13 @@ namespace FrogGame.Gameplay
 
         public ItemType Type => type;
         public bool IsBeingPulled => isBeingPulled;
+        public Collider2D ItemCollider => itemCollider;
 
         private void Awake()
         {
             itemCollider = GetComponent<Collider2D>();
         }
 
-        /// <summary>
-        /// Called when the tongue impacts this object.
-        /// </summary>
         public void Grab(Transform pullTarget)
         {
             if (isBeingPulled) return;
@@ -53,19 +49,16 @@ namespace FrogGame.Gameplay
 
         private IEnumerator PullRoutine(Transform pullTarget)
         {
-            // Deactivate collider to avoid erratic behaviours
             if (itemCollider != null && type != ItemType.HeavyBlock)
             {
                 itemCollider.enabled = false;
             }
 
-            // If the item has a parent, decouple from enemy
             if (transform.parent != null)
             {
                 transform.SetParent(null);
             }
 
-            // Object's movement to frog
             while (pullTarget != null && Vector2.Distance(transform.position, pullTarget.position) > stopDistance)
             {
                 transform.position = Vector2.MoveTowards(
@@ -86,18 +79,21 @@ namespace FrogGame.Gameplay
             switch (type)
             {
                 case ItemType.Collectible:
-                    if (gameObject != null)
-                    {
-                        Destroy(gameObject);
-                    }
-                    break;
-
                 case ItemType.Shield:
-                    Destroy(gameObject);
+                    if (gameObject != null) Destroy(gameObject);
                     break;
 
                 case ItemType.HeavyBlock:
                     if (itemCollider != null) itemCollider.enabled = true;
+                    isBeingPulled = false;
+                    break;
+
+                case ItemType.CarriableBox:
+                    // Notificar al PlayerCarryHandler que la caja llegó a la rana
+                    if (pullTarget != null && pullTarget.TryGetComponent<PlayerCarryHandler>(out var carryHandler))
+                    {
+                        carryHandler.AttachBox(this);
+                    }
                     isBeingPulled = false;
                     break;
             }
