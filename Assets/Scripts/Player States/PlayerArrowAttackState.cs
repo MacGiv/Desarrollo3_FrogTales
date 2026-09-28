@@ -34,7 +34,7 @@ namespace FrogGame.Gameplay
                 return;
             }
 
-            Vector3 spawnPos = brain.arrowSpawnPoint != null ? brain.arrowSpawnPoint.position : brain.transform.position;
+            Vector3 spawnPos = brain.ArrowSpawnPoint != null ? brain.ArrowSpawnPoint.position : brain.transform.position;
 
             GameObject arrowObj = Object.Instantiate(brain.ArrowPrefab, spawnPos, Quaternion.identity);
 

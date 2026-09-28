@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 939356276976503626}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1949342259340883323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8451421526952349763}
+  m_Layer: 8
+  m_Name: HoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8451421526952349763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949342259340883323}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.468, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 939356276976503626}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8438015148088035840
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +170,7 @@ GameObject:
   - component: {fileID: 1655920308539956457}
   - component: {fileID: 8339692442344953888}
   - component: {fileID: 808932101003858372}
+  - component: {fileID: 256641055099659110}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -162,6 +194,7 @@ Transform:
   - {fileID: 2894886666162569861}
   - {fileID: 4559666176104124744}
   - {fileID: 2473404711069442025}
+  - {fileID: 8451421526952349763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &984263636307533334
@@ -404,7 +437,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.050819278}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -414,7 +447,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9, y: 0.9}
+  m_Size: {x: 0.69500446, y: 0.87795436}
   m_EdgeRadius: 0
 --- !u!114 &808932101003858372
 MonoBehaviour:
@@ -431,6 +464,24 @@ MonoBehaviour:
   maxHealth: 3
   invincibilityDuration: 1
   playerSprite: {fileID: 8237111111175404457}
+  currentHealth: 0
+--- !u!114 &256641055099659110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33952a0a430fe14a818f6ea0c1a5b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerCarryHandler
+  holdPoint: {fileID: 8451421526952349763}
+  dropDistance: 1
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!1 &9122732157630115378
 GameObject:
   m_ObjectHideFlags: 0
