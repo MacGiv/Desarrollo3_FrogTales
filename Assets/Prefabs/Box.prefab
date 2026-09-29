@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.GrabbableItem
   type: 3
-  pullSpeed: 12
+  pullSpeed: 15
   stopDistance: 0.5
   onGrabbed:
     m_PersistentCalls:
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!1 &9031612207130073652
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,8 +210,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -906465685, guid: b40b5bf733d8b6c47a47d9c1c00894cd, type: 3}
-  m_Color: {r: 1, g: 0.79571456, b: 0.6745283, a: 1}
+  m_Sprite: {fileID: 398545069, guid: b40b5bf733d8b6c47a47d9c1c00894cd, type: 3}
+  m_Color: {r: 0.85992146, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
