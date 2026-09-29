@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9089701296348268939}
   - component: {fileID: 457866104478743749}
   - component: {fileID: 472624699763272610}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ItemHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6713335679888426247}
   - component: {fileID: 8153201393988116733}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
