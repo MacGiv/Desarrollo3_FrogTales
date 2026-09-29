@@ -1,8 +1,11 @@
 namespace FrogGame.Gameplay
 {
-    using FrogGame.Core;
     using UnityEngine;
+    using FrogGame.Core;
 
+    /// <summary>
+    /// Environmental hazard (water, spikes, lava) that damages entities unless invulnerable or grappling.
+    /// </summary>
     public class Hazard : MonoBehaviour
     {
         [Header("Hazard Settings")]
@@ -13,16 +16,31 @@ namespace FrogGame.Gameplay
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            EvaluateAndApplyDamage(collision);
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            EvaluateAndApplyDamage(collision);
+        }
+
+        private void EvaluateAndApplyDamage(Collider2D collision)
+        {
             int colLayer = 1 << collision.gameObject.layer;
 
-            // 1. Check if hit player
-            if ((colLayer & playerLayer) != 0)
+            // Check if it's players layer
+            if ((colLayer & playerLayer.value) != 0)
             {
-                // 2. Get the component
-                IDamageable damageable = collision.GetComponent<IDamageable>();
+                // Check if player is grappling
+                if (collision.TryGetComponent<PlayerBrain>(out var playerBrain))
+                {
+                    if (playerBrain.FSM.CurrentState == playerBrain.GrappleState)
+                    {
+                        return; // Ignore collision if player is grappling
+                    }
+                }
 
-                // 3. If not null, apply the damage.
-                if (damageable != null)
+                if (collision.TryGetComponent<IDamageable>(out var damageable))
                 {
                     damageable.TakeDamage(damage);
                 }
