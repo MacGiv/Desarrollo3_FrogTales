@@ -1,11 +1,11 @@
-namespace FrogGame.Camera
+namespace FrogGame.Deprecated
 {
     using UnityEngine;
     using Unity.Cinemachine;
 
     /// <summary>
     /// Binds the Player transform to the Cinemachine Virtual Camera automatically on Start.
-    /// Vincula autom·ticamente la posiciÛn del jugador a la c·mara de Cinemachine al iniciar.
+    /// Vincula autom√°ticamente la posici√≥n del jugador a la c√°mara de Cinemachine al iniciar.
     /// </summary>
     [RequireComponent(typeof(CinemachineCamera))] 
     public class CameraFollowBinder : MonoBehaviour
