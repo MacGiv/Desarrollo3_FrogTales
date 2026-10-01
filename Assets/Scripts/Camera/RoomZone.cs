@@ -1,4 +1,4 @@
-namespace FrogGame.World
+namespace FrogGame.Deprecated
 {
     using UnityEngine;
     using FrogGame.Camera;
@@ -25,7 +25,7 @@ namespace FrogGame.World
         {
             if (collision.CompareTag("Player"))
             {
-                RoomManager.Instance?.ChangeRoom(roomBounds);
+                // RoomManager.Instance?.ChangeRoom(roomBounds);
             }
         }
     }
