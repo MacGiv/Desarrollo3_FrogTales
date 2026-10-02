@@ -1,5 +1,6 @@
 namespace FrogGame.UI
 {
+    using TMPro;
     using UnityEngine;
     using UnityEngine.UI;
     using FrogGame.Gameplay;
@@ -12,14 +13,19 @@ namespace FrogGame.UI
         [Header("Health UI References")]
         [SerializeField] private Slider healthSlider;
 
+        [Header("Arrow UI")]
+        [SerializeField] private TextMeshProUGUI arrowText;
+
         private void OnEnable()
         {
             PlayerHealthSystem.OnHealthChanged += UpdateHealthUI;
+            PlayerAmmoSystem.OnArrowCountChanged += UpdateArrowUI;
         }
 
         private void OnDisable()
         {
             PlayerHealthSystem.OnHealthChanged -= UpdateHealthUI;
+            PlayerAmmoSystem.OnArrowCountChanged += UpdateArrowUI;
         }
 
         /// <summary>
@@ -31,6 +37,17 @@ namespace FrogGame.UI
             {
                 healthSlider.maxValue = maxHealth;
                 healthSlider.value = currentHealth;
+            }
+        }
+
+        /// <summary>
+        /// Updates the arrow text counter.
+        /// </summary>
+        private void UpdateArrowUI(int currentArrows, int maxArrows)
+        {
+            if (arrowText != null)
+            {
+                arrowText.text = currentArrows.ToString();
             }
         }
     }
