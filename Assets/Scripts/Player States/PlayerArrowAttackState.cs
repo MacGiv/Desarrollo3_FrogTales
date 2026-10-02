@@ -18,8 +18,15 @@ namespace FrogGame.Gameplay
             brain.InputHandler.ConsumeArrowInput();
             brain.MovementHandler.Stop();
 
-            // Spawn and launch arrow / Instanciar y disparar la flecha
-            SpawnArrow();
+            // Try to consume arrow from ammo system
+            if (brain.AmmoSystem != null && brain.AmmoSystem.ConsumeArrow())
+            {
+                SpawnArrow();
+            }
+            else
+            {
+                Debug.Log("[PlayerArrowAttackState] No arrows available!");
+            }
 
             // Return to Idle immediately (or can be delayed via animation/timer)
             // Retorno a Idle tras disparar
