@@ -10,6 +10,7 @@ namespace FrogGame.Gameplay
     /// </summary>
     [RequireComponent(typeof(PlayerInputHandler))]
     [RequireComponent(typeof(PlayerMovementHandler))]
+    [RequireComponent(typeof(PlayerAmmoSystem))]
     public class PlayerBrain : MonoBehaviour
     {
         [SerializeField] private GameObject arrowPrefab;
@@ -21,6 +22,8 @@ namespace FrogGame.Gameplay
         public PlayerMovementHandler MovementHandler { get; private set; }
         public TongueController TongueController { get; private set; }
         public PlayerCarryHandler CarryHandler { get; private set; }
+        public PlayerAmmoSystem AmmoSystem { get; private set; }
+
         // States instances / Instancias de Estados
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
@@ -38,6 +41,7 @@ namespace FrogGame.Gameplay
             MovementHandler = GetComponent<PlayerMovementHandler>();
             TongueController = GetComponent<TongueController>();
             CarryHandler = GetComponent<PlayerCarryHandler>();
+            AmmoSystem = GetComponent<PlayerAmmoSystem>();
 
             FSM = new FiniteStateMachine();
             IdleState = new PlayerIdleState(this);
