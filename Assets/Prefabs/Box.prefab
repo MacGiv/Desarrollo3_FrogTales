@@ -114,9 +114,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
+  m_Mass: 100
   m_LinearDamping: 20
-  m_AngularDamping: 100
+  m_AngularDamping: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -210,8 +210,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 398545069, guid: b40b5bf733d8b6c47a47d9c1c00894cd, type: 3}
-  m_Color: {r: 0.85992146, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6dd0a8b2cd455e1408615f1a8f1b4fb5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

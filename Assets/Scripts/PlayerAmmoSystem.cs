@@ -4,51 +4,72 @@ namespace FrogGame.Gameplay
     using UnityEngine;
 
     /// <summary>
-    /// Manages player arrow inventory and ammo consumption.
+    /// Manages player arrow inventory, ammo consumption, and cooldown.
     /// </summary>
     public class PlayerAmmoSystem : MonoBehaviour
     {
         [Header("Ammo Settings")]
-        [SerializeField] private int maxArrows = 25;
         [SerializeField] private int currentArrows = 10;
+        [SerializeField] private int maxArrows = 25;
 
-        public int MaxArrows => maxArrows;
+        [Header("Cooldown Settings")]
+        [SerializeField] private float shootCooldown = 0.5f;
+        [SerializeField] private SpriteRenderer readyIndicator; // Indicador visual opcional (punto u orbe sobre el personaje)
+
+        private float lastShootTime = -999f;
+
         public int CurrentArrows => currentArrows;
+        public bool CanShoot => currentArrows > 0 && Time.time >= lastShootTime + shootCooldown;
 
-        // Event to notify UI of ammo changes
-        public static event Action<int, int> OnArrowCountChanged;
+        public static event Action<int> OnArrowCountChanged;
 
         private void Start()
         {
-            // Notify initial ammo state to UI
-            OnArrowCountChanged?.Invoke(currentArrows, maxArrows);
+            OnArrowCountChanged?.Invoke(currentArrows);
+            UpdateIndicator();
+        }
+
+        private void Update()
+        {
+            UpdateIndicator();
         }
 
         /// <summary>
-        /// Decreases arrow count by one if available. Returns true if successful.
+        /// Tries to consume one arrow considering cooldown.
         /// </summary>
-        public bool ConsumeArrow()
+        public bool TryConsumeArrow()
         {
-            if (currentArrows <= 0) return false;
+            if (!CanShoot) return false;
 
             currentArrows--;
-            currentArrows = Mathf.Clamp(currentArrows, 0, maxArrows);
+            lastShootTime = Time.time;
+            OnArrowCountChanged?.Invoke(currentArrows);
+            UpdateIndicator();
 
-            OnArrowCountChanged?.Invoke(currentArrows, maxArrows);
             return true;
         }
 
-        /// <summary>
-        /// Adds arrows to player inventory up to maxArrows.
-        /// </summary>
         public void AddArrows(int amount)
         {
             if (amount <= 0 || currentArrows >= maxArrows) return;
 
             currentArrows += amount;
-            currentArrows = Mathf.Clamp(currentArrows, 0, maxArrows);
+            OnArrowCountChanged?.Invoke(currentArrows);
+            UpdateIndicator();
+        }
 
-            OnArrowCountChanged?.Invoke(currentArrows, maxArrows);
+        private void UpdateIndicator()
+        {
+            if (readyIndicator == null) return;
+
+            if (CanShoot)
+            {
+                readyIndicator.color = Color.green; // Flecha lista
+            }
+            else
+            {
+                readyIndicator.color = (currentArrows <= 0) ? Color.red : new Color(1f, 1f, 1f, 0.2f); // Cooldown o sin balas
+            }
         }
     }
 }

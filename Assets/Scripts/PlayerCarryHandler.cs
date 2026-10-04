@@ -27,24 +27,31 @@ namespace FrogGame.Gameplay
         /// </summary>
         public void AttachBox(GrabbableItem box)
         {
-            if (IsCarrying) return;
+            if (IsCarrying || box == null) return;
 
             currentCarriedBox = box;
             Transform boxTransform = box.transform;
 
-            boxTransform.SetParent(holdPoint != null ? holdPoint : transform);
-            boxTransform.localPosition = Vector3.zero;
+            // 1. Assign hold point
+            Transform targetParent = holdPoint != null ? holdPoint : transform;
+            boxTransform.SetParent(targetParent);
 
-            // Disable collider when attached
+            // 2. Reset local position and rotation to the center of HoldPoint
+            boxTransform.localPosition = Vector3.zero;
+            boxTransform.localRotation = Quaternion.identity;
+
+            // 3. Deactivate collider
             if (box.ItemCollider != null)
             {
                 box.ItemCollider.enabled = false;
             }
 
-            // Disable physics when attached
+            // 4. Deactivate physics
             if (box.TryGetComponent<Rigidbody2D>(out var rb))
             {
-                rb.simulated = false;
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                rb.simulated = false; // Stop rb simulation
             }
         }
 
@@ -58,7 +65,7 @@ namespace FrogGame.Gameplay
             Vector2 facingDir = movementHandler != null ? movementHandler.FacingDirection : Vector2.down;
             Vector2 dropPosition = (Vector2)transform.position + (facingDir * dropDistance);
 
-            // Check for obstacle when positioning
+            // Check for obstacles
             Collider2D hitObstacle = Physics2D.OverlapCircle(dropPosition, 0.3f, obstacleLayer);
             if (hitObstacle != null)
             {
@@ -66,21 +73,23 @@ namespace FrogGame.Gameplay
                 return false;
             }
 
-            // Drop box
+            // Remove from hierarchy
             Transform boxTransform = currentCarriedBox.transform;
             boxTransform.SetParent(null);
             boxTransform.position = dropPosition;
 
+            // Reactivate collider
             if (currentCarriedBox.ItemCollider != null)
             {
                 currentCarriedBox.ItemCollider.enabled = true;
             }
 
-            // Reactivate physics and clean inertia
+            // Reactivate physiscs
             if (currentCarriedBox.TryGetComponent<Rigidbody2D>(out var rb))
             {
                 rb.simulated = true;
                 rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
             }
 
             currentCarriedBox = null;

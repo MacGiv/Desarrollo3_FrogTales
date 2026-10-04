@@ -123,6 +123,7 @@ MonoBehaviour:
   speed: 6
   damage: 1
   maxLifetime: 3
+  pickupArrowPrefab: {fileID: 4340830154474281819, guid: 53e86a3aef86f5a4da5d1912b3318cfa, type: 3}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 36992
