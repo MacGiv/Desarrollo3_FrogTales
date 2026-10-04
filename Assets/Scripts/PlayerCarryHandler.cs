@@ -8,9 +8,9 @@ namespace FrogGame.Gameplay
     public class PlayerCarryHandler : MonoBehaviour
     {
         [Header("Carry Settings")]
-        [SerializeField] private Transform holdPoint; // Frog's head point
-        [SerializeField] private float dropDistance = 1.0f; // Distance drop away from player pos
-        [SerializeField] private LayerMask obstacleLayer; // Avoid dropping the box in a wall
+        [SerializeField] private Transform holdPoint; // Point above frog's head
+        [SerializeField] private float dropDistance = 1.0f; // Distance in front of player
+        [SerializeField] private LayerMask obstacleLayer; // Avoid dropping inside walls
 
         private GrabbableItem currentCarriedBox = null;
         private PlayerMovementHandler movementHandler;
@@ -27,17 +27,31 @@ namespace FrogGame.Gameplay
         /// </summary>
         public void AttachBox(GrabbableItem box)
         {
-            if (IsCarrying) return;
+            if (IsCarrying || box == null) return;
 
             currentCarriedBox = box;
             Transform boxTransform = box.transform;
 
-            boxTransform.SetParent(holdPoint != null ? holdPoint : transform);
-            boxTransform.localPosition = Vector3.zero;
+            // 1. Assign hold point
+            Transform targetParent = holdPoint != null ? holdPoint : transform;
+            boxTransform.SetParent(targetParent);
 
+            // 2. Reset local position and rotation to the center of HoldPoint
+            boxTransform.localPosition = Vector3.zero;
+            boxTransform.localRotation = Quaternion.identity;
+
+            // 3. Deactivate collider
             if (box.ItemCollider != null)
             {
                 box.ItemCollider.enabled = false;
+            }
+
+            // 4. Deactivate physics
+            if (box.TryGetComponent<Rigidbody2D>(out var rb))
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                rb.simulated = false; // Stop rb simulation
             }
         }
 
@@ -51,7 +65,7 @@ namespace FrogGame.Gameplay
             Vector2 facingDir = movementHandler != null ? movementHandler.FacingDirection : Vector2.down;
             Vector2 dropPosition = (Vector2)transform.position + (facingDir * dropDistance);
 
-            // Verificar si hay pared en la posición de descarga
+            // Check for obstacles
             Collider2D hitObstacle = Physics2D.OverlapCircle(dropPosition, 0.3f, obstacleLayer);
             if (hitObstacle != null)
             {
@@ -59,14 +73,23 @@ namespace FrogGame.Gameplay
                 return false;
             }
 
-            // Desenganchar caja
+            // Remove from hierarchy
             Transform boxTransform = currentCarriedBox.transform;
             boxTransform.SetParent(null);
             boxTransform.position = dropPosition;
 
+            // Reactivate collider
             if (currentCarriedBox.ItemCollider != null)
             {
                 currentCarriedBox.ItemCollider.enabled = true;
+            }
+
+            // Reactivate physiscs
+            if (currentCarriedBox.TryGetComponent<Rigidbody2D>(out var rb))
+            {
+                rb.simulated = true;
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
             }
 
             currentCarriedBox = null;
