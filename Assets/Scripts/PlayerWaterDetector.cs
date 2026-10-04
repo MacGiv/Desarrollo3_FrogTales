@@ -1,19 +1,23 @@
 namespace FrogGame.Gameplay
 {
     using UnityEngine;
+    using UnityEngine.Tilemaps;
 
     /// <summary>
-    /// Detects standing surface layer (Ground or Water) and tracks safe ground position.
+    /// Detects standing surface layer (Ground or Water) using Tilemap references and tracks safe ground position.
     /// </summary>
     public class PlayerWaterDetector : MonoBehaviour
     {
         [Header("Layer Detection")]
         [SerializeField] private LayerMask waterLayer;
         [SerializeField] private LayerMask groundLayer;
-        [SerializeField] private Vector2 checkSize = new Vector2(0.05f, 0.05f);
 
         private Grid currentGrid;
+        private Tilemap groundTilemap;
+        private Tilemap waterTilemap;
         private PlayerBrain brain;
+
+        private Vector3Int currentCell;
         private Vector3 lastSafeTileCenter;
 
         public Vector3 LastSafeTileCenter => lastSafeTileCenter;
@@ -22,14 +26,22 @@ namespace FrogGame.Gameplay
 
         private void Start()
         {
-            FindGridReference();
+            InitializeGridReferences();
 
-            lastSafeTileCenter = GetCurrentTileCenter();
+            if (currentGrid != null)
+            {
+                currentCell = currentGrid.WorldToCell(transform.position);
+                lastSafeTileCenter = currentGrid.GetCellCenterWorld(currentCell);
+            }
+            else
+            {
+                lastSafeTileCenter = transform.position;
+            }
         }
 
         private void Update()
         {
-            if (brain == null || brain.FSM == null) return;
+            if (brain == null || brain.FSM == null || brain.FSM.CurrentState == null) return;
 
             // Immune while grappling or already drowning
             if (brain.FSM.CurrentState is PlayerGrappleState || brain.FSM.CurrentState is PlayerDrownState)
@@ -37,14 +49,14 @@ namespace FrogGame.Gameplay
                 return;
             }
 
-            Vector2 checkPosition = transform.position;
+            if (currentGrid == null) return;
 
-            // Check Water Layer
-            Collider2D waterHit = Physics2D.OverlapBox(checkPosition, checkSize, 0f, waterLayer);
+            Vector3Int cellPos = currentGrid.WorldToCell(transform.position);
 
-            if (waterHit != null)
+            // Water Detection via direct Tilemap query
+            if (waterTilemap != null && waterTilemap.HasTile(cellPos))
             {
-                Vector3 waterCenter = GetCurrentTileCenter();
+                Vector3 waterCenter = currentGrid.GetCellCenterWorld(cellPos);
 
                 brain.DrownState.SetTargetPositions(waterCenter, lastSafeTileCenter);
                 brain.FSM.ChangeState(brain.DrownState);
@@ -52,46 +64,68 @@ namespace FrogGame.Gameplay
                 return;
             }
 
-            // Check Ground Layer and update safe tile center dynamically
-            Collider2D groundHit = Physics2D.OverlapBox(checkPosition, checkSize, 0f, groundLayer);
-
-            if (groundHit != null)
+            // Cell Change & Ground Save
+            if (cellPos != currentCell)
             {
-                lastSafeTileCenter = GetCurrentTileCenter();
+                currentCell = cellPos;
+
+                // Query Tilemap directly without physics matrix overhead
+                if (groundTilemap != null && groundTilemap.HasTile(currentCell))
+                {
+                    lastSafeTileCenter = currentGrid.GetCellCenterWorld(currentCell);
+                }
             }
         }
 
         /// <summary>
-        /// Calculates the center world position of the tile the player is currently over.
+        /// Registers grid and tilemap instances dynamically on initialization.
         /// </summary>
-        public Vector3 GetCurrentTileCenter()
-        {
-            if (currentGrid == null)
-            {
-                FindGridReference();
-
-                if (currentGrid == null) return transform.position;
-            }
-
-            Vector3Int cellPosition = currentGrid.WorldToCell(transform.position);
-
-            return currentGrid.GetCellCenterWorld(cellPosition);
-        }
-
-        private void FindGridReference()
+        private void InitializeGridReferences()
         {
             currentGrid = FindFirstObjectByType<Grid>();
 
             if (currentGrid == null)
             {
                 Debug.LogWarning("[PlayerWaterDetector] No Grid instance found in scene!");
+
+                return;
+            }
+
+            Tilemap[] allTilemaps = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
+
+            foreach (Tilemap tilemap in allTilemaps)
+            {
+                int tilemapLayer = 1 << tilemap.gameObject.layer;
+
+                if ((tilemapLayer & groundLayer) != 0)
+                {
+                    groundTilemap = tilemap;
+                }
+
+                if ((tilemapLayer & waterLayer) != 0)
+                {
+                    waterTilemap = tilemap;
+                }
+            }
+
+            if (groundTilemap == null)
+            {
+                Debug.LogWarning("[PlayerWaterDetector] Ground Tilemap not found in scene!");
+            }
+
+            if (waterTilemap == null)
+            {
+                Debug.LogWarning("[PlayerWaterDetector] Water Tilemap not found in scene!");
             }
         }
 
         private void OnDrawGizmosSelected()
         {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireCube(transform.position, checkSize);
+            if (currentGrid != null)
+            {
+                Gizmos.color = Color.cyan;
+                Gizmos.DrawWireCube(lastSafeTileCenter, currentGrid.cellSize * 0.9f);
+            }
         }
     }
 }

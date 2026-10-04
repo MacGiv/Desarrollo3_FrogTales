@@ -14,10 +14,12 @@ namespace FrogGame.Gameplay
         private Vector3 waterTileCenter;
         private Vector3 safeRespawnPosition;
 
-        private const float DROWN_DURATION = 0.8f;
+        private const float DROWN_DURATION = 1f;
+        private const float RESPAWN_STUN_DURATION = 0.5f;
         private const float ROTATION_SPEED = 720f;
         private const int DROWN_DAMAGE = 1;
 
+        private bool isSpinning;
         private Coroutine drownCoroutine;
 
         public PlayerDrownState(PlayerBrain brain) => this.brain = brain;
@@ -38,24 +40,28 @@ namespace FrogGame.Gameplay
 
             brain.MovementHandler.Stop();
             brain.transform.position = waterTileCenter;
+            isSpinning = true;
 
             drownCoroutine = brain.StartCoroutine(DrownSequenceRoutine());
         }
 
         public void LogicUpdate()
         {
-            // Placeholder rotation animation
-            brain.transform.Rotate(Vector3.forward, ROTATION_SPEED * Time.deltaTime);
+            // Spin animation while drowning in water
+            if (isSpinning)
+            {
+                brain.transform.Rotate(Vector3.forward, ROTATION_SPEED * Time.deltaTime);
+            }
         }
 
         public void PhysicsUpdate() { }
 
         public void Exit()
         {
-            // Restore sprite rotation
+            // Ensure rotation is reset
             brain.transform.rotation = Quaternion.identity;
 
-            // Re-enable inputs
+            // Re-enable inputs after exiting state
             if (brain.InputHandler != null)
             {
                 brain.InputHandler.EnableInput();
@@ -72,14 +78,16 @@ namespace FrogGame.Gameplay
         {
             yield return new WaitForSeconds(DROWN_DURATION);
 
-            // Relocate to safe ground first
-            brain.transform.position = safeRespawnPosition;
+            isSpinning = false;
+            brain.transform.SetPositionAndRotation(safeRespawnPosition, Quaternion.identity);
 
-            // Apply damage AFTER appearing in safe zone
+            // Apply damage after appearing in safe zone
             if (brain.HealthSystem != null)
             {
                 brain.HealthSystem.TakeDamage(DROWN_DAMAGE);
             }
+
+            yield return new WaitForSeconds(RESPAWN_STUN_DURATION);
 
             // Return to Idle or handle death
             if (brain.HealthSystem == null || brain.HealthSystem.CurrentHealth > 0)
