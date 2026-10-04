@@ -5,7 +5,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Projectile script that moves in a direction and damages enemies.
-    /// Script del proyectil que avanza, inflige daño a enemigos.
+    /// Script del proyectil que avanza e inflige daÃ±o a enemigos.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
@@ -15,6 +15,7 @@ namespace FrogGame.Gameplay
         [SerializeField] private float speed = 12f;
         [SerializeField] private int damage = 1;
         [SerializeField] private float maxLifetime = 3f;
+        [SerializeField] private GameObject pickupArrowPrefab;
 
         [Header("Collision Layers")]
         [SerializeField] private LayerMask obstacleLayer;
@@ -34,16 +35,15 @@ namespace FrogGame.Gameplay
 
         /// <summary>
         /// Initializes arrow velocity and rotation direction.
-        /// Inicializa la velocidad y la orientación de la flecha.
         /// </summary>
         public void Setup(Vector2 direction)
         {
             Vector2 normalizedDir = direction.normalized;
 
-            // Set physics velocity / Asignar velocidad física
+            // Set physics velocity
             rb.linearVelocity = normalizedDir * speed;
 
-            // Rotate visual arrow to facing direction / Orientar sprite hacia la dirección de vuelo
+            // Rotate visual arrow to facing direction
             float angle = Mathf.Atan2(normalizedDir.y, normalizedDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
@@ -55,7 +55,8 @@ namespace FrogGame.Gameplay
             // 1. Check if hit obstacle/wall/shield
             if ((colLayer & obstacleLayer) != 0)
             {
-                Destroy(gameObject); // Destruye la flecha al chocar contra el escudo u obstáculo
+                SpawnPickup();
+                Destroy(gameObject);
                 return;
             }
 
@@ -69,6 +70,14 @@ namespace FrogGame.Gameplay
                 }
 
                 Destroy(gameObject);
+            }
+        }
+
+        private void SpawnPickup()
+        {
+            if (pickupArrowPrefab != null)
+            {
+                Instantiate(pickupArrowPrefab, transform.position, Quaternion.identity);
             }
         }
     }
