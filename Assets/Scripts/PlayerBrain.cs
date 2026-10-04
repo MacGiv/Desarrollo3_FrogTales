@@ -1,4 +1,3 @@
-
 namespace FrogGame.Gameplay
 {
     using UnityEngine;
@@ -10,19 +9,24 @@ namespace FrogGame.Gameplay
     /// </summary>
     [RequireComponent(typeof(PlayerInputHandler))]
     [RequireComponent(typeof(PlayerMovementHandler))]
+    [RequireComponent(typeof(PlayerHealthSystem))]
     [RequireComponent(typeof(PlayerAmmoSystem))]
+    [RequireComponent(typeof(PlayerWaterDetector))]
     public class PlayerBrain : MonoBehaviour
     {
         [SerializeField] private GameObject arrowPrefab;
         [SerializeField] private GameObject stunPrefab;
         [SerializeField] private Transform arrowSpawnPoint;
         [SerializeField] private PlayerCarryHandler carryHandler;
+
         public FiniteStateMachine FSM { get; private set; }
         public PlayerInputHandler InputHandler { get; private set; }
         public PlayerMovementHandler MovementHandler { get; private set; }
+        public PlayerHealthSystem HealthSystem { get; private set; }
+        public PlayerAmmoSystem AmmoSystem { get; private set; }
         public TongueController TongueController { get; private set; }
         public PlayerCarryHandler CarryHandler { get; private set; }
-        public PlayerAmmoSystem AmmoSystem { get; private set; }
+        public PlayerWaterDetector WaterDetector { get; private set; }
 
         // States instances / Instancias de Estados
         public PlayerIdleState IdleState { get; private set; }
@@ -31,6 +35,8 @@ namespace FrogGame.Gameplay
         public PlayerArrowAttackState ArrowState { get; private set; }
         public PlayerGrappleState GrappleState { get; private set; }
         public PlayerStunAttackState StunAttackState { get; private set; }
+        public PlayerDrownState DrownState { get; private set; }
+
         public Transform ArrowSpawnPoint => arrowSpawnPoint;
         public GameObject StunPrefab => stunPrefab;
         public GameObject ArrowPrefab => arrowPrefab;
@@ -39,9 +45,11 @@ namespace FrogGame.Gameplay
         {
             InputHandler = GetComponent<PlayerInputHandler>();
             MovementHandler = GetComponent<PlayerMovementHandler>();
+            HealthSystem = GetComponent<PlayerHealthSystem>();
+            AmmoSystem = GetComponent<PlayerAmmoSystem>();
             TongueController = GetComponent<TongueController>();
             CarryHandler = GetComponent<PlayerCarryHandler>();
-            AmmoSystem = GetComponent<PlayerAmmoSystem>();
+            WaterDetector = GetComponent<PlayerWaterDetector>();
 
             FSM = new FiniteStateMachine();
             IdleState = new PlayerIdleState(this);
@@ -50,6 +58,7 @@ namespace FrogGame.Gameplay
             ArrowState = new PlayerArrowAttackState(this);
             GrappleState = new PlayerGrappleState(this);
             StunAttackState = new PlayerStunAttackState(this);
+            DrownState = new PlayerDrownState(this);
         }
 
         private void Start()
