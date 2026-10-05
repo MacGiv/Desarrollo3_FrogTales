@@ -3,19 +3,17 @@ namespace FrogGame.Gameplay
     using System.Collections;
     using UnityEngine;
     using UnityEngine.Events;
+    using FrogGame.Core;
 
-    /// <summary>
-    /// Component for items or objects that can be pulled or grabbed by the frog's tongue.
-    /// Componente para ítems u objetos que pueden ser atraídos o agarrados por la lengua de la rana.
-    /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class GrabbableItem : MonoBehaviour
     {
         public enum ItemType
         {
-            Collectible, // Flies, keys, health (trae al jugador y se destruye/recoge)
-            Shield,      // Escudo robado a un enemigo (lo desengancha y destruye/cae)
-            HeavyBlock   // Cajas o bloques arrastrales (se mueven hacia la rana)
+            Collectible,
+            Shield,
+            HeavyBlock,
+            CarriableBox // Nueva opciÃ³n: caja que la rana levanta y lleva encima
         }
 
         [Header("Item Settings")]
@@ -32,16 +30,13 @@ namespace FrogGame.Gameplay
 
         public ItemType Type => type;
         public bool IsBeingPulled => isBeingPulled;
+        public Collider2D ItemCollider => itemCollider;
 
         private void Awake()
         {
             itemCollider = GetComponent<Collider2D>();
         }
 
-        /// <summary>
-        /// Called when the tongue impacts this object.
-        /// Llamado por el TongueController al impactar la lengua.
-        /// </summary>
         public void Grab(Transform pullTarget)
         {
             if (isBeingPulled) return;
@@ -54,19 +49,16 @@ namespace FrogGame.Gameplay
 
         private IEnumerator PullRoutine(Transform pullTarget)
         {
-            // Desactivar collider durante el arrastre para evitar colisiones indeseadas
             if (itemCollider != null && type != ItemType.HeavyBlock)
             {
                 itemCollider.enabled = false;
             }
 
-            // Desenganchar de un padre si era el escudo de un enemigo
             if (transform.parent != null)
             {
                 transform.SetParent(null);
             }
 
-            // Trayecto de vuelo hacia la rana / objetivo
             while (pullTarget != null && Vector2.Distance(transform.position, pullTarget.position) > stopDistance)
             {
                 transform.position = Vector2.MoveTowards(
@@ -77,22 +69,31 @@ namespace FrogGame.Gameplay
                 yield return null;
             }
 
-            // Lógica al llegar al jugador
             onCollected?.Invoke();
+
+            if (pullTarget != null && TryGetComponent<IPickupable>(out var pickupable))
+            {
+                pickupable.Collect(pullTarget.gameObject);
+            }
 
             switch (type)
             {
                 case ItemType.Collectible:
-                    // TODO: Notificar al inventario / GameManager
-                    Destroy(gameObject);
-                    break;
-
                 case ItemType.Shield:
-                    Destroy(gameObject);
+                    if (gameObject != null) Destroy(gameObject);
                     break;
 
                 case ItemType.HeavyBlock:
                     if (itemCollider != null) itemCollider.enabled = true;
+                    isBeingPulled = false;
+                    break;
+
+                case ItemType.CarriableBox:
+                    // Notificar al PlayerCarryHandler que la caja llegÃ³ a la rana
+                    if (pullTarget != null && pullTarget.TryGetComponent<PlayerCarryHandler>(out var carryHandler))
+                    {
+                        carryHandler.AttachBox(this);
+                    }
                     isBeingPulled = false;
                     break;
             }

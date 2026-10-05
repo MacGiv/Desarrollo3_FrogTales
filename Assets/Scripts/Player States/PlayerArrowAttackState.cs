@@ -18,8 +18,15 @@ namespace FrogGame.Gameplay
             brain.InputHandler.ConsumeArrowInput();
             brain.MovementHandler.Stop();
 
-            // Spawn and launch arrow / Instanciar y disparar la flecha
-            SpawnArrow();
+            // Try to consume arrow from ammo system
+            if (brain.AmmoSystem != null && brain.AmmoSystem.TryConsumeArrow())
+            {
+                SpawnArrow();
+            }
+            else
+            {
+                Debug.Log("[PlayerArrowAttackState] No arrows available!");
+            }
 
             // Return to Idle immediately (or can be delayed via animation/timer)
             // Retorno a Idle tras disparar
@@ -34,7 +41,7 @@ namespace FrogGame.Gameplay
                 return;
             }
 
-            Vector3 spawnPos = brain.arrowSpawnPoint != null ? brain.arrowSpawnPoint.position : brain.transform.position;
+            Vector3 spawnPos = brain.ArrowSpawnPoint != null ? brain.ArrowSpawnPoint.position : brain.transform.position;
 
             GameObject arrowObj = Object.Instantiate(brain.ArrowPrefab, spawnPos, Quaternion.identity);
 
