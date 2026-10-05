@@ -120,9 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e314de07279c746a76f8080ca44ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.Arrow
-  speed: 12
+  speed: 6
   damage: 1
   maxLifetime: 3
+  pickupArrowPrefab: {fileID: 4340830154474281819, guid: 53e86a3aef86f5a4da5d1912b3318cfa, type: 3}
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 36992
