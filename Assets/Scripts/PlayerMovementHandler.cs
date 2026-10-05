@@ -1,11 +1,11 @@
-using UnityEngine;
 
 namespace FrogGame.Gameplay
 {
+    using UnityEngine;
 
     /// <summary>
     /// Handles 8-directional physical movement while snapping facing rotation to 4 cardinal directions.
-    /// Maneja el movimiento físico en 8 direcciones mientras ajusta la rotación a 4 direcciones cardinales.
+    /// Maneja el movimiento fÃ­sico en 8 direcciones mientras ajusta la rotaciÃ³n a 4 direcciones cardinales.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerMovementHandler : MonoBehaviour
@@ -23,13 +23,13 @@ namespace FrogGame.Gameplay
 
         public void SetVelocity(Vector2 input)
         {
-            // 8-directional physical movement / Movimiento físico en 8 direcciones
+            // 8-directional physical movement / Movimiento fÃ­sico en 8 direcciones
             rb.linearVelocity = input.normalized * moveSpeed;
 
             if (input != Vector2.zero)
             {
                 // Snap facing direction to 4 cardinal directions (N, S, E, W)
-                // Ajusta la dirección de la mirada a 4 direcciones cardinales (N, S, E, O)
+                // Ajusta la direcciÃ³n de la mirada a 4 direcciones cardinales (N, S, E, O)
                 if (Mathf.Abs(input.x) >= Mathf.Abs(input.y))
                 {
                     FacingDirection = new Vector2(Mathf.Sign(input.x), 0f);
