@@ -65,9 +65,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "PAUSA - CONTROLES\r\n\r\n    Flechas / WASD: Moverse\r\n\r\n    Z: Moco
-    (Aturdir)\r\n\r\n    X: Lengua\r\n\r\n    C: Flechas\r\n\r\n(Presion\xE1 P para
-    reanudar | R para reiniciar | Q para salir)"
+  m_text: "PAUSE - CONTROLS\r\n\r\n    Arrows & WASD / Left Stick / D-Pad: Move\r\n   
+    [Keyboard / PS Joystick / Xbox Controller]\n    \r\n    [Z / Triangle / Y] :
+    Stun\r\n\r\n    [X / Cross / A]: Tongue\r\n\r\n    [C / Square / X]: Arrows\r\n\r\n([P
+    / Start] to resume | [R / Select] to reset level | [Q] to exit)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
