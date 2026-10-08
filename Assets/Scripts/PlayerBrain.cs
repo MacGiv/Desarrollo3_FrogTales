@@ -12,6 +12,7 @@ namespace FrogGame.Gameplay
     [RequireComponent(typeof(PlayerHealthSystem))]
     [RequireComponent(typeof(PlayerAmmoSystem))]
     [RequireComponent(typeof(PlayerWaterDetector))]
+    [RequireComponent(typeof(PlayerSneezeHandler))]
     public class PlayerBrain : MonoBehaviour
     {
         [SerializeField] private GameObject arrowPrefab;
@@ -27,6 +28,7 @@ namespace FrogGame.Gameplay
         public TongueController TongueController { get; private set; }
         public PlayerCarryHandler CarryHandler { get; private set; }
         public PlayerWaterDetector WaterDetector { get; private set; }
+        public PlayerSneezeHandler SneezeHandler { get; private set; }
 
         // States instances / Instancias de Estados
         public PlayerIdleState IdleState { get; private set; }
@@ -50,6 +52,7 @@ namespace FrogGame.Gameplay
             TongueController = GetComponent<TongueController>();
             CarryHandler = GetComponent<PlayerCarryHandler>();
             WaterDetector = GetComponent<PlayerWaterDetector>();
+            SneezeHandler = GetComponent<PlayerSneezeHandler>();
 
             FSM = new FiniteStateMachine();
             IdleState = new PlayerIdleState(this);
