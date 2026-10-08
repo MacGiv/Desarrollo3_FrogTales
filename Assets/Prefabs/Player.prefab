@@ -354,6 +354,8 @@ GameObject:
   - component: {fileID: 808932101003858372}
   - component: {fileID: 256641055099659110}
   - component: {fileID: 8395082505162536254}
+  - component: {fileID: 7106084710380421344}
+  - component: {fileID: 5434737116499292738}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -684,6 +686,47 @@ MonoBehaviour:
   currentArrows: 10
   maxArrows: 25
   shootCooldown: 0.5
+  readyIndicator: {fileID: 0}
+--- !u!114 &7106084710380421344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b7e5fdb61ff0b44a1c68541118789b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerWaterDetector
+  waterLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &5434737116499292738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff6d26964a893446a4eb46af889cc26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerSneezeHandler
+  range: 2
+  areaWidth: 1
+  damage: 1
+  stunDuration: 2
+  knockbackForce: 10
+  cooldown: 2
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  sneezeParticle: {fileID: 0}
   readyIndicator: {fileID: 0}
 --- !u!1 &9122732157630115378
 GameObject:
