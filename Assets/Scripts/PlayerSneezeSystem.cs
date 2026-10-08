@@ -22,7 +22,7 @@ namespace FrogGame.Gameplay
         [SerializeField] private LayerMask enemyLayer;
 
         [Header("Visual & Feedback References")]
-        [SerializeField] private ParticleSystem sneezeParticle;
+        [SerializeField] private GameObject sneezeParticle;
         [SerializeField] private Image readyIndicator; // Updated to UI Image for HUD Canvas
 
         private float lastSneezeTime = -999f;
@@ -93,9 +93,20 @@ namespace FrogGame.Gameplay
             // Trigger visual particle effect if assigned
             if (sneezeParticle != null)
             {
-                sneezeParticle.transform.position = attackCenter;
-                sneezeParticle.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-                sneezeParticle.Play();
+                // Rotate parent container around Z axis matching the attack angle
+                Quaternion particleRotation = Quaternion.Euler(0f, 0f, angle);
+
+                GameObject particleObj = Instantiate(sneezeParticle, transform.position, particleRotation);
+
+                // Play particle system on child component
+                var ps = particleObj.GetComponentInChildren<ParticleSystem>();
+                if (ps != null)
+                {
+                    ps.Play();
+                }
+
+                // Automatically destroy clone after 2 seconds to avoid leaks
+                Destroy(particleObj, 2.0f);
             }
 
             return true;
