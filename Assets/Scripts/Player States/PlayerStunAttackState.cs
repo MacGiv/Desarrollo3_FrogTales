@@ -4,8 +4,7 @@ namespace FrogGame.Gameplay
     using FrogGame.Core;
 
     /// <summary>
-    /// Handles firing the special stun attack and returning player to idle.
-    /// Maneja el disparo del ataque especial de moco y el retorno a Idle.
+    /// Handles executing the sneeze attack and returning the player state machine back to Idle.
     /// </summary>
     public class PlayerStunAttackState : IState
     {
@@ -15,32 +14,24 @@ namespace FrogGame.Gameplay
 
         public void Enter()
         {
+            // Consume button input to prevent duplicate triggers
             brain.InputHandler.ConsumeStunInput();
+
+            // Stop player movement during attack execution
             brain.MovementHandler.Stop();
 
-            SpawnStunProjectile();
+            // Execute the area-of-effect sneeze attack
+            if (brain.SneezeHandler != null)
+            {
+                brain.SneezeHandler.ExecuteSneeze();
+            }
+            else
+            {
+                Debug.LogWarning("[PlayerStunAttackState] PlayerSneezeHandler reference missing on PlayerBrain!");
+            }
 
+            // Immediately transition back to Idle state
             brain.FSM.ChangeState(brain.IdleState);
-        }
-
-        private void SpawnStunProjectile()
-        {
-            if (brain.StunPrefab == null)
-            {
-                Debug.LogWarning("StunPrefab missing on PlayerBrain!");
-                return;
-            }
-
-            Vector3 spawnPos = brain.ArrowSpawnPoint != null
-                ? brain.ArrowSpawnPoint.position
-                : brain.transform.position;
-
-            GameObject projObj = Object.Instantiate(brain.StunPrefab, spawnPos, Quaternion.identity);
-
-            if (projObj.TryGetComponent<StunProjectile>(out var projectile))
-            {
-                projectile.Setup(brain.MovementHandler.FacingDirection);
-            }
         }
 
         public void LogicUpdate() { }
