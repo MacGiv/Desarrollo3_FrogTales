@@ -140,13 +140,13 @@ namespace FrogGame.Editor
             return output;
         }
 
-        [MenuItem(MENU_NAME + "/New version/New patch")]
+        [MenuItem("Frog Tools/" + MENU_NAME + "/New version/New patch")]
         private static void SetNewPatch() => TrySetVersion(UpdateType.Patch);
 
-        [MenuItem(MENU_NAME + "/New version/New minor")]
+        [MenuItem("Frog Tools/" + MENU_NAME + "/New version/New minor")]
         private static void SetNewMinor() => TrySetVersion(UpdateType.Minor);
 
-        [MenuItem(MENU_NAME + "/New version/New major")]
+        [MenuItem("Frog Tools/" + MENU_NAME + "/New version/New major")]
         private static void SetNewMajor() => TrySetVersion(UpdateType.Major);
     }
 }
