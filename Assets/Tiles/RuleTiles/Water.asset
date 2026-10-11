@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.RuleTile
-  m_DefaultSprite: {fileID: 746228700, guid: 97a861702b743c141bc72c0cd8f488fb, type: 3}
+  m_DefaultSprite: {fileID: -1134806747, guid: 90bb54aa17c5ce749a9c287f4db96141, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: 746228700, guid: 97a861702b743c141bc72c0cd8f488fb, type: 3}
-    - {fileID: 861612648, guid: 97a861702b743c141bc72c0cd8f488fb, type: 3}
-    - {fileID: 515268402, guid: 97a861702b743c141bc72c0cd8f488fb, type: 3}
-    - {fileID: -1091670714, guid: 97a861702b743c141bc72c0cd8f488fb, type: 3}
+    - {fileID: -1134806747, guid: 90bb54aa17c5ce749a9c287f4db96141, type: 3}
+    - {fileID: 1459422676, guid: 90bb54aa17c5ce749a9c287f4db96141, type: 3}
+    - {fileID: -432352822, guid: 90bb54aa17c5ce749a9c287f4db96141, type: 3}
+    - {fileID: 1834224427, guid: 90bb54aa17c5ce749a9c287f4db96141, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 5
     m_MaxAnimationSpeed: 5
