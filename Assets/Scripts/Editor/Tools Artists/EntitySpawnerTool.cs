@@ -9,10 +9,10 @@ namespace FrogGame.Editor
 
         private static class MenuPriority
         {
-            public const int PLAYER = 1;
-            public const int FOX = 2;
-            public const int FOX_SHIELDED = 3;
-            public const int SMALL_OWL = 4;
+            public const int PLAYER = 10;
+            public const int FOX = 11;
+            public const int FOX_SHIELDED = 12;
+            public const int SMALL_OWL = 13;
         }
 
         private static void SpawnEntity(string prefabPath, string entityName)
