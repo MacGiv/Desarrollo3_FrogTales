@@ -11,7 +11,7 @@ namespace FrogGame.Editor
         private const string MENU_NAME = "Artist Tools";
         private const string TARGET_FOLDER = "Assets/Scenes/Artist Scenes";
 
-        [MenuItem("Frog Tools/" + MENU_NAME + "/Create/New Scene")]
+        [MenuItem("Frog Tools/" + MENU_NAME + "/Create/New Scene", false, 0)]
         public static void CreateNewScene() => ScriptableWizard.DisplayWizard<CreateSceneWizard>("Create New Scene", "Create Scene");
 
         private class CreateSceneWizard : ScriptableWizard
