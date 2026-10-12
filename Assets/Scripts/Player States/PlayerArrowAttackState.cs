@@ -19,7 +19,7 @@ namespace FrogGame.Gameplay
             brain.MovementHandler.Stop();
 
             // Try to consume arrow from ammo system
-            if (brain.AmmoSystem != null && brain.AmmoSystem.ConsumeArrow())
+            if (brain.AmmoSystem != null && brain.AmmoSystem.TryConsumeArrow())
             {
                 SpawnArrow();
             }

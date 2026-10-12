@@ -6,7 +6,7 @@ namespace FrogGame.UI
     using FrogGame.Gameplay;
 
     /// <summary>
-    /// Displays health updates on the HUD UI.
+    /// Displays health and arrow ammo updates on the HUD UI.
     /// </summary>
     public class PlayerHUD : MonoBehaviour
     {
@@ -25,7 +25,7 @@ namespace FrogGame.UI
         private void OnDisable()
         {
             PlayerHealthSystem.OnHealthChanged -= UpdateHealthUI;
-            PlayerAmmoSystem.OnArrowCountChanged += UpdateArrowUI;
+            PlayerAmmoSystem.OnArrowCountChanged -= UpdateArrowUI;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace FrogGame.UI
         /// <summary>
         /// Updates the arrow text counter.
         /// </summary>
-        private void UpdateArrowUI(int currentArrows, int maxArrows)
+        private void UpdateArrowUI(int currentArrows)
         {
             if (arrowText != null)
             {
