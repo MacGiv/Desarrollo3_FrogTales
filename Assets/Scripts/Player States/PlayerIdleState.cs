@@ -8,8 +8,11 @@ namespace FrogGame.Gameplay
 
         public PlayerIdleState(PlayerBrain brain) => this.brain = brain;
 
-        public void Enter() => brain.MovementHandler.Stop();
-
+        public void Enter()
+        {
+            brain.MovementHandler.Stop();
+            brain.Animator.Play("Idle");
+        }
         public void LogicUpdate()
         {
             if (brain.InputHandler.TonguePressed)

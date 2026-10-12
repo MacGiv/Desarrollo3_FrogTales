@@ -1,15 +1,17 @@
 namespace FrogGame.Gameplay
 {
+    using System.Collections;
     using UnityEngine;
     using FrogGame.Core;
 
     /// <summary>
-    /// Handles spawning arrows and returning player to idle state.
-    /// Maneja el disparo de flechas y el retorno del jugador al estado de reposo.
+    /// Handles spawning arrows via frame-precise animation events and returning to idle via dynamic clip length.
     /// </summary>
     public class PlayerArrowAttackState : IState
     {
         private readonly PlayerBrain brain;
+        private Coroutine attackCoroutine;
+        private bool hasSpawnedArrow;
 
         public PlayerArrowAttackState(PlayerBrain brain) => this.brain = brain;
 
@@ -18,31 +20,53 @@ namespace FrogGame.Gameplay
             brain.InputHandler.ConsumeArrowInput();
             brain.MovementHandler.Stop();
 
-            // Try to consume arrow from ammo system
             if (brain.AmmoSystem != null && brain.AmmoSystem.TryConsumeArrow())
             {
-                SpawnArrow();
+                hasSpawnedArrow = false;
+
+                // Subscribe to C# Event from AnimationHandler
+                if (brain.AnimationHandler != null)
+                {
+                    brain.AnimationHandler.OnArrowReleased += HandleArrowReleased;
+                }
+
+                brain.Animator.Play("ShootArrow");
+                attackCoroutine = brain.StartCoroutine(PlayAnimationAndReturnToIdle());
             }
             else
             {
-                Debug.Log("[PlayerArrowAttackState] No arrows available!");
+                brain.FSM.ChangeState(brain.IdleState);
+            }
+        }
+
+        private void HandleArrowReleased()
+        {
+            if (hasSpawnedArrow) return;
+            hasSpawnedArrow = true;
+            SpawnArrow();
+        }
+
+        private IEnumerator PlayAnimationAndReturnToIdle()
+        {
+            yield return null; // Wait 1 frame for Animator state update
+
+            float animLength = brain.Animator.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(animLength);
+
+            // Fallback safety if event was missing on the current clip
+            if (!hasSpawnedArrow)
+            {
+                SpawnArrow();
             }
 
-            // Return to Idle immediately (or can be delayed via animation/timer)
-            // Retorno a Idle tras disparar
             brain.FSM.ChangeState(brain.IdleState);
         }
 
         private void SpawnArrow()
         {
-            if (brain.ArrowPrefab == null)
-            {
-                Debug.LogWarning("ArrowPrefab missing on PlayerBrain!");
-                return;
-            }
+            if (brain.ArrowPrefab == null) return;
 
             Vector3 spawnPos = brain.ArrowSpawnPoint != null ? brain.ArrowSpawnPoint.position : brain.transform.position;
-
             GameObject arrowObj = Object.Instantiate(brain.ArrowPrefab, spawnPos, Quaternion.identity);
 
             if (arrowObj.TryGetComponent<Arrow>(out var arrow))
@@ -53,6 +77,19 @@ namespace FrogGame.Gameplay
 
         public void LogicUpdate() { }
         public void PhysicsUpdate() { }
-        public void Exit() { }
+
+        public void Exit()
+        {
+            if (brain.AnimationHandler != null)
+            {
+                brain.AnimationHandler.OnArrowReleased -= HandleArrowReleased;
+            }
+
+            if (attackCoroutine != null)
+            {
+                brain.StopCoroutine(attackCoroutine);
+                attackCoroutine = null;
+            }
+        }
     }
 }
