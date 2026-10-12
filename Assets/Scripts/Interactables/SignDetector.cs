@@ -3,6 +3,10 @@ namespace FrogGame.Gameplay
     using System;
     using UnityEngine;
 
+    /// <summary>
+    /// Detects when a player enters or exits the sign's interaction zone 
+    /// and broadcasts the sign's data using static events.
+    /// </summary>
     public class SignDetector : MonoBehaviour
     {
         [Header("Sign Configuration")]

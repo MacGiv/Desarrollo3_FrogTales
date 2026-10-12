@@ -363,6 +363,8 @@ GameObject:
   - component: {fileID: 591726494783374046}
   - component: {fileID: 199017984255954479}
   - component: {fileID: 7391127171917522942}
+  - component: {fileID: 8871439910171941746}
+  - component: {fileID: 3743358578105381716}
   m_Layer: 5
   m_Name: Sign UI
   m_TagString: Untagged
@@ -428,6 +430,33 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &8871439910171941746
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194675866224402506}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &3743358578105381716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194675866224402506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef01f4c395de044381f1e046e175139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.SignUIController
+  titleText: {fileID: 2372672568134443961}
+  descriptionText: {fileID: 2802085280490141700}
+  displayImage: {fileID: 3307118555699918576}
 --- !u!1 &8700164499946607730
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +492,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 450, y: 450}
+  m_SizeDelta: {x: 400, y: 400}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &1250693584233608941
 CanvasRenderer:
