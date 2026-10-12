@@ -652,6 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerHealthSystem
   maxHealth: 3
   invincibilityDuration: 1
+  isShieldOn: 0
   playerSprite: {fileID: 8237111111175404457}
   currentHealth: 0
 --- !u!114 &256641055099659110
