@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 146907272489235046}
   - component: {fileID: 5009233103172208755}
   - component: {fileID: 5956769291527380333}
+  - component: {fileID: 2431635465241047045}
   m_Layer: 0
   m_Name: Sign
   m_TagString: Untagged
@@ -126,6 +127,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &2431635465241047045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2365885118289526145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb6a71208461c1409664475109e0338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.SignDetector
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &3051392532561838507
 GameObject:
   m_ObjectHideFlags: 0
