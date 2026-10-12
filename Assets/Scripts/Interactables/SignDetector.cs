@@ -8,7 +8,7 @@ namespace FrogGame.Gameplay
         [Header("Sign Configuration")]
         [SerializeField] private string title;
         [TextArea(3, 5)]
-        [SerializeField] private string text;
+        [SerializeField] private string description;
         [SerializeField] private Sprite image;
 
         [Header("Layer Detection")]
@@ -22,7 +22,7 @@ namespace FrogGame.Gameplay
         {
             if (((1 << collision.gameObject.layer) & playerLayer) != 0)
             {
-                OnPlayerEnteredSign?.Invoke(title, text, image);
+                OnPlayerEnteredSign?.Invoke(title, description, image);
             }
         }
 
