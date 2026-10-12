@@ -5,6 +5,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Controls tongue rendering, raycasting, and object interaction.
+    /// Maneja el renderizado de la lengua (cuerpo + punta), raycasting e interacciones.
     /// </summary>
     [RequireComponent(typeof(LineRenderer))]
     public class TongueController : MonoBehaviour
@@ -19,8 +20,9 @@ namespace FrogGame.Gameplay
         [SerializeField] private LayerMask grabbableLayer;
         [SerializeField] private LayerMask wallLayer;
 
-        [Header("References")]
+        [Header("References & Visuals")]
         [SerializeField] private Transform tongueOrigin;
+        [SerializeField] private Transform tongueTip; // Transform / GameObject de la punta de la lengua
 
         private LineRenderer lineRenderer;
 
@@ -30,7 +32,7 @@ namespace FrogGame.Gameplay
         {
             lineRenderer = GetComponent<LineRenderer>();
             lineRenderer.positionCount = 2;
-            lineRenderer.enabled = false;
+            SetVisualsActive(false);
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace FrogGame.Gameplay
         /// </summary>
         public IEnumerator ShootTongueRoutine(Vector2 direction, System.Action<TongueHitResult, Vector2> onComplete)
         {
-            lineRenderer.enabled = true;
+            SetVisualsActive(true);
 
             Vector2 origin = tongueOrigin != null ? (Vector2)tongueOrigin.position : (Vector2)transform.position;
             Vector2 targetPoint = origin + direction * maxDistance;
@@ -46,7 +48,6 @@ namespace FrogGame.Gameplay
             Vector2 hitPosition = targetPoint;
 
             // Perform Raycast to check for obstructions or targets
-            // Realizar Raycast para detectar impactos
             LayerMask combinedMask = grappleLayer | grabbableLayer | wallLayer;
             RaycastHit2D hit = Physics2D.Raycast(origin, direction, maxDistance, combinedMask);
 
@@ -66,7 +67,10 @@ namespace FrogGame.Gameplay
                 }
             }
 
-            // Phase 1: Extend Tongue / Extensi髇 de la lengua
+            // Calcular 谩ngulo de rotaci贸n para orientar la punta de la lengua
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            // Phase 1: Extend Tongue / Extensi贸n de la lengua
             float currentDist = 0f;
             float totalDist = Vector2.Distance(origin, hitPosition);
 
@@ -75,14 +79,16 @@ namespace FrogGame.Gameplay
                 currentDist += extendSpeed * Time.deltaTime;
                 Vector2 currentTipPos = Vector2.MoveTowards(origin, hitPosition, currentDist);
 
-                lineRenderer.SetPosition(0, origin);
-                lineRenderer.SetPosition(1, currentTipPos);
+                UpdateTongueVisuals(origin, currentTipPos, angle);
 
                 yield return null;
                 origin = tongueOrigin != null ? (Vector2)tongueOrigin.position : (Vector2)transform.position;
             }
 
-            // Phase 2: Retract Tongue (Only if not grappling) / Retracci髇 (si no se agarra)
+            // Asegurar posici贸n exacta en el punto de impacto
+            UpdateTongueVisuals(origin, hitPosition, angle);
+
+            // Phase 2: Retract Tongue (Only if not grappling) / Retracci贸n (si no se agarra)
             if (hitResult != TongueHitResult.Grapple)
             {
                 while (currentDist > 0f)
@@ -90,37 +96,50 @@ namespace FrogGame.Gameplay
                     currentDist -= retractSpeed * Time.deltaTime;
                     Vector2 currentTipPos = Vector2.MoveTowards(origin, hitPosition, currentDist);
 
-                    lineRenderer.SetPosition(0, origin);
-                    lineRenderer.SetPosition(1, currentTipPos);
+                    UpdateTongueVisuals(origin, currentTipPos, angle);
 
                     yield return null;
                     origin = tongueOrigin != null ? (Vector2)tongueOrigin.position : (Vector2)transform.position;
                 }
             }
 
-            lineRenderer.enabled = false;
+            SetVisualsActive(false);
             onComplete?.Invoke(hitResult, hitPosition);
+        }
+
+        private void UpdateTongueVisuals(Vector2 origin, Vector2 tipPos, float angle)
+        {
+            lineRenderer.SetPosition(0, origin);
+            lineRenderer.SetPosition(1, tipPos);
+
+            if (tongueTip != null)
+            {
+                tongueTip.position = tipPos;
+                tongueTip.rotation = Quaternion.Euler(0f, 0f, angle);
+            }
+        }
+
+        private void SetVisualsActive(bool active)
+        {
+            lineRenderer.enabled = active;
+            if (tongueTip != null)
+            {
+                tongueTip.gameObject.SetActive(active);
+            }
         }
 
         /// <summary>
         /// Handles interaction with grabbable items or enemy shields.
-        /// Interacci髇 con 韙ems atra韇les o escudos.
         /// </summary>
         private void HandleGrabbableHit(Collider2D targetCollider)
         {
-            // 1. Check for enemy shield / Chequear si es un escudo
             GrabbableItem grabbable = targetCollider.GetComponent<GrabbableItem>();
             if (grabbable != null)
             {
                 grabbable.Grab(transform);
-                return;
             }
-
-            // 2. Check for generic enemy shield script if independent
-            // EnemyShield shield = targetCollider.GetComponent<EnemyShield>();
-            // if (shield != null) { shield.DetachShield(); }
         }
 
-        public void DisableLine() => lineRenderer.enabled = false;
+        public void DisableLine() => SetVisualsActive(false);
     }
 }

@@ -1,17 +1,25 @@
 namespace FrogGame.Camera
 {
+    using System.Collections;
     using UnityEngine;
-    using Unity.Cinemachine;
+    using FrogGame.Gameplay;
 
-    /// <summary>
-    /// Singleton manager that controls camera transitions between room bounds.
-    /// </summary>
     public class RoomManager : MonoBehaviour
     {
         public static RoomManager Instance { get; private set; }
 
-        [Header("Cinemachine Integration")]
-        [SerializeField] private CinemachineConfiner2D confiner;
+        [Header("References")]
+        [SerializeField] private Transform cameraTarget;
+        [SerializeField] private UnityEngine.Camera mainCamera;
+
+        [Header("Transition Settings")]
+        [SerializeField] private float transitionSpeed = 15f; // Velocidad fija de la cámara
+        [SerializeField] private float playerNudgeDistance = 1.2f; // Empujón al jugador para no re-activar el trigger
+
+        private Room currentRoom;
+        private bool isTransitioning = false;
+
+        public bool IsTransitioning => isTransitioning;
 
         private void Awake()
         {
@@ -21,21 +29,82 @@ namespace FrogGame.Camera
                 return;
             }
             Instance = this;
+
+            if (mainCamera == null) mainCamera = UnityEngine.Camera.main;
         }
 
-        /// <summary>
-        /// Updates the Cinemachine confiner bounds to pan smoothly into a new room.
-        /// </summary>
-        public void ChangeRoom(Collider2D newRoomBounds)
+        private void LateUpdate()
         {
-            if (confiner == null || newRoomBounds == null) return;
-
-            if (confiner.BoundingShape2D != newRoomBounds)
+            // En gameplay normal (sin transición), actualiza el CameraTarget siguiendo al Player
+            if (!isTransitioning && currentRoom != null && cameraTarget != null)
             {
-                confiner.BoundingShape2D = newRoomBounds;
-                // Recalculates the collider's borders so the transition is smooth
-                confiner.InvalidateBoundingShapeCache();
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player != null)
+                {
+                    cameraTarget.position = currentRoom.GetClampedCameraPosition(player.transform.position, mainCamera);
+                }
             }
+        }
+
+        public void RequestRoomChange(Room newRoom, Transform playerTransform)
+        {
+            if (isTransitioning || currentRoom == newRoom) return;
+
+            StartCoroutine(TransitionRoutine(newRoom, playerTransform));
+        }
+
+        private IEnumerator TransitionRoutine(Room newRoom, Transform playerTransform)
+        {
+            isTransitioning = true;
+            currentRoom = newRoom;
+
+            PlayerBrain brain = playerTransform.GetComponent<PlayerBrain>();
+
+            // 1. Bloquear input y detener movimiento del personaje
+            if (brain != null)
+            {
+                brain.InputHandler?.DisableInput();
+                brain.MovementHandler?.Stop();
+            }
+
+            // 2. Calcular dirección de entrada y desplazar suavemente al jugador
+            Vector2 entryDirection = (playerTransform.position - cameraTarget.position).normalized;
+            if (entryDirection == Vector2.zero) entryDirection = Vector2.right;
+
+            Vector3 playerTargetPos = playerTransform.position + (Vector3)(entryDirection * playerNudgeDistance);
+
+            // 3. Posición objetivo inicial de la cámara en la nueva sala
+            Vector3 targetCamPos = currentRoom.GetClampedCameraPosition(playerTargetPos, mainCamera);
+
+            // 4. Mover la cámara a velocidad constante (Mega Man X style)
+            while (Vector3.Distance(cameraTarget.position, targetCamPos) > 0.05f)
+            {
+                cameraTarget.position = Vector3.MoveTowards(
+                    cameraTarget.position,
+                    targetCamPos,
+                    transitionSpeed * Time.deltaTime
+                );
+
+                // Opcional: desplazar ligeramente al jugador durante la transición
+                playerTransform.position = Vector3.MoveTowards(
+                    playerTransform.position,
+                    playerTargetPos,
+                    (transitionSpeed * 0.3f) * Time.deltaTime
+                );
+
+                yield return null;
+            }
+
+            cameraTarget.position = targetCamPos;
+            playerTransform.position = playerTargetPos;
+
+            // 5. Desbloquear input al finalizar
+            if (brain != null)
+            {
+                brain.InputHandler?.EnableInput();
+            }
+
+            isTransitioning = false;
         }
     }
 }
