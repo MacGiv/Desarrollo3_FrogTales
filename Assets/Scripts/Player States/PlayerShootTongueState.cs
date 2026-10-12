@@ -15,12 +15,13 @@ namespace FrogGame.Gameplay
             brain.InputHandler.ConsumeTongueInput();
             brain.MovementHandler.Stop();
 
-            // Start tongue coroutine via TongueController or drop carried box
+            brain.Animator.Play("ShootTongue");
+
             if (brain.CarryHandler != null && brain.CarryHandler.IsCarrying)
             {
                 brain.CarryHandler.TryDropBox();
                 brain.FSM.ChangeState(brain.IdleState);
-                return; // Redundant just in case
+                return;
             }
             else
             {
@@ -50,6 +51,7 @@ namespace FrogGame.Gameplay
             if (tongueCoroutine != null)
             {
                 brain.StopCoroutine(tongueCoroutine);
+                tongueCoroutine = null;
             }
             brain.TongueController.DisableLine();
         }
