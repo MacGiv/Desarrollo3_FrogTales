@@ -1,14 +1,21 @@
-using FrogGame.Core;
 
 namespace FrogGame.Gameplay
 {
+    using FrogGame.Core;
+
     public class PlayerMoveState : IState
     {
         private readonly PlayerBrain brain;
 
-        public PlayerMoveState(PlayerBrain brain) => this.brain = brain;
+        public PlayerMoveState(PlayerBrain brain)
+        {
+            this.brain = brain;
+        }
 
-        public void Enter() { }
+        public void Enter()
+        {
+            brain.Animator.Play("Locomotion");
+        }
 
         public void LogicUpdate()
         {
