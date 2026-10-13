@@ -4,14 +4,14 @@ namespace FrogGame.Enemies
     using FrogGame.Core;
 
     /// <summary>
-    /// State when the enemy is stunned by the frog's booger attack.
-    /// Estado cuando el enemigo queda aturdido por el ataque de moco.
+    /// State when the enemy is stunned and recovering from knockback momentum.
     /// </summary>
     public class FoxStunnedState : IState
     {
         private readonly FoxBrain brain;
         private float stunDuration;
         private float timer;
+        private const float KNOCKBACK_DECELERATION = 25f;
 
         public FoxStunnedState(FoxBrain brain) => this.brain = brain;
 
@@ -20,7 +20,6 @@ namespace FrogGame.Enemies
         public void Enter()
         {
             timer = 0f;
-            brain.Rb.linearVelocity = Vector2.zero;
         }
 
         public void LogicUpdate()
@@ -40,7 +39,22 @@ namespace FrogGame.Enemies
             }
         }
 
-        public void PhysicsUpdate() { }
-        public void Exit() { }
+        public void PhysicsUpdate()
+        {
+            // Smoothly reduce knockback velocity to zero during stun
+            if (brain.Rb.linearVelocity != Vector2.zero)
+            {
+                brain.Rb.linearVelocity = Vector2.MoveTowards(
+                    brain.Rb.linearVelocity,
+                    Vector2.zero,
+                    KNOCKBACK_DECELERATION * Time.fixedDeltaTime
+                );
+            }
+        }
+
+        public void Exit()
+        {
+            brain.Rb.linearVelocity = Vector2.zero;
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace FrogGame.Gameplay
         [Header("Health Settings")]
         [SerializeField] private int maxHealth = 3;
         [SerializeField] private float invincibilityDuration = 1.0f;
+        [SerializeField] private bool isShieldOn = false;
 
         [Header("Visual Feedback")]
         [SerializeField] private SpriteRenderer playerSprite;
@@ -22,22 +23,22 @@ namespace FrogGame.Gameplay
         private bool isInvincible = false;
 
         public int CurrentHealth => currentHealth;
+        public bool IsShieldOn => isShieldOn;
         public int MaxHealth => maxHealth;
 
         // Events to notify UI or managers without direct coupling
         // Eventos para notificar a la UI o Managers sin acoplamiento directo
         public static event Action<int, int> OnHealthChanged; // (currentHealth, maxHealth)
+        public static event Action<bool> OnShieldChanged;
         public static event Action OnPlayerDied;
 
-        private void Awake()
-        {
-            currentHealth = maxHealth;
-        }
+        private void Awake() => currentHealth = maxHealth;
 
         private void Start()
         {
             // Notify initial health state to UI / Notificar estado inicial a la UI
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
+            OnShieldChanged?.Invoke(isShieldOn);
         }
 
         /// <summary>
@@ -46,6 +47,14 @@ namespace FrogGame.Gameplay
         /// </summary>
         public void TakeDamage(int damageAmount)
         {
+            if (isShieldOn)
+            {
+                isShieldOn = false;
+                OnShieldChanged?.Invoke(isShieldOn);
+
+                return;
+            }
+
             if (isInvincible || currentHealth <= 0) return;
 
             currentHealth -= damageAmount;
@@ -75,6 +84,12 @@ namespace FrogGame.Gameplay
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
+        }
+
+        public void SetShieldState(bool equipped)
+        {
+            isShieldOn = equipped;
+            OnShieldChanged?.Invoke(isShieldOn);
         }
 
         /// <summary>
