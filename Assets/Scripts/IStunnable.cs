@@ -6,6 +6,6 @@ namespace FrogGame.Core
     /// </summary>
     public interface IStunnable
     {
-        void ApplyStun(float duration);
+        public void ApplyStun(float duration);
     }
 }
