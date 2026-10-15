@@ -79,8 +79,18 @@ namespace FrogGame.Gameplay
             switch (type)
             {
                 case ItemType.Collectible:
+                    break;
+
                 case ItemType.Shield:
-                    if (gameObject != null) Destroy(gameObject);
+                    if (gameObject != null)
+                    {
+                        if (pullTarget != null && pullTarget.TryGetComponent<PlayerHealthSystem>(out var healthSystem))
+                        {
+                            healthSystem.SetShieldState(true);
+                        }
+
+                        Destroy(gameObject);
+                    }
                     break;
 
                 case ItemType.HeavyBlock:

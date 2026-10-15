@@ -1,15 +1,17 @@
 namespace FrogGame.Gameplay
 {
+    using System.Collections;
     using UnityEngine;
     using FrogGame.Core;
 
     /// <summary>
-    /// Handles firing the special stun attack and returning player to idle.
-    /// Maneja el disparo del ataque especial de moco y el retorno a Idle.
+    /// Executes sneeze attack on frame event, reuses ShootTongue animation, and returns to Idle via dynamic duration.
     /// </summary>
     public class PlayerStunAttackState : IState
     {
         private readonly PlayerBrain brain;
+        private Coroutine sneezeCoroutine;
+        private bool hasExecutedSneeze;
 
         public PlayerStunAttackState(PlayerBrain brain) => this.brain = brain;
 
@@ -18,33 +20,68 @@ namespace FrogGame.Gameplay
             brain.InputHandler.ConsumeStunInput();
             brain.MovementHandler.Stop();
 
-            SpawnStunProjectile();
+            hasExecutedSneeze = false;
+
+            if (brain.AnimationHandler != null)
+            {
+                brain.AnimationHandler.OnSneezeImpact += HandleSneezeImpact;
+            }
+
+            // Reuses ShootTongue animation
+            brain.Animator.Play("ShootTongue");
+            sneezeCoroutine = brain.StartCoroutine(PlayAnimationAndReturnToIdle());
+        }
+
+        private void HandleSneezeImpact()
+        {
+            if (hasExecutedSneeze) return;
+            hasExecutedSneeze = true;
+            ExecuteSneeze();
+        }
+
+        private IEnumerator PlayAnimationAndReturnToIdle()
+        {
+            yield return null; // Wait 1 frame for Animator state update
+
+            float animLength = brain.Animator.GetCurrentAnimatorStateInfo(0).length;
+            yield return new WaitForSeconds(animLength);
+
+            // Fallback safety
+            if (!hasExecutedSneeze)
+            {
+                ExecuteSneeze();
+            }
 
             brain.FSM.ChangeState(brain.IdleState);
         }
 
-        private void SpawnStunProjectile()
+        private void ExecuteSneeze()
         {
-            if (brain.StunPrefab == null)
+            if (brain.SneezeHandler != null)
             {
-                Debug.LogWarning("StunPrefab missing on PlayerBrain!");
-                return;
+                brain.SneezeHandler.ExecuteSneeze();
             }
-
-            Vector3 spawnPos = brain.ArrowSpawnPoint != null
-                ? brain.ArrowSpawnPoint.position
-                : brain.transform.position;
-
-            GameObject projObj = Object.Instantiate(brain.StunPrefab, spawnPos, Quaternion.identity);
-
-            if (projObj.TryGetComponent<StunProjectile>(out var projectile))
+            else
             {
-                projectile.Setup(brain.MovementHandler.FacingDirection);
+                Debug.LogWarning("[PlayerStunAttackState] PlayerSneezeHandler reference missing on PlayerBrain!");
             }
         }
 
         public void LogicUpdate() { }
         public void PhysicsUpdate() { }
-        public void Exit() { }
+
+        public void Exit()
+        {
+            if (brain.AnimationHandler != null)
+            {
+                brain.AnimationHandler.OnSneezeImpact -= HandleSneezeImpact;
+            }
+
+            if (sneezeCoroutine != null)
+            {
+                brain.StopCoroutine(sneezeCoroutine);
+                sneezeCoroutine = null;
+            }
+        }
     }
 }

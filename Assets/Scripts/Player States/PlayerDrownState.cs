@@ -5,7 +5,7 @@ namespace FrogGame.Gameplay
     using FrogGame.Core;
 
     /// <summary>
-    /// Handles the drowning sequence, sprite rotation, damage application post-respawn, and input locking.
+    /// Handles the drowning sequence, damage application post-respawn, input locking, and animation trigger.
     /// </summary>
     public class PlayerDrownState : IState
     {
@@ -16,13 +16,14 @@ namespace FrogGame.Gameplay
 
         private const float DROWN_DURATION = 1f;
         private const float RESPAWN_STUN_DURATION = 0.5f;
-        private const float ROTATION_SPEED = 720f;
         private const int DROWN_DAMAGE = 1;
 
-        private bool isSpinning;
         private Coroutine drownCoroutine;
 
-        public PlayerDrownState(PlayerBrain brain) => this.brain = brain;
+        public PlayerDrownState(PlayerBrain brain)
+        {
+            this.brain = brain;
+        }
 
         public void SetTargetPositions(Vector3 waterCenter, Vector3 safeRespawnPos)
         {
@@ -38,27 +39,20 @@ namespace FrogGame.Gameplay
                 brain.InputHandler.DisableInput();
             }
 
+            brain.Animator.Play("Drown");
             brain.MovementHandler.Stop();
             brain.transform.position = waterTileCenter;
-            isSpinning = true;
 
             drownCoroutine = brain.StartCoroutine(DrownSequenceRoutine());
         }
 
-        public void LogicUpdate()
-        {
-            // Spin animation while drowning in water
-            if (isSpinning)
-            {
-                brain.transform.Rotate(Vector3.forward, ROTATION_SPEED * Time.deltaTime);
-            }
-        }
+        public void LogicUpdate() { }
 
         public void PhysicsUpdate() { }
 
         public void Exit()
         {
-            // Ensure rotation is reset
+            // Reset transform rotation back to zero as safety precaution
             brain.transform.rotation = Quaternion.identity;
 
             // Re-enable inputs after exiting state
@@ -78,7 +72,6 @@ namespace FrogGame.Gameplay
         {
             yield return new WaitForSeconds(DROWN_DURATION);
 
-            isSpinning = false;
             brain.transform.SetPositionAndRotation(safeRespawnPosition, Quaternion.identity);
 
             // Apply damage after appearing in safe zone
