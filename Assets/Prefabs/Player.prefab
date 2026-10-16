@@ -384,7 +384,7 @@ MonoBehaviour:
   retractSpeed: 30
   grappleLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 33408
   grabbableLayer:
     serializedVersion: 2
     m_Bits: 4096
