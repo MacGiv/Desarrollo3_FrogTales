@@ -95,6 +95,7 @@ MonoBehaviour:
   arrowLayer:
     serializedVersion: 2
     m_Bits: 8192
+  explosionVfxPrefab: {fileID: 7526341450088874782, guid: ceb217c3d66912748a9f7eb9fbe6cc51, type: 3}
 --- !u!1 &7725351491852228295
 GameObject:
   m_ObjectHideFlags: 0
