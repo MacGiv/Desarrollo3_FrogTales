@@ -13,8 +13,12 @@ namespace FrogGame.Camera
         [SerializeField] private UnityEngine.Camera mainCamera;
 
         [Header("Transition Settings")]
-        [SerializeField] private float transitionSpeed = 15f; // Velocidad fija de la cámara
-        [SerializeField] private float playerNudgeDistance = 1.2f; // Empujón al jugador para no re-activar el trigger
+        [SerializeField] private float transitionSpeed = 15f;
+        [SerializeField] private float playerNudgeDistance = 1.2f;
+        [SerializeField] private float roomTransitionInvincibility = 1.5f;
+
+        [Header("Collision Prevention")]
+        [SerializeField] private LayerMask obstacleLayer;
 
         private Room currentRoom;
         private bool isTransitioning = false;
@@ -35,7 +39,6 @@ namespace FrogGame.Camera
 
         private void LateUpdate()
         {
-            // En gameplay normal (sin transición), actualiza el CameraTarget siguiendo al Player
             if (!isTransitioning && currentRoom != null && cameraTarget != null)
             {
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -60,23 +63,55 @@ namespace FrogGame.Camera
 
             PlayerBrain brain = playerTransform.GetComponent<PlayerBrain>();
 
-            // 1. Bloquear input y detener movimiento del personaje
+            // 1. Lock inputs, stop movement, and apply invincibility
             if (brain != null)
             {
                 brain.InputHandler?.DisableInput();
                 brain.MovementHandler?.Stop();
+                brain.HealthSystem?.TriggerInvincibility(roomTransitionInvincibility);
             }
 
-            // 2. Calcular dirección de entrada y desplazar suavemente al jugador
-            Vector2 entryDirection = (playerTransform.position - cameraTarget.position).normalized;
-            if (entryDirection == Vector2.zero) entryDirection = Vector2.right;
+            // 2. Calculate cardinal entry direction (N, S, E, W)
+            Vector2 rawDir = (playerTransform.position - cameraTarget.position).normalized;
+            Vector2 entryDirection = Vector2.right;
 
-            Vector3 playerTargetPos = playerTransform.position + (Vector3)(entryDirection * playerNudgeDistance);
+            if (rawDir != Vector2.zero)
+            {
+                if (Mathf.Abs(rawDir.x) >= Mathf.Abs(rawDir.y))
+                {
+                    entryDirection = new Vector2(Mathf.Sign(rawDir.x), 0f);
+                }
+                else
+                {
+                    entryDirection = new Vector2(0f, Mathf.Sign(rawDir.y));
+                }
+            }
 
-            // 3. Posición objetivo inicial de la cámara en la nueva sala
+            // 3. Perform BoxCast to calculate safe target position without hitting Obstacles layer
+            float safeDistance = playerNudgeDistance;
+            Collider2D playerCollider = playerTransform.GetComponent<Collider2D>();
+            Vector2 boxSize = playerCollider != null ? (Vector2)playerCollider.bounds.size : new Vector2(0.8f, 0.8f);
+
+            RaycastHit2D hit = Physics2D.BoxCast(
+                playerTransform.position,
+                boxSize,
+                0f,
+                entryDirection,
+                playerNudgeDistance,
+                obstacleLayer
+            );
+
+            if (hit.collider != null)
+            {
+                safeDistance = Mathf.Max(0f, hit.distance - 0.1f);
+            }
+
+            Vector3 playerTargetPos = playerTransform.position + (Vector3)(entryDirection * safeDistance);
+
+            // 4. Calculate initial target camera position for the new room
             Vector3 targetCamPos = currentRoom.GetClampedCameraPosition(playerTargetPos, mainCamera);
 
-            // 4. Mover la cámara a velocidad constante (Mega Man X style)
+            // 5. Smoothly transition camera and nudge player
             while (Vector3.Distance(cameraTarget.position, targetCamPos) > 0.05f)
             {
                 cameraTarget.position = Vector3.MoveTowards(
@@ -85,7 +120,6 @@ namespace FrogGame.Camera
                     transitionSpeed * Time.deltaTime
                 );
 
-                // Opcional: desplazar ligeramente al jugador durante la transición
                 playerTransform.position = Vector3.MoveTowards(
                     playerTransform.position,
                     playerTargetPos,
@@ -98,7 +132,7 @@ namespace FrogGame.Camera
             cameraTarget.position = targetCamPos;
             playerTransform.position = playerTargetPos;
 
-            // 5. Desbloquear input al finalizar
+            // 6. Unlock input on completion
             if (brain != null)
             {
                 brain.InputHandler?.EnableInput();
