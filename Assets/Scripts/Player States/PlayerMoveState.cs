@@ -1,8 +1,11 @@
-
 namespace FrogGame.Gameplay
 {
     using FrogGame.Core;
 
+    /// <summary>
+    /// Handles player movement logic, carrying interactions, and state transitions.
+    /// Maneja la lógica de movimiento, interacciones al cargar objetos y transiciones de estado.
+    /// </summary>
     public class PlayerMoveState : IState
     {
         private readonly PlayerBrain brain;
@@ -19,27 +22,52 @@ namespace FrogGame.Gameplay
 
         public void LogicUpdate()
         {
-            if (brain.InputHandler.TonguePressed)
+            // Block attacks while carrying an object / Drop object on action input
+            if (brain.CarryHandler != null && brain.CarryHandler.IsCarrying)
             {
-                brain.FSM.ChangeState(brain.TongueState);
-                return;
-            }
+                if (brain.InputHandler.TonguePressed)
+                {
+                    brain.InputHandler.ConsumeTongueInput();
+                    brain.CarryHandler.TryDropBox();
+                    return;
+                }
 
-            if (brain.InputHandler.ArrowPressed)
+                if (brain.InputHandler.ArrowPressed)
+                {
+                    brain.InputHandler.ConsumeArrowInput();
+                    return;
+                }
+
+                if (brain.InputHandler.StunPressed)
+                {
+                    brain.InputHandler.ConsumeStunInput();
+                    return;
+                }
+            }
+            else
             {
-                brain.FSM.ChangeState(brain.ArrowState);
-                return;
+                if (brain.InputHandler.TonguePressed)
+                {
+                    brain.FSM.ChangeState(brain.TongueState);
+                    return;
+                }
+
+                if (brain.InputHandler.ArrowPressed)
+                {
+                    brain.FSM.ChangeState(brain.ArrowState);
+                    return;
+                }
+
+                if (brain.InputHandler.StunPressed)
+                {
+                    brain.FSM.ChangeState(brain.StunAttackState);
+                    return;
+                }
             }
 
             if (brain.InputHandler.MoveInput == UnityEngine.Vector2.zero)
             {
                 brain.FSM.ChangeState(brain.IdleState);
-            }
-
-            if (brain.InputHandler.StunPressed)
-            {
-                brain.FSM.ChangeState(brain.StunAttackState);
-                return;
             }
         }
 
@@ -51,5 +79,3 @@ namespace FrogGame.Gameplay
         public void Exit() { }
     }
 }
-
-

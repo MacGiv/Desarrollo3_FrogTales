@@ -13,7 +13,7 @@ namespace FrogGame.Gameplay
             Collectible,
             Shield,
             HeavyBlock,
-            CarriableBox // Nueva opción: caja que la rana levanta y lleva encima
+            CarriableBox
         }
 
         [Header("Item Settings")]
