@@ -3,8 +3,8 @@ namespace FrogGame.Gameplay
     using FrogGame.Core;
 
     /// <summary>
-    /// Handles player movement logic, carrying interactions, and state transitions.
-    /// Maneja la lógica de movimiento, interacciones al cargar objetos y transiciones de estado.
+    /// Handles player locomotion, carrying restrictions, and attack blocking during movement.
+    /// Maneja la locomoción del jugador, restricciones al cargar objetos y bloqueo de ataques durante el movimiento.
     /// </summary>
     public class PlayerMoveState : IState
     {
@@ -22,49 +22,44 @@ namespace FrogGame.Gameplay
 
         public void LogicUpdate()
         {
-            // Block attacks while carrying an object / Drop object on action input
-            if (brain.CarryHandler != null && brain.CarryHandler.IsCarrying)
-            {
-                if (brain.InputHandler.TonguePressed)
-                {
-                    brain.InputHandler.ConsumeTongueInput();
-                    brain.CarryHandler.TryDropBox();
-                    return;
-                }
+            bool isCarrying = brain.CarryHandler != null && brain.CarryHandler.IsCarrying;
 
-                if (brain.InputHandler.ArrowPressed)
+            // 1. Tongue input: Drops carried box/stone via TongueState or triggers normal tongue shoot
+            if (brain.InputHandler.TonguePressed)
+            {
+                brain.FSM.ChangeState(brain.TongueState);
+                return;
+            }
+
+            // 2. Arrow input: Blocked if carrying an object
+            if (brain.InputHandler.ArrowPressed)
+            {
+                if (isCarrying)
                 {
                     brain.InputHandler.ConsumeArrowInput();
-                    return;
                 }
-
-                if (brain.InputHandler.StunPressed)
-                {
-                    brain.InputHandler.ConsumeStunInput();
-                    return;
-                }
-            }
-            else
-            {
-                if (brain.InputHandler.TonguePressed)
-                {
-                    brain.FSM.ChangeState(brain.TongueState);
-                    return;
-                }
-
-                if (brain.InputHandler.ArrowPressed)
+                else
                 {
                     brain.FSM.ChangeState(brain.ArrowState);
                     return;
                 }
+            }
 
-                if (brain.InputHandler.StunPressed)
+            // 3. Stun input: Blocked if carrying an object
+            if (brain.InputHandler.StunPressed)
+            {
+                if (isCarrying)
+                {
+                    brain.InputHandler.ConsumeStunInput();
+                }
+                else
                 {
                     brain.FSM.ChangeState(brain.StunAttackState);
                     return;
                 }
             }
 
+            // 4. Return to Idle transition
             if (brain.InputHandler.MoveInput == UnityEngine.Vector2.zero)
             {
                 brain.FSM.ChangeState(brain.IdleState);
