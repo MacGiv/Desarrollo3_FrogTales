@@ -22,6 +22,7 @@ namespace FrogGame.Gameplay
         [SerializeField] private LayerMask enemyLayer;
 
         private Rigidbody2D rb;
+        private bool hasHit;
 
         private void Awake()
         {
@@ -50,20 +51,27 @@ namespace FrogGame.Gameplay
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (hasHit) return;
+
             int colLayer = 1 << collision.gameObject.layer;
 
             // 1. Check if hit obstacle/wall/shield
             if ((colLayer & obstacleLayer) != 0)
             {
+                hasHit = true;
                 SpawnPickup();
                 Destroy(gameObject);
+
                 return;
             }
 
             // 2. Check if hit enemy
             if ((colLayer & enemyLayer) != 0)
             {
+                hasHit = true;
+
                 IDamageable damageable = collision.GetComponent<IDamageable>();
+
                 if (damageable != null)
                 {
                     damageable.TakeDamage(damage);
