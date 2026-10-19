@@ -4,6 +4,10 @@ namespace FrogGame.Camera
     using UnityEngine;
     using FrogGame.Gameplay;
 
+    /// <summary>
+    /// Manages room transitions, camera tracking, and dynamic look-ahead behavior for horizontal and vertical rooms.
+    /// Gestiona transiciones de sala, seguimiento de cámara y comportamiento de avance (Look Ahead) dinámico.
+    /// </summary>
     public class RoomManager : MonoBehaviour
     {
         public static RoomManager Instance { get; private set; }
@@ -20,8 +24,14 @@ namespace FrogGame.Camera
         [Header("Collision Prevention")]
         [SerializeField] private LayerMask obstacleLayer;
 
+        [Header("Look Ahead Settings")]
+        [SerializeField] private float lookAheadDistance = 2.5f;
+        [SerializeField] private float lookAheadSpeed = 4.0f;
+
         private Room currentRoom;
         private bool isTransitioning = false;
+        private PlayerBrain cachedPlayerBrain;
+        private Vector2 currentLookAheadOffset;
 
         public bool IsTransitioning => isTransitioning;
 
@@ -37,15 +47,67 @@ namespace FrogGame.Camera
             if (mainCamera == null) mainCamera = UnityEngine.Camera.main;
         }
 
+        private void Start()
+        {
+            CachePlayerReference();
+        }
+
         private void LateUpdate()
         {
-            if (!isTransitioning && currentRoom != null && cameraTarget != null)
+            if (isTransitioning || currentRoom == null || cameraTarget == null) return;
+
+            if (cachedPlayerBrain == null)
             {
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                if (player != null)
-                {
-                    cameraTarget.position = currentRoom.GetClampedCameraPosition(player.transform.position, mainCamera);
-                }
+                CachePlayerReference();
+                if (cachedPlayerBrain == null) return;
+            }
+
+            Vector3 targetPosition = CalculateLookAheadPosition();
+            cameraTarget.position = currentRoom.GetClampedCameraPosition(targetPosition, mainCamera);
+        }
+
+        /// <summary>
+        /// Calculates smooth camera look-ahead offset based on room orientation and player facing direction.
+        /// Calcula el desplazamiento suave de la cámara según la orientación de la sala y la dirección del personaje.
+        /// </summary>
+        private Vector3 CalculateLookAheadPosition()
+        {
+            Vector3 playerPos = cachedPlayerBrain.transform.position;
+            Vector2 facingDir = cachedPlayerBrain.MovementHandler != null ? cachedPlayerBrain.MovementHandler.FacingDirection : Vector2.zero;
+
+            Vector2 targetOffset = Vector2.zero;
+
+            switch (currentRoom.Type)
+            {
+                case RoomType.Horizontal:
+                    targetOffset.x = facingDir.x * lookAheadDistance;
+                    break;
+
+                case RoomType.Vertical:
+                    targetOffset.y = facingDir.y * lookAheadDistance;
+                    break;
+
+                case RoomType.Fixed:
+                default:
+                    targetOffset = Vector2.zero;
+                    break;
+            }
+
+            currentLookAheadOffset = Vector2.MoveTowards(
+                currentLookAheadOffset,
+                targetOffset,
+                lookAheadSpeed * Time.deltaTime
+            );
+
+            return playerPos + (Vector3)currentLookAheadOffset;
+        }
+
+        private void CachePlayerReference()
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                cachedPlayerBrain = playerObj.GetComponent<PlayerBrain>();
             }
         }
 
@@ -60,8 +122,10 @@ namespace FrogGame.Camera
         {
             isTransitioning = true;
             currentRoom = newRoom;
+            currentLookAheadOffset = Vector2.zero; // Reset look-ahead during room transition
 
             PlayerBrain brain = playerTransform.GetComponent<PlayerBrain>();
+            if (brain != null) cachedPlayerBrain = brain;
 
             // 1. Lock inputs, stop movement, and apply invincibility
             if (brain != null)
