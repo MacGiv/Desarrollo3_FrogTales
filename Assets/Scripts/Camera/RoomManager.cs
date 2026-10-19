@@ -2,13 +2,9 @@ namespace FrogGame.Camera
 {
     using System.Collections;
     using UnityEngine;
-    using Unity.Cinemachine; // Si usas Cinemachine v2 cambia a: using Cinemachine;
+    using Unity.Cinemachine;
     using FrogGame.Gameplay;
 
-    /// <summary>
-    /// Manages room transitions, camera tracking, Cinemachine target snapping, and dynamic look-ahead behavior.
-    /// Gestiona transiciones de sala, seguimiento de cámara, ajuste instantáneo de Cinemachine y Look Ahead.
-    /// </summary>
     public class RoomManager : MonoBehaviour
     {
         public static RoomManager Instance { get; private set; }
@@ -33,6 +29,10 @@ namespace FrogGame.Camera
         private bool isTransitioning = false;
         private PlayerBrain cachedPlayerBrain;
         private Vector2 currentLookAheadOffset;
+
+        // Sticky directional tracking for look-ahead stability
+        private float lastLookAheadDirX = 0f;
+        private float lastLookAheadDirY = 0f;
 
         public bool IsTransitioning => isTransitioning;
 
@@ -68,7 +68,7 @@ namespace FrogGame.Camera
         }
 
         /// <summary>
-        /// Calculates camera look-ahead offset based on room orientation and player facing direction.
+        /// Calculates camera look-ahead offset, permanently preserving the last directional choice along the room's primary axis.
         /// </summary>
         private Vector3 CalculateLookAheadPosition()
         {
@@ -80,16 +80,29 @@ namespace FrogGame.Camera
             switch (currentRoom.Type)
             {
                 case RoomType.Horizontal:
-                    targetOffset.x = facingDir.x * lookAheadDistance;
+                    // Only update X memory when actively facing horizontally
+                    if (facingDir.x != 0f)
+                    {
+                        lastLookAheadDirX = facingDir.x;
+                    }
+
+                    targetOffset.x = lastLookAheadDirX * lookAheadDistance;
                     break;
 
                 case RoomType.Vertical:
-                    targetOffset.y = facingDir.y * lookAheadDistance;
+                    // Only update Y memory when actively facing vertically
+                    if (facingDir.y != 0f)
+                    {
+                        lastLookAheadDirY = facingDir.y;
+                    }
+
+                    targetOffset.y = lastLookAheadDirY * lookAheadDistance;
                     break;
 
                 case RoomType.Fixed:
                 default:
-                    // Instant reset for fixed rooms to eliminate lingering directional offsets
+                    lastLookAheadDirX = 0f;
+                    lastLookAheadDirY = 0f;
                     currentLookAheadOffset = Vector2.zero;
                     return playerPos;
             }
@@ -104,15 +117,16 @@ namespace FrogGame.Camera
         }
 
         /// <summary>
-        /// Instantly snaps cameraTarget and triggers Cinemachine target warping to bypass Damping smoothing.
-        /// Teletransporta instantáneamente cameraTarget y dispara el Warp de Cinemachine para omitir el Damping.
+        /// Instantly snaps cameraTarget, resets look-ahead memory, and triggers Cinemachine target warping.
         /// </summary>
         public void SnapToRoom(Room newRoom, Vector3 playerPosition)
         {
             if (newRoom == null) return;
 
             currentRoom = newRoom;
-            currentLookAheadOffset = Vector2.zero; // Hard reset offset
+            currentLookAheadOffset = Vector2.zero;
+            lastLookAheadDirX = 0f;
+            lastLookAheadDirY = 0f;
 
             if (cameraTarget != null && mainCamera != null)
             {
@@ -120,10 +134,7 @@ namespace FrogGame.Camera
                 Vector3 targetCamPos = currentRoom.GetClampedCameraPosition(playerPosition, mainCamera);
                 Vector3 delta = targetCamPos - oldTargetPos;
 
-                // 1. Instantly move cameraTarget transform
                 cameraTarget.position = targetCamPos;
-
-                // 2. Notify Cinemachine to warp target without applying position damping/sliding
                 CinemachineCore.OnTargetObjectWarped(cameraTarget, delta);
             }
         }
@@ -149,6 +160,8 @@ namespace FrogGame.Camera
             isTransitioning = true;
             currentRoom = newRoom;
             currentLookAheadOffset = Vector2.zero;
+            lastLookAheadDirX = 0f;
+            lastLookAheadDirY = 0f;
 
             PlayerBrain brain = playerTransform.GetComponent<PlayerBrain>();
             if (brain != null) cachedPlayerBrain = brain;
