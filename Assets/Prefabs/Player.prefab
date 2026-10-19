@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 4138766253333921927}
   - component: {fileID: 9121058244511926470}
   - component: {fileID: 4074726627394767299}
+  - component: {fileID: 1603623593437131}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -733,6 +734,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1603623593437131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adae6f094de4f994bab378ef6ebdb049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerGrappleCollisionDetector
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 32896
+  boxSize: {x: 0.25, y: 0.65}
+  detectionDistance: 0.4
+  gizmoColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &9122732157630115378
 GameObject:
   m_ObjectHideFlags: 0
