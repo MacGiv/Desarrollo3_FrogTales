@@ -5,23 +5,26 @@ namespace FrogGame.Gameplay
 
     public class PlayerGrappleState : IState
     {
+        [SerializeField] private float grappleSpeed = 18f;
+
         private readonly PlayerBrain brain;
         private Vector2 targetPosition;
-        [SerializeField] private float grappleSpeed = 18f;
 
         public PlayerGrappleState(PlayerBrain brain) => this.brain = brain;
 
         public void SetTarget(Vector2 target) => targetPosition = target;
 
-        public void Enter()
-        {
-            brain.MovementHandler.Stop();
-        }
+        public void Enter() => brain.MovementHandler.Stop();
 
         public void LogicUpdate()
         {
-            // Move player smoothly towards the grapple point
-            // Mover a la rana hacia el punto de enganche
+            if (brain.GrappleCollisionDetector != null && !brain.GrappleCollisionDetector.CanGrapple())
+            {
+                brain.FSM.ChangeState(brain.IdleState);
+
+                return;
+            }
+
             Vector2 currentPos = brain.transform.position;
             brain.transform.position = Vector2.MoveTowards(currentPos, targetPosition, grappleSpeed * Time.deltaTime);
 
@@ -32,6 +35,7 @@ namespace FrogGame.Gameplay
         }
 
         public void PhysicsUpdate() { }
+
         public void Exit() { }
     }
 }
