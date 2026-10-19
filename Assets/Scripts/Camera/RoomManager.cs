@@ -2,11 +2,12 @@ namespace FrogGame.Camera
 {
     using System.Collections;
     using UnityEngine;
+    using Unity.Cinemachine; // Si usas Cinemachine v2 cambia a: using Cinemachine;
     using FrogGame.Gameplay;
 
     /// <summary>
-    /// Manages room transitions, camera tracking, and dynamic look-ahead behavior for horizontal and vertical rooms.
-    /// Gestiona transiciones de sala, seguimiento de cámara y comportamiento de avance (Look Ahead) dinámico.
+    /// Manages room transitions, camera tracking, Cinemachine target snapping, and dynamic look-ahead behavior.
+    /// Gestiona transiciones de sala, seguimiento de cámara, ajuste instantáneo de Cinemachine y Look Ahead.
     /// </summary>
     public class RoomManager : MonoBehaviour
     {
@@ -67,8 +68,7 @@ namespace FrogGame.Camera
         }
 
         /// <summary>
-        /// Calculates smooth camera look-ahead offset based on room orientation and player facing direction.
-        /// Calcula el desplazamiento suave de la cámara según la orientación de la sala y la dirección del personaje.
+        /// Calculates camera look-ahead offset based on room orientation and player facing direction.
         /// </summary>
         private Vector3 CalculateLookAheadPosition()
         {
@@ -89,8 +89,9 @@ namespace FrogGame.Camera
 
                 case RoomType.Fixed:
                 default:
-                    targetOffset = Vector2.zero;
-                    break;
+                    // Instant reset for fixed rooms to eliminate lingering directional offsets
+                    currentLookAheadOffset = Vector2.zero;
+                    return playerPos;
             }
 
             currentLookAheadOffset = Vector2.MoveTowards(
@@ -100,6 +101,31 @@ namespace FrogGame.Camera
             );
 
             return playerPos + (Vector3)currentLookAheadOffset;
+        }
+
+        /// <summary>
+        /// Instantly snaps cameraTarget and triggers Cinemachine target warping to bypass Damping smoothing.
+        /// Teletransporta instantáneamente cameraTarget y dispara el Warp de Cinemachine para omitir el Damping.
+        /// </summary>
+        public void SnapToRoom(Room newRoom, Vector3 playerPosition)
+        {
+            if (newRoom == null) return;
+
+            currentRoom = newRoom;
+            currentLookAheadOffset = Vector2.zero; // Hard reset offset
+
+            if (cameraTarget != null && mainCamera != null)
+            {
+                Vector3 oldTargetPos = cameraTarget.position;
+                Vector3 targetCamPos = currentRoom.GetClampedCameraPosition(playerPosition, mainCamera);
+                Vector3 delta = targetCamPos - oldTargetPos;
+
+                // 1. Instantly move cameraTarget transform
+                cameraTarget.position = targetCamPos;
+
+                // 2. Notify Cinemachine to warp target without applying position damping/sliding
+                CinemachineCore.OnTargetObjectWarped(cameraTarget, delta);
+            }
         }
 
         private void CachePlayerReference()
@@ -122,12 +148,11 @@ namespace FrogGame.Camera
         {
             isTransitioning = true;
             currentRoom = newRoom;
-            currentLookAheadOffset = Vector2.zero; // Reset look-ahead during room transition
+            currentLookAheadOffset = Vector2.zero;
 
             PlayerBrain brain = playerTransform.GetComponent<PlayerBrain>();
             if (brain != null) cachedPlayerBrain = brain;
 
-            // 1. Lock inputs, stop movement, and apply invincibility
             if (brain != null)
             {
                 brain.InputHandler?.DisableInput();
@@ -135,7 +160,6 @@ namespace FrogGame.Camera
                 brain.HealthSystem?.TriggerInvincibility(roomTransitionInvincibility);
             }
 
-            // 2. Calculate cardinal entry direction (N, S, E, W)
             Vector2 rawDir = (playerTransform.position - cameraTarget.position).normalized;
             Vector2 entryDirection = Vector2.right;
 
@@ -151,7 +175,6 @@ namespace FrogGame.Camera
                 }
             }
 
-            // 3. Perform BoxCast to calculate safe target position without hitting Obstacles layer
             float safeDistance = playerNudgeDistance;
             Collider2D playerCollider = playerTransform.GetComponent<Collider2D>();
             Vector2 boxSize = playerCollider != null ? (Vector2)playerCollider.bounds.size : new Vector2(0.8f, 0.8f);
@@ -171,11 +194,8 @@ namespace FrogGame.Camera
             }
 
             Vector3 playerTargetPos = playerTransform.position + (Vector3)(entryDirection * safeDistance);
-
-            // 4. Calculate initial target camera position for the new room
             Vector3 targetCamPos = currentRoom.GetClampedCameraPosition(playerTargetPos, mainCamera);
 
-            // 5. Smoothly transition camera and nudge player
             while (Vector3.Distance(cameraTarget.position, targetCamPos) > 0.05f)
             {
                 cameraTarget.position = Vector3.MoveTowards(
@@ -196,7 +216,6 @@ namespace FrogGame.Camera
             cameraTarget.position = targetCamPos;
             playerTransform.position = playerTargetPos;
 
-            // 6. Unlock input on completion
             if (brain != null)
             {
                 brain.InputHandler?.EnableInput();
