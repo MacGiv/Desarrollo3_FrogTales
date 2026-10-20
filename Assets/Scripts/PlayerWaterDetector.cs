@@ -4,13 +4,18 @@ namespace FrogGame.Gameplay
     using UnityEngine.Tilemaps;
 
     /// <summary>
-    /// Detects standing surface layer (Ground or Water) using Tilemap references and tracks safe ground position.
+    /// Detects standing surface layer (Ground or Water) using a Box Gizmo positioned at the player's feet.
     /// </summary>
     public class PlayerWaterDetector : MonoBehaviour
     {
         [Header("Layer Detection")]
         [SerializeField] private LayerMask waterLayer;
         [SerializeField] private LayerMask groundLayer;
+
+        [Header("Feet Detection Settings")]
+        [SerializeField] private Vector2 feetOffset = new Vector2(0f, -0.35f);
+        [SerializeField] private Vector2 boxSize = new Vector2(0.1f, 0.05f);
+        [SerializeField] private Color gizmoColor = Color.yellow;
 
         private Grid currentGrid;
         private Tilemap groundTilemap;
@@ -39,47 +44,71 @@ namespace FrogGame.Gameplay
             }
         }
 
+        public Vector2 GetFeetPosition() => (Vector2)transform.position + feetOffset;
+
         private void Update()
         {
             if (brain == null || brain.FSM == null || brain.FSM.CurrentState == null) return;
 
-            // Immune while grappling or already drowning
             if (brain.FSM.CurrentState is PlayerGrappleState || brain.FSM.CurrentState is PlayerDrownState)
             {
                 return;
             }
 
-            if (currentGrid == null) return;
+            Vector2 feetPos = GetFeetPosition();
 
-            Vector3Int cellPos = currentGrid.WorldToCell(transform.position);
+            Collider2D waterHit = Physics2D.OverlapBox(feetPos, boxSize, 0f, waterLayer);
 
-            // Water Detection via direct Tilemap query
-            if (waterTilemap != null && waterTilemap.HasTile(cellPos))
+            if (waterHit != null)
             {
-                Vector3 waterCenter = currentGrid.GetCellCenterWorld(cellPos);
+                Vector3 closestPoint = waterHit.ClosestPoint(feetPos);
+                Vector3 dirToWater = (closestPoint - (Vector3)feetPos).normalized;
+
+                if (dirToWater == Vector3.zero && brain.MovementHandler != null)
+                {
+                    dirToWater = (Vector3)brain.MovementHandler.FacingDirection;
+                }
+
+                Vector3 pointInsideWater = closestPoint + (dirToWater * 0.2f);
+                Vector3 waterCenter = pointInsideWater;
+
+                if (currentGrid != null)
+                {
+                    Vector3Int waterCell = currentGrid.WorldToCell(pointInsideWater);
+
+                    waterCenter = currentGrid.GetCellCenterWorld(waterCell);
+                }
 
                 brain.DrownState.SetTargetPositions(waterCenter, lastSafeTileCenter);
                 brain.FSM.ChangeState(brain.DrownState);
-
                 return;
             }
 
-            // Cell Change & Ground Save
-            if (cellPos != currentCell)
+            if (currentGrid != null)
             {
-                currentCell = cellPos;
+                Vector3Int feetCellPos = currentGrid.WorldToCell(feetPos);
 
-                // Query Tilemap directly without physics matrix overhead
-                if (groundTilemap != null && groundTilemap.HasTile(currentCell))
+                if (waterTilemap != null && waterTilemap.HasTile(feetCellPos))
                 {
-                    lastSafeTileCenter = currentGrid.GetCellCenterWorld(currentCell);
+                    Vector3 waterCenter = currentGrid.GetCellCenterWorld(feetCellPos);
+                    brain.DrownState.SetTargetPositions(waterCenter, lastSafeTileCenter);
+                    brain.FSM.ChangeState(brain.DrownState);
+                    return;
+                }
+
+                Vector3Int playerCenterCell = currentGrid.WorldToCell(transform.position);
+
+                if (playerCenterCell != currentCell)
+                {
+                    if (groundTilemap != null && groundTilemap.HasTile(playerCenterCell))
+                    {
+                        currentCell = playerCenterCell;
+                        lastSafeTileCenter = currentGrid.GetCellCenterWorld(currentCell);
+                    }
                 }
             }
         }
 
-        /// <summary>
-        /// Registers grid and tilemap instances dynamically on initialization.
-        /// </summary>
         private void InitializeGridReferences()
         {
             currentGrid = FindFirstObjectByType<Grid>();
@@ -87,7 +116,6 @@ namespace FrogGame.Gameplay
             if (currentGrid == null)
             {
                 Debug.LogWarning("[PlayerWaterDetector] No Grid instance found in scene!");
-
                 return;
             }
 
@@ -97,26 +125,16 @@ namespace FrogGame.Gameplay
             {
                 int tilemapLayer = 1 << tilemap.gameObject.layer;
 
-                if ((tilemapLayer & groundLayer) != 0)
-                {
-                    groundTilemap = tilemap;
-                }
-
-                if ((tilemapLayer & waterLayer) != 0)
-                {
-                    waterTilemap = tilemap;
-                }
+                if ((tilemapLayer & groundLayer) != 0) groundTilemap = tilemap;
+                if ((tilemapLayer & waterLayer) != 0) waterTilemap = tilemap;
             }
+        }
 
-            if (groundTilemap == null)
-            {
-                Debug.LogWarning("[PlayerWaterDetector] Ground Tilemap not found in scene!");
-            }
-
-            if (waterTilemap == null)
-            {
-                Debug.LogWarning("[PlayerWaterDetector] Water Tilemap not found in scene!");
-            }
+        private void OnDrawGizmos()
+        {
+            Vector2 feetPos = GetFeetPosition();
+            Gizmos.color = gizmoColor;
+            Gizmos.DrawWireCube(feetPos, boxSize);
         }
 
         private void OnDrawGizmosSelected()
