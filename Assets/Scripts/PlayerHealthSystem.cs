@@ -21,14 +21,15 @@ namespace FrogGame.Gameplay
 
         [SerializeField] private int currentHealth;
         private bool isInvincible = false;
+        private Coroutine invincibilityCoroutine;
 
         public int CurrentHealth => currentHealth;
         public bool IsShieldOn => isShieldOn;
         public int MaxHealth => maxHealth;
+        public bool IsInvincible => isInvincible;
 
         // Events to notify UI or managers without direct coupling
-        // Eventos para notificar a la UI o Managers sin acoplamiento directo
-        public static event Action<int, int> OnHealthChanged; // (currentHealth, maxHealth)
+        public static event Action<int, int> OnHealthChanged;
         public static event Action<bool> OnShieldChanged;
         public static event Action OnPlayerDied;
 
@@ -36,7 +37,6 @@ namespace FrogGame.Gameplay
 
         private void Start()
         {
-            // Notify initial health state to UI / Notificar estado inicial a la UI
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
             OnShieldChanged?.Invoke(isShieldOn);
         }
@@ -51,7 +51,6 @@ namespace FrogGame.Gameplay
             {
                 isShieldOn = false;
                 OnShieldChanged?.Invoke(isShieldOn);
-
                 return;
             }
 
@@ -68,13 +67,26 @@ namespace FrogGame.Gameplay
             }
             else
             {
-                StartCoroutine(InvincibilityRoutine());
+                TriggerInvincibility(invincibilityDuration);
             }
         }
 
         /// <summary>
+        /// Triggers temporary invincibility frames with blinking visual feedback.
+        /// Activa cuadros de invulnerabilidad temporales con parpadeo visual.
+        /// </summary>
+        public void TriggerInvincibility(float duration)
+        {
+            if (invincibilityCoroutine != null)
+            {
+                StopCoroutine(invincibilityCoroutine);
+            }
+
+            invincibilityCoroutine = StartCoroutine(InvincibilityRoutine(duration));
+        }
+
+        /// <summary>
         /// Restores player health up to maxHealth.
-        /// Restaura vida al jugador hasta el máximo permitido.
         /// </summary>
         public void Heal(int healAmount)
         {
@@ -92,18 +104,14 @@ namespace FrogGame.Gameplay
             OnShieldChanged?.Invoke(isShieldOn);
         }
 
-        /// <summary>
-        /// Handles temporized invincibility and blinking sprite visual effect.
-        /// Maneja el tiempo de invulnerabilidad y el parpadeo del sprite.
-        /// </summary>
-        private IEnumerator InvincibilityRoutine()
+        private IEnumerator InvincibilityRoutine(float duration)
         {
             isInvincible = true;
 
             float timer = 0f;
             float flashInterval = 0.1f;
 
-            while (timer < invincibilityDuration)
+            while (timer < duration)
             {
                 if (playerSprite != null)
                 {
@@ -120,13 +128,13 @@ namespace FrogGame.Gameplay
             }
 
             isInvincible = false;
+            invincibilityCoroutine = null;
         }
 
         private void Die()
         {
             Debug.Log("[PlayerHealthSystem] The player has died!");
             OnPlayerDied?.Invoke();
-            // TODO: Cambiar estado a PlayerDeathState
         }
     }
 }

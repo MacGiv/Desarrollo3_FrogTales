@@ -1,0 +1,357 @@
+fileFormatVersion: 2
+guid: a3778cb22ccd3d747aae408bd7969f00
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4356325151600480269
+    second: spritesheet_hojas_0
+  - first:
+      213: -1614657973113602662
+    second: spritesheet_hojas_1
+  - first:
+      213: -7273134078526861752
+    second: spritesheet_hojas_2
+  - first:
+      213: 1426949937640213021
+    second: spritesheet_hojas_3
+  - first:
+      213: 364391695240445182
+    second: spritesheet_hojas_4
+  - first:
+      213: -6568192432849397314
+    second: spritesheet_hojas_5
+  - first:
+      213: -7804254626469086933
+    second: spritesheet_hojas_6
+  - first:
+      213: -5996911362436086846
+    second: spritesheet_hojas_7
+  - first:
+      213: -4016466602058548577
+    second: spritesheet_hojas_8
+  - first:
+      213: -5810248176044613465
+    second: spritesheet_hojas_9
+  - first:
+      213: 1736729293231629974
+    second: spritesheet_hojas_10
+  - first:
+      213: 2996162537560724505
+    second: spritesheet_hojas_11
+  - first:
+      213: 3168835716861808990
+    second: spritesheet_hojas_12
+  - first:
+      213: 3855027186608079699
+    second: spritesheet_hojas_13
+  - first:
+      213: -1761512828955515821
+    second: spritesheet_hojas_14
+  - first:
+      213: -7413113670545280582
+    second: spritesheet_hojas_15
+  - first:
+      213: -1327056866647303491
+    second: spritesheet_hojas_16
+  - first:
+      213: 8178953036795412299
+    second: spritesheet_hojas_17
+  - first:
+      213: 3441369698486609736
+    second: spritesheet_hojas_18
+  - first:
+      213: -1908757384409927199
+    second: spritesheet_hojas_19
+  - first:
+      213: 2551938906027633603
+    second: spritesheet_hojas_20
+  - first:
+      213: 6001970625196224740
+    second: spritesheet_hojas_21
+  - first:
+      213: 3477563760253198951
+    second: spritesheet_hojas_22
+  - first:
+      213: 7230941117716457676
+    second: spritesheet_hojas_23
+  - first:
+      213: 7881260249271053527
+    second: spritesheet_hojas_24
+  - first:
+      213: -5970133147179853818
+    second: spritesheet_hojas_25
+  - first:
+      213: 5656385934764790212
+    second: spritesheet_hojas_26
+  - first:
+      213: -3848528069227499292
+    second: spritesheet_hojas_27
+  - first:
+      213: -8577952468555699167
+    second: spritesheet_hojas_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spritesheet_hojas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ffe0ccfa593b83c0800000000000000
+      internalID: -4356325151600480269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_hojas_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9dbfc6d0259799e0800000000000000
+      internalID: -1614657973113602662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_hojas_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84e4e9d1713a01b90800000000000000
+      internalID: -7273134078526861752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_hojas_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1a8f41786b8dc310800000000000000
+      internalID: 1426949937640213021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_hojas_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efcb8e1f0549e0500800000000000000
+      internalID: 364391695240445182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_hojas_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb95a9738c719d4a0800000000000000
+      internalID: -6568192432849397314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 405e5864ca5aa8445a73bee369d88877
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      spritesheet_hojas_0: -4356325151600480269
+      spritesheet_hojas_1: -1614657973113602662
+      spritesheet_hojas_2: -7273134078526861752
+      spritesheet_hojas_3: 1426949937640213021
+      spritesheet_hojas_4: 364391695240445182
+      spritesheet_hojas_5: -6568192432849397314
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
