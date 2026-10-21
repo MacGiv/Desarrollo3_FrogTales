@@ -6,6 +6,7 @@ namespace FrogGame.Enemies
     /// <summary>
     /// Brain & FSM Controller for the flying Small Owl enemy.
     /// </summary>
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
     public class SmallOwlBrain : MonoBehaviour, IDamageable, IStunnable
