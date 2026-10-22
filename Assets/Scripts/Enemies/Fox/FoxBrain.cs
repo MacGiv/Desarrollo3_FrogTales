@@ -25,6 +25,10 @@ namespace FrogGame.Enemies
         [Header("Patrol Settings")]
         [SerializeField] private Transform[] waypoints;
 
+        [Header("Visuals & Flip Settings")]
+        [SerializeField] private Transform visualsTransform;
+        [SerializeField] private bool spriteFacesLeftByDefault = false;
+
         private Rigidbody2D rb;
         private int currentHealth;
 
@@ -72,11 +76,27 @@ namespace FrogGame.Enemies
         {
             DetectPlayer();
             FSM.CurrentState.LogicUpdate();
+            HandleFlip();
         }
 
         private void FixedUpdate()
         {
             FSM.CurrentState.PhysicsUpdate();
+        }
+
+        private void HandleFlip()
+        {
+            if (visualsTransform == null) return;
+
+            if (Mathf.Abs(rb.linearVelocity.x) > 0.1f)
+            {
+                bool movingLeft = rb.linearVelocity.x < 0f;
+                bool shouldFlip = spriteFacesLeftByDefault ? !movingLeft : movingLeft;
+
+                Vector3 localScale = visualsTransform.localScale;
+                localScale.x = shouldFlip ? -1f : 1f;
+                visualsTransform.localScale = localScale;
+            }
         }
 
         /// <summary>
