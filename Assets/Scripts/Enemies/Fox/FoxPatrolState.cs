@@ -10,7 +10,13 @@ namespace FrogGame.Enemies
 
         public FoxPatrolState(FoxBrain brain) => this.brain = brain;
 
-        public void Enter() { }
+        public void Enter()
+        {
+            if (brain.Animator != null)
+            {
+                brain.Animator.Play("Idle");
+            }
+        }
 
         public void LogicUpdate()
         {
