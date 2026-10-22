@@ -3,22 +3,27 @@ namespace FrogGame.Enemies
     using UnityEngine;
     using FrogGame.Core;
 
-    public class SmallOwlPatrolState : IState
+    public class FoxPatrolState : IState
     {
-        private readonly SmallOwlBrain brain;
+        private readonly FoxBrain brain;
         private int currentWaypointIndex = 0;
-        private float lastSwoopTime = -999f;
 
-        public SmallOwlPatrolState(SmallOwlBrain brain) => this.brain = brain;
+        public FoxPatrolState(FoxBrain brain) => this.brain = brain;
 
-        public void Enter() { }
+        public void Enter()
+        {
+            if (brain.Animator != null)
+            {
+                brain.Animator.Play("Idle");
+            }
+        }
 
         public void LogicUpdate()
         {
-            // Transition to Swoop if player is in range and cooldown is ready
-            if (brain.TargetPlayer != null && Time.time >= lastSwoopTime + brain.AttackCooldown)
+            // Transition to Chase if player detected / Transición a Persecución
+            if (brain.TargetPlayer != null)
             {
-                brain.FSM.ChangeState(brain.SwoopState);
+                brain.FSM.ChangeState(brain.ChaseState);
                 return;
             }
 
@@ -45,13 +50,12 @@ namespace FrogGame.Enemies
             if (targetWaypoint == null) return;
 
             Vector2 dir = ((Vector2)targetWaypoint.position - (Vector2)brain.transform.position).normalized;
-            brain.Rb.linearVelocity = dir * brain.FlySpeed;
+            brain.Rb.linearVelocity = dir * brain.PatrolSpeed;
         }
 
         public void Exit()
         {
             brain.Rb.linearVelocity = Vector2.zero;
-            lastSwoopTime = Time.time;
         }
     }
 }

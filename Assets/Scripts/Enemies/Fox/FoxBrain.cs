@@ -6,6 +6,7 @@ namespace FrogGame.Enemies
     /// <summary>
     /// Brain & FSM Controller for the Fox enemy.
     /// </summary>
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
     public class FoxBrain : MonoBehaviour, IDamageable, IStunnable
@@ -24,6 +25,10 @@ namespace FrogGame.Enemies
         [Header("Patrol Settings")]
         [SerializeField] private Transform[] waypoints;
 
+        [Header("Visuals & Flip Settings")]
+        [SerializeField] private Transform visualsTransform;
+        [SerializeField] private bool spriteFacesLeftByDefault = false;
+
         private Rigidbody2D rb;
         private int currentHealth;
 
@@ -36,6 +41,8 @@ namespace FrogGame.Enemies
         public float AttackCooldown => attackCooldown;
         public Transform[] Waypoints => waypoints;
         public Transform TargetPlayer { get; private set; }
+        public Animator Animator { get; private set; }
+
         // States
         public FoxPatrolState PatrolState { get; private set; }
         public FoxChaseState ChaseState { get; private set; }
@@ -49,6 +56,8 @@ namespace FrogGame.Enemies
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             currentHealth = maxHealth;
+
+            Animator = GetComponent<Animator>();
 
             FSM = new FiniteStateMachine();
 
@@ -67,11 +76,27 @@ namespace FrogGame.Enemies
         {
             DetectPlayer();
             FSM.CurrentState.LogicUpdate();
+            HandleFlip();
         }
 
         private void FixedUpdate()
         {
             FSM.CurrentState.PhysicsUpdate();
+        }
+
+        private void HandleFlip()
+        {
+            if (visualsTransform == null) return;
+
+            if (Mathf.Abs(rb.linearVelocity.x) > 0.1f)
+            {
+                bool movingLeft = rb.linearVelocity.x < 0f;
+                bool shouldFlip = spriteFacesLeftByDefault ? !movingLeft : movingLeft;
+
+                Vector3 localScale = visualsTransform.localScale;
+                localScale.x = shouldFlip ? -1f : 1f;
+                visualsTransform.localScale = localScale;
+            }
         }
 
         /// <summary>
@@ -115,7 +140,7 @@ namespace FrogGame.Enemies
 
         private void OnDrawGizmosSelected()
         {
-            // Visualización de rangos en el editor
+            // VisualizaciÃ³n de rangos en el editor
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
