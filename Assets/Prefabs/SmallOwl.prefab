@@ -124,7 +124,7 @@ MonoBehaviour:
   maxHealth: 2
   flySpeed: 3
   swoopSpeed: 9
-  detectionRadius: 6
+  detectionRadius: 3
   attackCooldown: 2
   attackDamage: 1
   playerLayer:
