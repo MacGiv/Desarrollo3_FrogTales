@@ -14,13 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: AK.Wwise.Unity.API::AkWwiseInitializationSettings
   PlatformSettingsNameList:
   - Android
-  - iOS
-  - Mac
   - Windows
   PlatformSettingsList:
   - {fileID: 11400000, guid: 3de5aaed26e4c4a41bb45c2c33eaacd6, type: 2}
-  - {fileID: 11400000, guid: 43dc4650fb1d2c34bb460e83201ac274, type: 2}
-  - {fileID: 11400000, guid: 87ab2e85d8338954e9acb3b18f63e037, type: 2}
   - {fileID: 11400000, guid: 9fe91f6ced6f91e42a743c3aa4fcb8dc, type: 2}
   InvalidReferencePlatforms:
   - XboxOne
@@ -79,8 +75,8 @@ MonoBehaviour:
     m_MaximumHardwareTimeoutMs: 1000
     m_DebugOutOfRangeCheckEnabled: 0
     m_DebugOutOfRangeLimit: 16
-    m_SuspendAudioDuringFocusLoss: 1
-    m_RenderDuringFocusLoss: 0
+    m_SuspendAudioDuringFocusLoss: 0
+    m_RenderDuringFocusLoss: 1
     m_SoundBankPersistentDataPath: 
     m_UseSubFoldersForGeneratedFiles: 0
     m_MemoryPrimarySbaInitSize: 2097152

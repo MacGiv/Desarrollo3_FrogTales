@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: AK.Wwise.Unity.API::AkWindowsSettings
   IgnorePropertyNameList: []
   GlobalPropertyNameList:
-  - UserSettings.m_BasePath
   - UserSettings.m_StartupLanguage
   - UserSettings.m_EngineLogging
   - UserSettings.m_DefaultScalingFactor
@@ -77,6 +76,7 @@ MonoBehaviour:
   - AdvancedSettings.m_MemoryMediaReservedLimit
   - AdvancedSettings.m_MemoryMediaAllocSizeHuge
   - AdvancedSettings.m_MemoryDebugLevel
+  - UserSettings.m_BasePath
   UserSettings:
     m_BasePath: Audio\GeneratedSoundBanks
     m_StartupLanguage: English(US)
@@ -131,8 +131,8 @@ MonoBehaviour:
     m_MaximumHardwareTimeoutMs: 1000
     m_DebugOutOfRangeCheckEnabled: 0
     m_DebugOutOfRangeLimit: 16
-    m_SuspendAudioDuringFocusLoss: 1
-    m_RenderDuringFocusLoss: 0
+    m_SuspendAudioDuringFocusLoss: 0
+    m_RenderDuringFocusLoss: 1
     m_SoundBankPersistentDataPath: 
     m_UseSubFoldersForGeneratedFiles: 0
     m_MemoryPrimarySbaInitSize: 2097152

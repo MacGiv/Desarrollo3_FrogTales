@@ -3,7 +3,11 @@
 	<Containers>
 		<WorkUnit Name="Default Work Unit" ID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="Audio Test" ID="{F7A7C8A0-2915-40B4-93BE-3B454E00CE21}" ShortID="151042905">
+				<Sound Name="Test sound" ID="{C04FD1B2-C5F6-4E98-BF24-F4F5AE3ABE79}" ShortID="1038220151">
+					<PropertyList>
+						<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+						<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
@@ -13,7 +17,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{DDFBF5D9-BA0F-46DD-8A63-3B8FE287A118}">
+						<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}">
 							<Language>SFX</Language>
 							<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
 							<MediaIDList>
@@ -22,7 +26,7 @@
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{DDFBF5D9-BA0F-46DD-8A63-3B8FE287A118}" Platform="Linked"/>
+						<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

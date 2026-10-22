@@ -3,12 +3,12 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{8261B203-0348-45A8-AEF2-31D8CA593DA9}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_Audio_Test" ID="{D211737F-A080-4BDE-9E7C-314B895B60CF}">
+				<Event Name="Play_Test_sound" ID="{D5AF89A8-8A27-4F88-A5B8-0AE6160D20F9}">
 					<ChildrenList>
-						<Action Name="" ID="{9DF81424-BB7D-47BE-B03D-1EF329D83646}" ShortID="540719964">
+						<Action Name="" ID="{4FC31C6E-8847-411A-A575-C9AA74BBA282}" ShortID="750141700">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Audio Test" ID="{F7A7C8A0-2915-40B4-93BE-3B454E00CE21}" WorkUnitID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}"/>
+									<ObjectRef Name="Test sound" ID="{C04FD1B2-C5F6-4E98-BF24-F4F5AE3ABE79}" WorkUnitID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
