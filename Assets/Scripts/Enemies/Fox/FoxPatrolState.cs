@@ -14,7 +14,7 @@ namespace FrogGame.Enemies
 
         public void LogicUpdate()
         {
-            // Transition to Chase if player detected / Transición a Persecución
+            // Transition to Chase if player detected / TransiciÃ³n a PersecuciÃ³n
             if (brain.TargetPlayer != null)
             {
                 brain.FSM.ChangeState(brain.ChaseState);
