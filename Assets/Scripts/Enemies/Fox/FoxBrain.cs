@@ -6,6 +6,7 @@ namespace FrogGame.Enemies
     /// <summary>
     /// Brain & FSM Controller for the Fox enemy.
     /// </summary>
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
     public class FoxBrain : MonoBehaviour, IDamageable, IStunnable
@@ -36,6 +37,8 @@ namespace FrogGame.Enemies
         public float AttackCooldown => attackCooldown;
         public Transform[] Waypoints => waypoints;
         public Transform TargetPlayer { get; private set; }
+        public Animator Animator { get; private set; }
+
         // States
         public FoxPatrolState PatrolState { get; private set; }
         public FoxChaseState ChaseState { get; private set; }
@@ -49,6 +52,8 @@ namespace FrogGame.Enemies
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             currentHealth = maxHealth;
+
+            Animator = GetComponent<Animator>();
 
             FSM = new FiniteStateMachine();
 
