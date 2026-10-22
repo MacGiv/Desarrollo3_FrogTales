@@ -50,6 +50,8 @@ namespace FrogGame.Enemies
             rb.gravityScale = 0f;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
+            Animator = GetComponentInChildren<Animator>();
+
             currentHealth = maxHealth;
 
             FSM = new FiniteStateMachine();

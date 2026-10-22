@@ -19,16 +19,18 @@ namespace FrogGame.Enemies
             isSwooping = false;
             prepareTimer = 0f;
 
-            // Lock target position at attack initiation
-            if (brain.TargetPlayer != null)
+            if (brain.TargetPlayer == null)
             {
-                targetPosition = brain.TargetPlayer.position;
-                brain.Animator.Play("Attack");
+                brain.FSM.ChangeState(brain.PatrolState);
+
+                return;
             }
-            else
+
+            targetPosition = brain.TargetPlayer.position;
+
+            if (brain.Animator != null)
             {
-                targetPosition = brain.transform.position;
-                brain.Animator.Play("Flying");
+                brain.Animator.Play("Attack");
             }
         }
 
