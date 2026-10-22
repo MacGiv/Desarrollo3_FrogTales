@@ -23,10 +23,12 @@ namespace FrogGame.Enemies
             if (brain.TargetPlayer != null)
             {
                 targetPosition = brain.TargetPlayer.position;
+                brain.Animator.Play("Attack");
             }
             else
             {
                 targetPosition = brain.transform.position;
+                brain.Animator.Play("Flying");
             }
         }
 
