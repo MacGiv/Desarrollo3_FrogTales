@@ -135,6 +135,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  visualsTransform: {fileID: 4881746678453338336}
+  spriteFacesLeftByDefault: 0
 --- !u!95 &4396167308966901713
 Animator:
   serializedVersion: 7
