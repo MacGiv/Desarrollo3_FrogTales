@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "2801770543",
+    "Type": "Event",
+    "GUID": "{D211737F-A080-4BDE-9E7C-314B895B60CF}",
+    "Language": "SFX",
+    "Hash": "{23C6CEC9-9644-8202-C0F6-F68056200E7E}",
+    "ObjectPath": "Play_Audio_Test",
+    "ShortName": "Play_Audio_Test",
+    "Path": "Event/Play_Audio_Test.bnk",
+    "Media": [
+     {
+      "Id": "335759465",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "674208__imataco__strong-select-level-up-sound.wav",
+      "Path": "Media/335759465.wem",
+      "CachePath": "FF/{FF63ACA7-2669-14E7-90CB-EFB337724646}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "2801770543",
+      "Name": "Play_Audio_Test",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Audio_Test",
+      "GUID": "{D211737F-A080-4BDE-9E7C-314B895B60CF}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.1426077",
+      "DurationMax": "3.1426077",
+      "MediaRefs": [
+       {
+        "Id": "335759465"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{A4B316AF-53FC-EDFB-060B-90A81AE9172E}"
+ }
+}
