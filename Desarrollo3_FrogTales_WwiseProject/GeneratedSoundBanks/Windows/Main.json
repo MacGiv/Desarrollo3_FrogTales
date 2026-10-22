@@ -6,31 +6,30 @@
   "SoundBankVersion": "172",
   "SoundBanks": [
    {
-    "Id": "2801770543",
-    "Type": "Event",
-    "GUID": "{D211737F-A080-4BDE-9E7C-314B895B60CF}",
+    "Id": "3161908922",
+    "Type": "User",
+    "GUID": "{E02E0AB8-9BA3-4DB6-BEE4-9E29D9CBD36D}",
     "Language": "SFX",
-    "Hash": "{23C6CEC9-9644-8202-C0F6-F68056200E7E}",
-    "ObjectPath": "Play_Audio_Test",
-    "ShortName": "Play_Audio_Test",
-    "Path": "Event/Play_Audio_Test.bnk",
+    "Hash": "{BB9F673A-754B-EADE-F758-B8C9A9FA9EA8}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
+    "ShortName": "Main",
+    "Path": "Main.bnk",
     "Media": [
      {
       "Id": "335759465",
       "Language": "SFX",
       "Streaming": "false",
-      "Location": "Loose",
+      "Location": "Memory",
       "ShortName": "674208__imataco__strong-select-level-up-sound.wav",
-      "Path": "Media/335759465.wem",
       "CachePath": "FF/{FF63ACA7-2669-14E7-90CB-EFB337724646}.wem"
      }
     ],
     "Events": [
      {
-      "Id": "2801770543",
-      "Name": "Play_Audio_Test",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Audio_Test",
-      "GUID": "{D211737F-A080-4BDE-9E7C-314B895B60CF}",
+      "Id": "3211564518",
+      "Name": "Play_Test_sound",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Test_sound",
+      "GUID": "{D5AF89A8-8A27-4F88-A5B8-0AE6160D20F9}",
       "DurationType": "OneShot",
       "DurationMin": "3.1426077",
       "DurationMax": "3.1426077",
@@ -43,6 +42,6 @@
     ]
    }
   ],
-  "FileHash": "{8D7870E6-9C83-1410-5BC2-F72E50F43DD9}"
+  "FileHash": "{4B4857B9-FFF7-8474-6337-928E62D1E5DF}"
  }
 }

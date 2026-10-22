@@ -15,39 +15,11 @@
     "Path": "Android"
    },
    {
-    "Name": "iOS",
-    "GUID": "{5673545D-7D18-451B-B5F1-76EB231C4EB8}",
-    "BasePlatform": "iOS",
-    "BasePlatformGUID": "{ECE03DB4-F948-462D-B2BB-A9173012B1F8}",
-    "Path": "iOS"
-   },
-   {
-    "Name": "Mac",
-    "GUID": "{A1E03BCA-1B4C-4DB3-8812-575B479A8EBD}",
-    "BasePlatform": "Mac",
-    "BasePlatformGUID": "{9C6217D5-DD11-4795-87C1-6CE02853C540}",
-    "Path": "Mac"
-   },
-   {
     "Name": "Windows",
     "GUID": "{E831058E-B14C-458B-B058-5AA4EB775D77}",
     "BasePlatform": "Windows",
     "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
     "Path": "Windows"
-   },
-   {
-    "Name": "XboxOne",
-    "GUID": "{B1B89DE0-97D7-4071-86A8-29B85A9A8AB0}",
-    "BasePlatform": "XboxOne",
-    "BasePlatformGUID": "{B131584B-9961-4BB5-9C58-A3E9ABFFBBF6}",
-    "Path": "XboxOne"
-   },
-   {
-    "Name": "XboxSeriesX",
-    "GUID": "{64A72840-148B-4723-B11E-8E74C18E0E7E}",
-    "BasePlatform": "XboxSeriesX",
-    "BasePlatformGUID": "{26352FC0-7716-4F97-8DAF-3665EC2BB501}",
-    "Path": "XboxSeriesX"
    }
   ],
   "Languages": [
@@ -59,6 +31,6 @@
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{F8CB7613-A795-32DC-D844-2C8146B66A99}"
+  "FileHash": "{7FA06801-E4D7-6E1B-6ECD-45EA0B00098D}"
  }
 }
