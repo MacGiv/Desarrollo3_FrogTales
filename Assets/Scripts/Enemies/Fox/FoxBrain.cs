@@ -115,7 +115,7 @@ namespace FrogGame.Enemies
 
         private void OnDrawGizmosSelected()
         {
-            // Visualización de rangos en el editor
+            // VisualizaciÃ³n de rangos en el editor
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
