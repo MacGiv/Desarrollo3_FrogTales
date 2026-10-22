@@ -37,6 +37,7 @@ namespace FrogGame.Enemies
         public int AttackDamage => attackDamage;
         public Transform[] Waypoints => waypoints;
         public Transform TargetPlayer { get; private set; }
+        public Animator Animator { get; private set; }
 
         // States
         public SmallOwlPatrolState PatrolState { get; private set; }
