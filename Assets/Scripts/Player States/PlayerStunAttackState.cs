@@ -28,7 +28,7 @@ namespace FrogGame.Gameplay
             }
 
             // Reuses ShootTongue animation
-            brain.Animator.Play("ShootTongue");
+            brain.Animator.Play("Sneeze");
             sneezeCoroutine = brain.StartCoroutine(PlayAnimationAndReturnToIdle());
         }
 
