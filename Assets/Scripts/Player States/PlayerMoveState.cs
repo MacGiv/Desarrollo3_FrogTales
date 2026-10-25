@@ -17,7 +17,7 @@ namespace FrogGame.Gameplay
 
         public void Enter()
         {
-            brain.Animator.Play("Locomotion");
+            brain.Animator.Play("Move");
         }
 
         public void LogicUpdate()
