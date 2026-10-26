@@ -95,6 +95,11 @@ namespace FrogGame.Enemies
             currentHealth -= damageAmount;
             Debug.Log($"{gameObject.name} took {damageAmount} damage. Health left: {currentHealth}");
 
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnemyDamage(gameObject);
+            }
+
             if (currentHealth <= 0)
             {
                 Die();
@@ -109,13 +114,18 @@ namespace FrogGame.Enemies
 
         private void Die()
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnemyDead(gameObject);
+            }
+
             // TODO: Efectos visuales, drops o eventos de muerte
             Destroy(gameObject);
         }
 
         private void OnDrawGizmosSelected()
         {
-            // Visualización de rangos en el editor
+            // VisualizaciÃ³n de rangos en el editor
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
