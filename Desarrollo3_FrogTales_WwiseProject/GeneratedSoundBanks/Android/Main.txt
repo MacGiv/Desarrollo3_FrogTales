@@ -1,6 +1,39 @@
 Event	ID	Name			Wwise Object Path	Notes
+	445041756	Play_Env_Rock_PushButton			\Default Work Unit\Play_Env_Rock_PushButton	
+	1464352939	Play_Env_Rock_Drop			\Default Work Unit\Play_Env_Rock_Drop	
+	1892059696	Play_Player_Booger_Hit			\Default Work Unit\Play_Player_Booger_Hit	
+	2203765675	Play_Enemy_ArrowHit			\Default Work Unit\Play_Enemy_ArrowHit	
+	2311449283	Play_Enemy_Dead			\Default Work Unit\Play_Enemy_Dead	
+	2447410425	Play_MX			\Default Work Unit\Play_MX	
+	2585949963	Play_Player_Bow_Shot			\Default Work Unit\Play_Player_Bow_Shot	
+	2861822361	Play_Env_Items_Pickup			\Default Work Unit\Play_Env_Items_Pickup	
+	2956601346	Play_Player_Bow_Hit			\Default Work Unit\Play_Player_Bow_Hit	
 	3211564518	Play_Test_sound			\Default Work Unit\Play_Test_sound	
+	3262794997	Play_Player_Booger_Shot			\Default Work Unit\Play_Player_Booger_Shot	
+	3353124379	Play_Player_Tongue_Shot			\Default Work Unit\Play_Player_Tongue_Shot	
+	3439094466	Play_Enemy_BoogerHit			\Default Work Unit\Play_Enemy_BoogerHit	
+	3570856298	Play_Enemy_Damage			\Default Work Unit\Play_Enemy_Damage	
+	3638125099	Play_Player_Damage			\Default Work Unit\Play_Player_Damage	
+	3676654925	Play_Enemy_Combat_Alert_Owl			\Default Work Unit\Play_Enemy_Combat_Alert_Owl	
+	3772621023	Play_Player_Fall_Water			\Default Work Unit\Play_Player_Fall_Water	
+	3812302960	Play_Enemy_Combat_Alert_Fox			\Default Work Unit\Play_Enemy_Combat_Alert_Fox	
+	3947027502	Play_Env_Fly_Health			\Default Work Unit\Play_Env_Fly_Health	
+	4062598144	Play_Env_Doors_Open			\Default Work Unit\Play_Env_Doors_Open	
+	4231385810	Play_Player_Tongue_Hit			\Default Work Unit\Play_Player_Tongue_Hit	
+
+State Group	ID	Name			Wwise Object Path	Notes
+	1690668539	Music_States			\Default Work Unit\Music_States	
+
+State	ID	Name	State Group			Notes
+	89505537	Gameplay	Music_States			
+	251412225	Shop	Music_States			
+	580146960	BossFight	Music_States			
+	608898761	Dungeon	Music_States			
+	748895195	None	Music_States			
+	1562068129	Overworld	Music_States			
+	2607556080	Menu	Music_States			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	335759465	Test sound	.cache\53\{53485191-880B-0777-13E5-0E6F3AC12EE7}.wem		\Containers\Default Work Unit\SFX\SFX\Test sound		277274
+	335759465	Enemy_Damage	.cache\9B\{9B5E1005-1EA5-ED90-8E3E-CC6C13F99FED}.wem		\Containers\Default Work Unit\SFX\SFX\Enemies\Enemy_Damage		13980
+	432275089	Test sound	.cache\53\{53485191-880B-0777-13E5-0E6F3AC12EE7}.wem		\Containers\Default Work Unit\SFX\SFX\Test sound		277274
 
