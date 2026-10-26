@@ -36,7 +36,7 @@
      {
       "Id": "2203765675",
       "Name": "Play_Enemy_ArrowHit",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Enemy_ArrowHit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enemies\\Play_Enemy_ArrowHit",
       "GUID": "{90D2720C-23CD-4CF7-95DD-E752DBD32DFD}",
       "Color": "10",
       "DurationType": "OneShot",
@@ -51,7 +51,7 @@
      {
       "Id": "3439094466",
       "Name": "Play_Enemy_BoogerHit",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Enemy_BoogerHit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enemies\\Play_Enemy_BoogerHit",
       "GUID": "{61888656-4A37-463F-ACE5-DC665EB5A687}",
       "Color": "10",
       "DurationType": "OneShot",
@@ -66,7 +66,7 @@
      {
       "Id": "3812302960",
       "Name": "Play_Enemy_Combat_Alert_Fox",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Enemy_Combat_Alert_Fox",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enemies\\Play_Enemy_Combat_Alert_Fox",
       "GUID": "{77C1ECF4-468F-4C72-A4BC-0DF1A4F876B8}",
       "Color": "10",
       "DurationType": "OneShot",
@@ -81,7 +81,7 @@
      {
       "Id": "3676654925",
       "Name": "Play_Enemy_Combat_Alert_Owl",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Enemy_Combat_Alert_Owl",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enemies\\Play_Enemy_Combat_Alert_Owl",
       "GUID": "{63B3AEAB-5336-49F0-AD2C-1F78F6E6E5DF}",
       "Color": "10",
       "DurationType": "OneShot",
@@ -96,7 +96,7 @@
      {
       "Id": "3570856298",
       "Name": "Play_Enemy_Damage",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Enemy_Damage",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enemies\\Play_Enemy_Damage",
       "GUID": "{105CEDEE-C696-4711-9EEF-A13DBB1A3DA2}",
       "Color": "10",
       "DurationType": "OneShot",
@@ -111,7 +111,7 @@
      {
       "Id": "2311449283",
       "Name": "Play_Enemy_Dead",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Enemy_Dead",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enemies\\Play_Enemy_Dead",
       "GUID": "{B3AF0CB8-BFAF-4DB8-BA38-F8C2DA43ED90}",
       "Color": "10",
       "DurationType": "OneShot",
@@ -126,7 +126,7 @@
      {
       "Id": "4062598144",
       "Name": "Play_Env_Doors_Open",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Env_Doors_Open",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\Play_Env_Doors_Open",
       "GUID": "{1FE709CF-1233-4386-A023-4C63DEF2108C}",
       "Color": "13",
       "DurationType": "OneShot",
@@ -141,7 +141,7 @@
      {
       "Id": "3947027502",
       "Name": "Play_Env_Fly_Health",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Env_Fly_Health",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\Play_Env_Fly_Health",
       "GUID": "{01B83023-7A3F-46A4-B223-0B55B279119C}",
       "Color": "13",
       "DurationType": "OneShot",
@@ -156,7 +156,7 @@
      {
       "Id": "2861822361",
       "Name": "Play_Env_Items_Pickup",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Env_Items_Pickup",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\Play_Env_Items_Pickup",
       "GUID": "{9FDF53F5-6142-4E68-AC0C-07FEFFFDED27}",
       "Color": "13",
       "DurationType": "OneShot",
@@ -171,7 +171,7 @@
      {
       "Id": "1464352939",
       "Name": "Play_Env_Rock_Drop",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Env_Rock_Drop",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\Play_Env_Rock_Drop",
       "GUID": "{B43B49AB-7925-47AC-A251-D6B89F95A3C7}",
       "Color": "13",
       "DurationType": "OneShot",
@@ -186,7 +186,7 @@
      {
       "Id": "445041756",
       "Name": "Play_Env_Rock_PushButton",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Env_Rock_PushButton",
+      "ObjectPath": "\\Events\\Default Work Unit\\Enviroment\\Play_Env_Rock_PushButton",
       "GUID": "{1384BDC5-A025-436E-A001-30C38DEC6F53}",
       "Color": "13",
       "DurationType": "OneShot",
@@ -201,7 +201,7 @@
      {
       "Id": "2447410425",
       "Name": "Play_MX",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_MX",
+      "ObjectPath": "\\Events\\Default Work Unit\\Music\\Play_MX",
       "GUID": "{A9F60DCC-D692-4271-8B28-2FC36CA84D5F}",
       "DurationType": "Infinite",
       "SwitchContainers": []
@@ -209,7 +209,7 @@
      {
       "Id": "1892059696",
       "Name": "Play_Player_Booger_Hit",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Player_Booger_Hit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Play_Player_Booger_Hit",
       "GUID": "{7334915D-E33F-4A84-9432-6C4E3894436C}",
       "Color": "4",
       "DurationType": "OneShot",
@@ -224,7 +224,7 @@
      {
       "Id": "3262794997",
       "Name": "Play_Player_Booger_Shot",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Player_Booger_Shot",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Play_Player_Booger_Shot",
       "GUID": "{E3B2126A-FFCB-4F16-BE9B-891264E887B0}",
       "Color": "4",
       "DurationType": "OneShot",
@@ -239,7 +239,7 @@
      {
       "Id": "2956601346",
       "Name": "Play_Player_Bow_Hit",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Player_Bow_Hit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Play_Player_Bow_Hit",
       "GUID": "{1FE35F08-C0A3-41E2-A043-B3036D9BF9DC}",
       "Color": "4",
       "DurationType": "OneShot",
@@ -254,7 +254,7 @@
      {
       "Id": "2585949963",
       "Name": "Play_Player_Bow_Shot",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Player_Bow_Shot",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Play_Player_Bow_Shot",
       "GUID": "{283CC532-1219-4B1C-9552-5FD50F5B0DA8}",
       "Color": "4",
       "DurationType": "OneShot",
@@ -269,7 +269,7 @@
      {
       "Id": "3638125099",
       "Name": "Play_Player_Damage",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Player_Damage",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Play_Player_Damage",
       "GUID": "{EF575C3F-1553-4E13-B7DB-15CB4E0E93BB}",
       "Color": "4",
       "DurationType": "OneShot",
@@ -284,7 +284,7 @@
      {
       "Id": "3772621023",
       "Name": "Play_Player_Fall_Water",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Player_Fall_Water",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Play_Player_Fall_Water",
       "GUID": "{1F048E5F-5D70-4911-8E48-78F9C0111D51}",
       "Color": "4",
       "DurationType": "OneShot",
@@ -299,7 +299,7 @@
      {
       "Id": "4231385810",
       "Name": "Play_Player_Tongue_Hit",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Player_Tongue_Hit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Play_Player_Tongue_Hit",
       "GUID": "{D5F6767D-13FC-4E36-BC7A-0D12E91FBCA5}",
       "Color": "4",
       "DurationType": "OneShot",
@@ -314,7 +314,7 @@
      {
       "Id": "3353124379",
       "Name": "Play_Player_Tongue_Shot",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Player_Tongue_Shot",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Play_Player_Tongue_Shot",
       "GUID": "{1FDE9248-201B-44BA-A616-B33C54D36B29}",
       "Color": "4",
       "DurationType": "OneShot",
@@ -395,6 +395,6 @@
     ]
    }
   ],
-  "FileHash": "{1DD5675E-784A-6E02-797C-D1988C189CA9}"
+  "FileHash": "{266F2B2B-9D27-A0BB-1F8F-1706D398D8A4}"
  }
 }

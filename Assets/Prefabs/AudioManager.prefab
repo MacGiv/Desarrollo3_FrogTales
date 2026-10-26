@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2221066544426684449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003209587216883730}
+  - component: {fileID: 2902460690325271369}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2003209587216883730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221066544426684449}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.09657, y: 7.39052, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2902460690325271369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221066544426684449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5061cd12d83bb6146a4c0ec861ffc067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  playMX:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: ae407f4de7e19b84eaba1292fcce7588, type: 2}
+  playEnemyArrowHit:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: fe98ab6b634cc864f9d706c096fe9fe4, type: 2}
+  playEnemyBoogerHit:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4fbc981099f929643a44f9ce1c6892a0, type: 2}
+  playEnemyCombatAlertFox:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f4c79e991e7710246b7e738d30c5d43a, type: 2}
+  playEnemyCombatAlertOwl:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 4c73130c2e3d0164c9a6d584eb3301e4, type: 2}
+  playEnemyDamage:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 1723055e6a9974e4ea78c1b54ada6c6b, type: 2}
+  playEnemyDead:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 45e4477fcaa685f46b72a7991b58c596, type: 2}
+  playEnvDoorsOpen:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a0ed88ed2801fa742b8f881e6f85ae15, type: 2}
+  playEnvFlyHealth:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: def1a1e026cfaf143af0cc4e0a197e02, type: 2}
+  playEnvItemsPickup:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f30cbfc78e4a8d94c9bec779e4166c05, type: 2}
+  playEnvRockDrop:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: fae44a37fc75ad448bef70241a4465a2, type: 2}
+  playEnvRockPushButton:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c41ac0b4edd879c4f82994199ad4c2c9, type: 2}
+  playPlayerBoogerHit:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 408cb3d3212affa49816768b805d65a8, type: 2}
+  playPlayerBoogerShot:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 0f5e1cc725c8b4f4398e8d4c20c2d0a5, type: 2}
+  playPlayerBowHit:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 942bc17a934100f4a8313fd978e222e3, type: 2}
+  playPlayerBowShot:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 1d7aaf005514cc24c976b132d16d4e8a, type: 2}
+  playPlayerDamage:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 861ec0b611994264eb3f12765154c72b, type: 2}
+  playPlayerFallWater:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f66d61353243a5e4a84d0ac4bf435ec7, type: 2}
+  playPlayerTongueHit:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: d0322df22715ddc40acdf333412c378b, type: 2}
+  playPlayerTongueShot:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: a9f3382fa05f1ac44a5bd122ea74d3b2, type: 2}
+  playTestSound:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5a472b8f4a45f03459f4cc1d968c2571, type: 2}
