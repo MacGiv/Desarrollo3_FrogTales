@@ -271,7 +271,8 @@
 											<PropertyList>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.47222"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.72095"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -281,7 +282,7 @@
 											<Language>SFX</Language>
 											<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="335759465"/>
+												<MediaID ID="916400711"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
@@ -303,7 +304,8 @@
 											<PropertyList>
 												<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
 												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.16753"/>
+												<Property Name="TrimEnd" Type="Real64" Value="0.38589"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -313,7 +315,7 @@
 											<Language>SFX</Language>
 											<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="335759465"/>
+												<MediaID ID="819493186"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
