@@ -8,7 +8,7 @@
 						<Action Name="" ID="{4FC31C6E-8847-411A-A575-C9AA74BBA282}" ShortID="750141700">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Test sound" ID="{C04FD1B2-C5F6-4E98-BF24-F4F5AE3ABE79}" WorkUnitID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}"/>
+									<ObjectRef Name="Test sound" ID="{C04FD1B2-C5F6-4E98-BF24-F4F5AE3ABE79}" WorkUnitID="{AB9B15D0-1C1A-4E6C-8977-5F955B1262F5}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

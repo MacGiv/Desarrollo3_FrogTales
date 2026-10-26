@@ -10,6 +10,20 @@
 						</Reference>
 					</ReferenceList>
 				</Bus>
+				<Bus Name="Music" ID="{A62E41A8-A27A-40B1-895B-D6612D0D3CBD}">
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{1D180ABE-5378-4B1A-B573-4AB07799528D}" WorkUnitID="{857D5155-AC19-4C58-905D-06671399AB56}"/>
+						</Reference>
+					</ReferenceList>
+				</Bus>
+				<Bus Name="SFX" ID="{FF240F5C-0FDA-4740-8F0D-39D040BAEEE8}">
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+							<ObjectRef Name="System" ID="{1D180ABE-5378-4B1A-B573-4AB07799528D}" WorkUnitID="{857D5155-AC19-4C58-905D-06671399AB56}"/>
+						</Reference>
+					</ReferenceList>
+				</Bus>
 			</ChildrenList>
 		</WorkUnit>
 	</Busses>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{AB9B15D0-1C1A-4E6C-8977-5F955B1262F5}" SchemaVersion="133" RootDocumentID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}" ParentDocumentID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}">
+	<Containers>
+		<WorkUnit Name="SFX" ID="{AB9B15D0-1C1A-4E6C-8977-5F955B1262F5}" OwnerID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="13"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<PropertyContainer Name="SFX" ID="{87FDA8DA-A784-4464-9B31-C57AF4A141E7}" ShortID="1043026720">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{FF240F5C-0FDA-4740-8F0D-39D040BAEEE8}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Test sound" ID="{C04FD1B2-C5F6-4E98-BF24-F4F5AE3ABE79}" ShortID="1038220151">
+							<PropertyList>
+								<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+								<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}">
+									<PropertyList>
+										<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
+										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="335759465"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<PropertyContainer Name="Player" ID="{13A61AEA-DD22-4C02-B33B-59A03B58091B}" ShortID="467907203">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+							</ReferenceList>
+						</PropertyContainer>
+						<PropertyContainer Name="Enemies" ID="{BD205DF1-B029-45B1-8352-FD31E2C20DF6}" ShortID="316113254">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+							</ReferenceList>
+						</PropertyContainer>
+						<PropertyContainer Name="Environment" ID="{D71CD426-0B55-42D0-AA12-8A81012B1264}" ShortID="595489744">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+							</ReferenceList>
+						</PropertyContainer>
+					</ChildrenList>
+				</PropertyContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</Containers>
+</WwiseDocument>
