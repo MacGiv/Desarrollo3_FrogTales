@@ -9,7 +9,14 @@ namespace FrogGame.Enemies
 
         public FoxChaseState(FoxBrain brain) => this.brain = brain;
 
-        public void Enter() { }
+        public void Enter()
+        {
+            if (brain.AlertAnimator != null)
+            {
+                brain.AlertAnimator.gameObject.SetActive(true);
+                brain.AlertAnimator.Play("Alert");
+            }
+        }
 
         public void LogicUpdate()
         {
@@ -40,6 +47,11 @@ namespace FrogGame.Enemies
         public void Exit()
         {
             brain.Rb.linearVelocity = Vector2.zero;
+
+            if (brain.AlertAnimator != null)
+            {
+                brain.AlertAnimator.gameObject.SetActive(false);
+            }
         }
     }
 }
