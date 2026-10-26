@@ -42,6 +42,11 @@ namespace FrogGame.Gameplay
             brain.InputHandler?.DisableInput();
             brain.MovementHandler?.Stop();
 
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnvDoorsOpen(gameObject);
+            }
+
             // 2. Fade to black
             if (ScreenFader.Instance != null)
             {
