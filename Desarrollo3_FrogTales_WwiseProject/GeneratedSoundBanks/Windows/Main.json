@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{E02E0AB8-9BA3-4DB6-BEE4-9E29D9CBD36D}",
     "Language": "SFX",
-    "Hash": "{BB9F673A-754B-EADE-F758-B8C9A9FA9EA8}",
+    "Hash": "{56259285-C707-16DF-C8A4-C5364687D748}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
     "Path": "Main.bnk",
@@ -21,7 +21,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "674208__imataco__strong-select-level-up-sound.wav",
-      "CachePath": "FF/{FF63ACA7-2669-14E7-90CB-EFB337724646}.wem"
+      "CachePath": "53/{53485191-880B-0777-13E5-0E6F3AC12EE7}.wem"
      }
     ],
     "Events": [
@@ -42,6 +42,6 @@
     ]
    }
   ],
-  "FileHash": "{4B4857B9-FFF7-8474-6337-928E62D1E5DF}"
+  "FileHash": "{139A2748-6EEF-C772-39FD-5888BA9B2B73}"
  }
 }
