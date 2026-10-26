@@ -52,6 +52,11 @@ namespace FrogGame.World
             {
                 isOpen = shouldBeOpen;
                 UpdateDoorState();
+
+                if (isOpen && AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayEnvDoorsOpen(gameObject);
+                }
             }
         }
 
