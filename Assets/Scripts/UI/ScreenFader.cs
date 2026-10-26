@@ -43,6 +43,11 @@ namespace FrogGame.UI
         /// </summary>
         public IEnumerator FadeToBlackRoutine(float duration = -1f)
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnvDoorsOpen(gameObject);
+            }
+
             float targetDuration = duration > 0 ? duration : defaultFadeDuration;
             yield return StartFadeRoutine(1f, targetDuration);
         }
