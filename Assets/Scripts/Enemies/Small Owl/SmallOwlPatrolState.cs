@@ -11,7 +11,13 @@ namespace FrogGame.Enemies
 
         public SmallOwlPatrolState(SmallOwlBrain brain) => this.brain = brain;
 
-        public void Enter() { }
+        public void Enter()
+        {
+            if (brain.Animator != null)
+            {
+                brain.Animator.Play("Flying");
+            }
+        }
 
         public void LogicUpdate()
         {

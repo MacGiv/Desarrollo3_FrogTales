@@ -10,11 +10,17 @@ namespace FrogGame.Enemies
 
         public FoxPatrolState(FoxBrain brain) => this.brain = brain;
 
-        public void Enter() { }
+        public void Enter()
+        {
+            if (brain.Animator != null)
+            {
+                brain.Animator.Play("Idle");
+            }
+        }
 
         public void LogicUpdate()
         {
-            // Transition to Chase if player detected / Transición a Persecución
+            // Transition to Chase if player detected / TransiciÃ³n a PersecuciÃ³n
             if (brain.TargetPlayer != null)
             {
                 brain.FSM.ChangeState(brain.ChaseState);
