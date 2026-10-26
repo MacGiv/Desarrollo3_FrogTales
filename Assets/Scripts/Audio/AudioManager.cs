@@ -8,9 +8,6 @@ public class AudioManager : MonoBehaviour
     [Header("Main SoundBank")]
     [SerializeField] private AK.Wwise.Bank mainBank;
 
-    [Header("Music Events")]
-    [SerializeField] private AK.Wwise.Event playMX;
-
     [Header("Enemy Events")]
     [SerializeField] private AK.Wwise.Event playEnemyArrowHit;
     [SerializeField] private AK.Wwise.Event playEnemyBoogerHit;
@@ -50,7 +47,6 @@ public class AudioManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // Carga automática del SoundBank manual en RAM
         if (mainBank != null && mainBank.IsValid())
         {
             mainBank.Load();
@@ -59,14 +55,13 @@ public class AudioManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Libera el SoundBank de la memoria RAM al destruir el objeto
         if (Instance == this && mainBank != null && mainBank.IsValid())
         {
             mainBank.Unload();
         }
     }
 
-    #region Generic Helpers
+    #region Generic Helper
     public void PostEvent(AK.Wwise.Event akEvent, GameObject emitter = null)
     {
         if (akEvent != null && akEvent.IsValid())
@@ -74,27 +69,9 @@ public class AudioManager : MonoBehaviour
             akEvent.Post(emitter != null ? emitter : gameObject);
         }
     }
-
-    public void ChangeMusicState(AK.Wwise.State musicState)
-    {
-        if (musicState != null && musicState.IsValid())
-        {
-            musicState.SetValue();
-        }
-    }
-
-    public void ChangeMusicSwitch(AK.Wwise.Switch musicSwitch, GameObject target = null)
-    {
-        if (musicSwitch != null && musicSwitch.IsValid())
-        {
-            musicSwitch.SetValue(target != null ? target : gameObject);
-        }
-    }
     #endregion
 
     #region Play Methods
-    public void PlayMusic() => PostEvent(playMX);
-
     public void PlayEnemyArrowHit(GameObject emitter = null) => PostEvent(playEnemyArrowHit, emitter);
     public void PlayEnemyBoogerHit(GameObject emitter = null) => PostEvent(playEnemyBoogerHit, emitter);
     public void PlayEnemyCombatAlertFox(GameObject emitter = null) => PostEvent(playEnemyCombatAlertFox, emitter);
