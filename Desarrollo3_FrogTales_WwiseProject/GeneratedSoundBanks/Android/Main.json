@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{E02E0AB8-9BA3-4DB6-BEE4-9E29D9CBD36D}",
     "Language": "SFX",
-    "Hash": "{7BE76701-55CC-99EE-2956-F72A4EE03F91}",
+    "Hash": "{FDD9D924-A08A-B07A-C3DD-D7765B4882A8}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
     "Path": "Main.bnk",
@@ -30,6 +30,22 @@
       "Location": "Memory",
       "ShortName": "674208__imataco__strong-select-level-up-sound.wav",
       "CachePath": "53/{53485191-880B-0777-13E5-0E6F3AC12EE7}.wem"
+     },
+     {
+      "Id": "819493186",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "674208__imataco__strong-select-level-up-sound.wav",
+      "CachePath": "28/{2892D939-1011-EBFD-24B4-16932E0BDDD9}.wem"
+     },
+     {
+      "Id": "916400711",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "674208__imataco__strong-select-level-up-sound.wav",
+      "CachePath": "FF/{FFBC5A66-91A0-EC88-FDC0-F8130714D360}.wem"
      }
     ],
     "Events": [
@@ -213,11 +229,11 @@
       "GUID": "{7334915D-E33F-4A84-9432-6C4E3894436C}",
       "Color": "4",
       "DurationType": "OneShot",
-      "DurationMin": "0.15742",
-      "DurationMax": "0.15742",
+      "DurationMin": "0.21836",
+      "DurationMax": "0.21836",
       "MediaRefs": [
        {
-        "Id": "335759465"
+        "Id": "819493186"
        }
       ]
      },
@@ -228,11 +244,11 @@
       "GUID": "{E3B2126A-FFCB-4F16-BE9B-891264E887B0}",
       "Color": "4",
       "DurationType": "OneShot",
-      "DurationMin": "0.15742",
-      "DurationMax": "0.15742",
+      "DurationMin": "0.24873",
+      "DurationMax": "0.24873",
       "MediaRefs": [
        {
-        "Id": "335759465"
+        "Id": "916400711"
        }
       ]
      },
@@ -395,6 +411,6 @@
     ]
    }
   ],
-  "FileHash": "{266F2B2B-9D27-A0BB-1F8F-1706D398D8A4}"
+  "FileHash": "{15BE2727-C6C0-3107-57E3-2C905A09D603}"
  }
 }
