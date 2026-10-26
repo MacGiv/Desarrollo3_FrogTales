@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5061cd12d83bb6146a4c0ec861ffc067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  mainBank:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 5b50c78a378743941be358b4d057fa9c, type: 2}
   playMX:
     idInternal: 0
     valueGuidInternal: 

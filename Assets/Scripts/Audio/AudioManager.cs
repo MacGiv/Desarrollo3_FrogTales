@@ -5,19 +5,10 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+    [Header("Main SoundBank")]
+    [SerializeField] private AK.Wwise.Bank mainBank;
 
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    [Header("Music Events & States")]
+    [Header("Music Events")]
     [SerializeField] private AK.Wwise.Event playMX;
 
     [Header("Enemy Events")]
@@ -48,7 +39,34 @@ public class AudioManager : MonoBehaviour
     [Header("Testing")]
     [SerializeField] private AK.Wwise.Event playTestSound;
 
-    // Métodos genéricos para disparar desde código o Inspector
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        // Carga automática del SoundBank manual en RAM
+        if (mainBank != null && mainBank.IsValid())
+        {
+            mainBank.Load();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Libera el SoundBank de la memoria RAM al destruir el objeto
+        if (Instance == this && mainBank != null && mainBank.IsValid())
+        {
+            mainBank.Unload();
+        }
+    }
+
+    #region Generic Helpers
     public void PostEvent(AK.Wwise.Event akEvent, GameObject emitter = null)
     {
         if (akEvent != null && akEvent.IsValid())
@@ -72,8 +90,9 @@ public class AudioManager : MonoBehaviour
             musicSwitch.SetValue(target != null ? target : gameObject);
         }
     }
+    #endregion
 
-    // Métodos para ser llamados directamente desde otros scripts
+    #region Play Methods
     public void PlayMusic() => PostEvent(playMX);
 
     public void PlayEnemyArrowHit(GameObject emitter = null) => PostEvent(playEnemyArrowHit, emitter);
@@ -99,4 +118,5 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerTongueShot(GameObject emitter = null) => PostEvent(playPlayerTongueShot, emitter);
 
     public void PlayTestSound(GameObject emitter = null) => PostEvent(playTestSound, emitter);
+    #endregion
 }
