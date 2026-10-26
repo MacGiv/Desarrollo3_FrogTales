@@ -190,6 +190,13 @@
 				<Folder Name="Music" ID="{ABEA450F-427B-414E-8180-A3A0F01FCF35}" ShortID="192317843">
 					<ChildrenList>
 						<Event Name="Play_MX" ID="{A9F60DCC-D692-4271-8B28-2FC36CA84D5F}">
+							<PropertyList>
+								<Property Name="InstanceLimit" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{A4EE791B-B933-4D34-9BFE-E24585B65871}" ShortID="908178265">
 									<ReferenceList>
