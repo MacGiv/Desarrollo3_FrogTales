@@ -14,7 +14,11 @@ namespace FrogGame.Gameplay
 
         public void SetTarget(Vector2 target) => targetPosition = target;
 
-        public void Enter() => brain.MovementHandler.Stop();
+        public void Enter()
+        {
+            brain.MovementHandler.Stop();
+            brain.Animator.Play("Grapple");
+        }
 
         public void LogicUpdate()
         {
