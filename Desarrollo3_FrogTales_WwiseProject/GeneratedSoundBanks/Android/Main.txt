@@ -36,6 +36,7 @@ State	ID	Name	State Group			Notes
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	335759465	Enemy_Damage	.cache\9B\{9B5E1005-1EA5-ED90-8E3E-CC6C13F99FED}.wem		\Containers\Default Work Unit\SFX\SFX\Enemies\Enemy_Damage		13980
 	432275089	Test sound	.cache\53\{53485191-880B-0777-13E5-0E6F3AC12EE7}.wem		\Containers\Default Work Unit\SFX\SFX\Test sound		277274
+	606682010	Dungeon_MX	.cache\41\{4181A67A-CEDA-3793-F066-562CD4BF6D33}.wem		\Containers\Default Work Unit\Music\MX\Dungeon\Dungeon\Dungeon_MX		16443232
 	819493186	Player_Booger_Hit	.cache\28\{2892D939-1011-EBFD-24B4-16932E0BDDD9}.wem		\Containers\Default Work Unit\SFX\SFX\Player\Player_Booger_Hit		19356
 	916400711	Player_Booger_Shot	.cache\FF\{FFBC5A66-91A0-EC88-FDC0-F8130714D360}.wem		\Containers\Default Work Unit\SFX\SFX\Player\Player_Booger_Shot		22034
 

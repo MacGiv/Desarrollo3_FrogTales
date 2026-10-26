@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{E02E0AB8-9BA3-4DB6-BEE4-9E29D9CBD36D}",
     "Language": "SFX",
-    "Hash": "{FDD9D924-A08A-B07A-C3DD-D7765B4882A8}",
+    "Hash": "{02803F93-6651-5040-D255-B99E56DAA35B}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
     "Path": "Main.bnk",
@@ -30,6 +30,14 @@
       "Location": "Memory",
       "ShortName": "674208__imataco__strong-select-level-up-sound.wav",
       "CachePath": "53/{53485191-880B-0777-13E5-0E6F3AC12EE7}.wem"
+     },
+     {
+      "Id": "606682010",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fields-of-Green_009_128k.wav",
+      "CachePath": "41/{4181A67A-CEDA-3793-F066-562CD4BF6D33}.wem"
      },
      {
       "Id": "819493186",
@@ -220,7 +228,34 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Music\\Play_MX",
       "GUID": "{A9F60DCC-D692-4271-8B28-2FC36CA84D5F}",
       "DurationType": "Infinite",
-      "SwitchContainers": []
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1690668539",
+         "Id": "608898761",
+         "GUID": "{7CD1E8C6-C42A-4EBE-9852-5114583AB901}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "606682010"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "State",
+         "GroupId": "1690668539",
+         "Id": "89505537",
+         "GUID": "{8A0EAA00-B847-430F-A013-B1326BE4DB1D}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "606682010"
+         }
+        ]
+       }
+      ]
      },
      {
       "Id": "1892059696",
@@ -411,6 +446,6 @@
     ]
    }
   ],
-  "FileHash": "{9920677B-0A47-3D15-8E0B-E6A8BD51AC48}"
+  "FileHash": "{3B7BF935-5A49-1644-C2AF-9F18CF89778B}"
  }
 }
