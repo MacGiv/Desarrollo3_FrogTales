@@ -4,6 +4,9 @@
 		<WorkUnit Name="Default Work Unit" ID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}" PersistMode="Standalone">
 			<ChildrenList>
 				<StateGroup Name="Music_States" ID="{EBD97F21-6A71-46F9-999B-56F9D722CBEA}">
+					<PropertyList>
+						<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+					</PropertyList>
 					<ChildrenList>
 						<State Name="None" ID="{55368312-928D-4D19-B610-7A2D17EDFB23}"/>
 						<State Name="BossFight" ID="{7D286F55-F7E1-4A49-86A6-68826711BA56}"/>
