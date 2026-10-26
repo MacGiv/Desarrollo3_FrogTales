@@ -18,6 +18,10 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{B539638B-3488-4107-91B8-AE3B1680739F}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
 							<MediaIDList>
