@@ -16,6 +16,26 @@ namespace AK
         static const AkUniqueID PLAY_TEST_SOUND = 3211564518U;
     } // namespace EVENTS
 
+    namespace STATES
+    {
+        namespace MUSIC_STATES
+        {
+            static const AkUniqueID GROUP = 1690668539U;
+
+            namespace STATE
+            {
+                static const AkUniqueID BOSSFIGHT = 580146960U;
+                static const AkUniqueID DUNGEON = 608898761U;
+                static const AkUniqueID GAMEPLAY = 89505537U;
+                static const AkUniqueID MENU = 2607556080U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID OVERWORLD = 1562068129U;
+                static const AkUniqueID SHOP = 251412225U;
+            } // namespace STATE
+        } // namespace MUSIC_STATES
+
+    } // namespace STATES
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
@@ -25,6 +45,8 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID MAIN_AUDIO_BUS = 2246998526U;
+        static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID SFX = 393239870U;
     } // namespace BUSSES
 
     namespace AUDIO_DEVICES
