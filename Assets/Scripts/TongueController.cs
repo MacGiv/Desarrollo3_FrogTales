@@ -56,6 +56,11 @@ namespace FrogGame.Gameplay
                 hitPosition = hit.point;
                 int hitLayer = 1 << hit.collider.gameObject.layer;
 
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayPlayerTongueHit(gameObject);
+                }
+
                 if ((hitLayer & grappleLayer) != 0)
                 {
                     hitResult = TongueHitResult.Grapple;

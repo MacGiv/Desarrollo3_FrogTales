@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}" SchemaVersion="133" RootDocumentID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}" ParentDocumentID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}">
+	<Containers>
+		<WorkUnit Name="Music" ID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}" OwnerID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}" PersistMode="Nested">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="2"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<MusicSwitchContainer Name="MX" ID="{8DCE3BF6-5B71-45E8-811D-E843D55AC255}" ShortID="895079614">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="2"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Music" ID="{A62E41A8-A27A-40B1-895B-D6612D0D3CBD}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+						</Reference>
+						<Reference Name="TransitionRoot">
+							<Custom>
+								<MusicTransition Name="Root" ID="{60C3AAD3-3639-4AC2-A1B1-1456FA2F7F41}">
+									<PropertyList>
+										<Property Name="IsFolder" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<MusicTransition Name="Transition" ID="{0426A5CF-5AFD-4272-AA43-C63902DA02A2}">
+											<TransitionInfo/>
+										</MusicTransition>
+									</ChildrenList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</Custom>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicPlaylistContainer Name="Gameplay" ID="{8E88CF19-D0D1-45F7-8A06-B05E7F9D0C42}" ShortID="253799901">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="2"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{90D63E0D-DF44-454E-A1FB-CABD3091B408}" ShortID="614029457"/>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{9B497E35-E7DB-4467-A6C8-41A9538DA9FA}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{A860E4AC-8BAF-4131-A5E4-F2A38E1E9FEF}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Menu" ID="{C5212177-19FA-46A2-95BC-3C1FDF24F3DC}" ShortID="851414396">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="2"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{B6243751-E25E-463E-8301-64F549F5A888}" ShortID="611734791"/>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{A7729556-385D-4EF3-93B6-D874ACEB2409}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{A3F951EC-5C05-418B-885A-580EFCF8597C}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Overworld" ID="{97F4C481-7589-4F9B-9D86-93464BC01355}" ShortID="1015971072">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="2"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{064F4184-CD58-4AC6-AE70-92DAA1CFB1A5}" ShortID="721807258"/>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{2F4D73BD-3137-4055-9BE0-C49D204F62E2}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{6914F613-D5F5-4F5F-AAC5-D98F3BBA2DCE}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Dungeon" ID="{ABA04361-BA41-4DE4-999C-E89C18D748FF}" ShortID="398298682">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="2"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{4F4B87FD-C0BA-466F-8DDB-4A2066267962}" ShortID="49427150"/>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{95D02B78-4A1D-417B-95D3-60B0F384D091}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{7743897D-7F3C-4C51-A1F6-254BBFBE33A8}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="Shop" ID="{C3F60251-0A77-4A1D-9719-272FFC889C0F}" ShortID="1007997389">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="2"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{455D5ECA-458D-4211-8099-D156DC148D0F}" ShortID="537404888"/>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{B36F96BF-91EF-48AD-987D-C781D6962B06}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{2C1E7929-193F-4BEC-BD50-33D057E9CC17}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</MusicPlaylistContainer>
+						<MusicPlaylistContainer Name="BossFight" ID="{106A6E88-E019-4FF6-A0D8-D20F89F31976}" ShortID="138158312">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="2"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+								</Reference>
+								<Reference Name="PlaylistRoot">
+									<Custom>
+										<MusicPlaylistItem Name="" ID="{19596400-2B9E-4ABB-9D9A-C00B7D2FC6F3}" ShortID="886640418"/>
+									</Custom>
+								</Reference>
+								<Reference Name="TransitionRoot">
+									<Custom>
+										<MusicTransition Name="Root" ID="{C6B645B7-9715-4BD7-B797-F4A98A6FD99C}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<MusicTransition Name="Transition" ID="{7A96CB7B-A25A-419E-B626-DFC9A2F973C6}">
+													<TransitionInfo/>
+												</MusicTransition>
+											</ChildrenList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</Custom>
+								</Reference>
+							</ReferenceList>
+						</MusicPlaylistContainer>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Arguments">
+							<PluginInnerObject Name="" ID="{B6E8CE58-E301-48DC-8CDD-9C955D0331A1}" PluginName="MusicArgumentsSlot" CompanyID="0" PluginID="89">
+								<ReferenceList>
+									<Reference Name="Argument">
+										<ObjectRef Name="Music_States" ID="{EBD97F21-6A71-46F9-999B-56F9D722CBEA}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
+									</Reference>
+								</ReferenceList>
+							</PluginInnerObject>
+						</ObjectList>
+						<ObjectList Name="Entries">
+							<MultiSwitchEntry Name="" ID="{EC1DC258-7764-4CB0-83B4-B4D82FD7F3A1}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="BossFight" ID="{106A6E88-E019-4FF6-A0D8-D20F89F31976}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{DA53CD90-4CF0-4E45-836C-C49F0FF4ECF2}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
+													<ObjectRef Name="BossFight" ID="{7D286F55-F7E1-4A49-86A6-68826711BA56}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
+												</Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{978543D5-E34F-4861-8A03-1FC57F0575EE}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="Dungeon" ID="{ABA04361-BA41-4DE4-999C-E89C18D748FF}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{1871F507-E879-4E4F-B9D6-B6A4AA81C7B4}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
+													<ObjectRef Name="Dungeon" ID="{7CD1E8C6-C42A-4EBE-9852-5114583AB901}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
+												</Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{F1E45F5A-7015-4DF0-8C82-A8118AF22341}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="Gameplay" ID="{8E88CF19-D0D1-45F7-8A06-B05E7F9D0C42}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{601FE45B-BB1C-45E5-97DA-F894983DE302}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
+													<ObjectRef Name="Gameplay" ID="{8A0EAA00-B847-430F-A013-B1326BE4DB1D}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
+												</Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{A28C99A6-8A6C-46C0-A6FA-F23326AC2346}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="Menu" ID="{C5212177-19FA-46A2-95BC-3C1FDF24F3DC}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{B9B88DCA-9415-425C-924C-E707A1B40869}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
+													<ObjectRef Name="Menu" ID="{BB563EA7-E767-4B1C-B3D6-A97F15057A4B}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
+												</Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{1D54A157-BF4F-4251-BC12-D09B1DC7318E}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="Overworld" ID="{97F4C481-7589-4F9B-9D86-93464BC01355}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{5145477E-62C7-4F47-B996-A757A456F819}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
+													<ObjectRef Name="Overworld" ID="{8B58EFB3-AD32-4A68-B170-3AB5EAD7C0D5}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
+												</Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+							<MultiSwitchEntry Name="" ID="{D14F71EA-6A22-4729-A3A0-9437B5F9C8EA}">
+								<ReferenceList>
+									<Reference Name="AudioNode">
+										<ObjectRef Name="Shop" ID="{C3F60251-0A77-4A1D-9719-272FFC889C0F}" WorkUnitID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}"/>
+									</Reference>
+								</ReferenceList>
+								<ObjectLists>
+									<ObjectList Name="EntryPath">
+										<PluginInnerObject Name="" ID="{DCE8B774-21E9-42F0-A097-F52D37A65451}" PluginName="EntryPathSlot" CompanyID="0" PluginID="88">
+											<ReferenceList>
+												<Reference Name="EntryPathObject">
+													<ObjectRef Name="Shop" ID="{CAF97380-AD58-414B-833D-276004819F38}" WorkUnitID="{F9880323-C66B-49C4-8E49-B0EC9FF1B7E2}"/>
+												</Reference>
+											</ReferenceList>
+										</PluginInnerObject>
+									</ObjectList>
+								</ObjectLists>
+							</MultiSwitchEntry>
+						</ObjectList>
+					</ObjectLists>
+				</MusicSwitchContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</Containers>
+</WwiseDocument>

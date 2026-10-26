@@ -1,0 +1,113 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "1355168291",
+    "Type": "User",
+    "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
+    "Language": "SFX",
+    "Hash": "{40AF54B1-6971-8542-3A65-05147F40FE52}",
+    "ObjectPath": "Init",
+    "ShortName": "Init",
+    "Path": "Init.bnk",
+    "Plugins": {
+     "AudioDevices": [
+      {
+       "Id": "2317455096",
+       "Name": "No_Output",
+       "ObjectPath": "\\Devices\\Default Work Unit\\No_Output",
+       "GUID": "{4FE779A4-7A9A-42A9-A83C-A235E0EBCEC9}",
+       "LibName": "No Output",
+       "LibId": "11862023"
+      },
+      {
+       "Id": "3859886410",
+       "Name": "System",
+       "ObjectPath": "\\Devices\\Default Work Unit\\System",
+       "GUID": "{1D180ABE-5378-4B1A-B573-4AB07799528D}",
+       "LibName": "System",
+       "LibId": "11403271"
+      }
+     ]
+    },
+    "Busses": [
+     {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Busses\\Default Work Unit\\SFX",
+      "GUID": "{FF240F5C-0FDA-4740-8F0D-39D040BAEEE8}"
+     },
+     {
+      "Id": "2246998526",
+      "Name": "Main Audio Bus",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus",
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+     },
+     {
+      "Id": "3991942870",
+      "Name": "Music",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Music",
+      "GUID": "{A62E41A8-A27A-40B1-895B-D6612D0D3CBD}"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "1690668539",
+      "Name": "Music_States",
+      "ObjectPath": "\\States\\Default Work Unit\\Music_States",
+      "GUID": "{EBD97F21-6A71-46F9-999B-56F9D722CBEA}",
+      "States": [
+       {
+        "Id": "89505537",
+        "Name": "Gameplay",
+        "ObjectPath": "\\States\\Default Work Unit\\Music_States\\Gameplay",
+        "GUID": "{8A0EAA00-B847-430F-A013-B1326BE4DB1D}"
+       },
+       {
+        "Id": "251412225",
+        "Name": "Shop",
+        "ObjectPath": "\\States\\Default Work Unit\\Music_States\\Shop",
+        "GUID": "{CAF97380-AD58-414B-833D-276004819F38}"
+       },
+       {
+        "Id": "580146960",
+        "Name": "BossFight",
+        "ObjectPath": "\\States\\Default Work Unit\\Music_States\\BossFight",
+        "GUID": "{7D286F55-F7E1-4A49-86A6-68826711BA56}"
+       },
+       {
+        "Id": "608898761",
+        "Name": "Dungeon",
+        "ObjectPath": "\\States\\Default Work Unit\\Music_States\\Dungeon",
+        "GUID": "{7CD1E8C6-C42A-4EBE-9852-5114583AB901}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\Music_States\\None",
+        "GUID": "{55368312-928D-4D19-B610-7A2D17EDFB23}"
+       },
+       {
+        "Id": "1562068129",
+        "Name": "Overworld",
+        "ObjectPath": "\\States\\Default Work Unit\\Music_States\\Overworld",
+        "GUID": "{8B58EFB3-AD32-4A68-B170-3AB5EAD7C0D5}"
+       },
+       {
+        "Id": "2607556080",
+        "Name": "Menu",
+        "ObjectPath": "\\States\\Default Work Unit\\Music_States\\Menu",
+        "GUID": "{BB563EA7-E767-4B1C-B3D6-A97F15057A4B}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{23A7BD6B-2AA9-9402-F401-87350D57560B}"
+ }
+}
