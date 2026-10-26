@@ -29,6 +29,9 @@ namespace FrogGame.Enemies
         [SerializeField] private Transform visualsTransform;
         [SerializeField] private bool spriteFacesLeftByDefault = false;
 
+        [Header("FX References")]
+        [SerializeField] private Animator alertAnimator;
+
         private Rigidbody2D rb;
         private int currentHealth;
 
@@ -42,6 +45,7 @@ namespace FrogGame.Enemies
         public Transform[] Waypoints => waypoints;
         public Transform TargetPlayer { get; private set; }
         public Animator Animator { get; private set; }
+        public Animator AlertAnimator => alertAnimator;
 
         // States
         public SmallOwlPatrolState PatrolState { get; private set; }
