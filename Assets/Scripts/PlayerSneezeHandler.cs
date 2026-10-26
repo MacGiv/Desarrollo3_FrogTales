@@ -58,6 +58,11 @@ namespace FrogGame.Gameplay
             lastSneezeTime = Time.time;
             OnSneezeTriggered?.Invoke(cooldown, cooldown);
 
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayPlayerBoogerShot(gameObject);
+            }
+
             Vector2 facingDir = movementHandler != null ? movementHandler.FacingDirection : Vector2.right;
             Vector2 attackCenter = (Vector2)transform.position + (facingDir * (range * 0.5f));
             Vector2 boxSize = new Vector2(range, areaWidth);
@@ -70,6 +75,11 @@ namespace FrogGame.Gameplay
 
             foreach (var hit in hits)
             {
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayPlayerBoogerHit(hit.gameObject);
+                }
+
                 // 1. Apply Damage
                 if (hit.TryGetComponent<IDamageable>(out var damageable))
                 {
