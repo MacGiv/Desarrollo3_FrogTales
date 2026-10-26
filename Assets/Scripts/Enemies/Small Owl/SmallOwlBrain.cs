@@ -6,6 +6,7 @@ namespace FrogGame.Enemies
     /// <summary>
     /// Brain & FSM Controller for the flying Small Owl enemy.
     /// </summary>
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
     public class SmallOwlBrain : MonoBehaviour, IDamageable, IStunnable
@@ -24,6 +25,10 @@ namespace FrogGame.Enemies
         [Header("Patrol Settings")]
         [SerializeField] private Transform[] waypoints;
 
+        [Header("Visuals & Flip Settings")]
+        [SerializeField] private Transform visualsTransform;
+        [SerializeField] private bool spriteFacesLeftByDefault = false;
+
         private Rigidbody2D rb;
         private int currentHealth;
 
@@ -36,6 +41,7 @@ namespace FrogGame.Enemies
         public int AttackDamage => attackDamage;
         public Transform[] Waypoints => waypoints;
         public Transform TargetPlayer { get; private set; }
+        public Animator Animator { get; private set; }
 
         // States
         public SmallOwlPatrolState PatrolState { get; private set; }
@@ -47,6 +53,8 @@ namespace FrogGame.Enemies
             rb = GetComponent<Rigidbody2D>();
             rb.gravityScale = 0f;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+            Animator = GetComponent<Animator>();
 
             currentHealth = maxHealth;
 
@@ -66,11 +74,39 @@ namespace FrogGame.Enemies
         {
             DetectPlayer();
             FSM.CurrentState.LogicUpdate();
+            HandleFlip();
         }
 
         private void FixedUpdate()
         {
             FSM.CurrentState.PhysicsUpdate();
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            // Apply contact damage during swoop
+            if (FSM.CurrentState == SwoopState)
+            {
+                if (collision.TryGetComponent<IDamageable>(out var damageable) && collision.CompareTag("Player"))
+                {
+                    damageable.TakeDamage(attackDamage);
+                }
+            }
+        }
+
+        private void HandleFlip()
+        {
+            if (visualsTransform == null) return;
+
+            if (Mathf.Abs(rb.linearVelocity.x) > 0.1f)
+            {
+                bool movingLeft = rb.linearVelocity.x < 0f;
+                bool shouldFlip = spriteFacesLeftByDefault ? !movingLeft : movingLeft;
+
+                Vector3 localScale = visualsTransform.localScale;
+                localScale.x = shouldFlip ? -1f : 1f;
+                visualsTransform.localScale = localScale;
+            }
         }
 
         private void DetectPlayer()
@@ -103,18 +139,6 @@ namespace FrogGame.Enemies
         {
             StunnedState.SetStunDuration(duration);
             FSM.ChangeState(StunnedState);
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            // Apply contact damage during swoop
-            if (FSM.CurrentState == SwoopState)
-            {
-                if (collision.TryGetComponent<IDamageable>(out var damageable) && collision.CompareTag("Player"))
-                {
-                    damageable.TakeDamage(attackDamage);
-                }
-            }
         }
 
         private void OnDrawGizmosSelected()

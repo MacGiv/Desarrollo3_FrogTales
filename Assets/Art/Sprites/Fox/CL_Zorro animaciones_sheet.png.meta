@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 31b754dee231af24a87dcee58d4e7fc5
+guid: 1c6d5692a0b76944195d6939807a69f3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6531480721383750596
-    second: buho_cn_animaciones_cl1_0
+      213: -4559058979096018567
+    second: CL_Zorro animaciones_sheet_0
+  - first:
+      213: -7652220089845905746
+    second: CL_Zorro animaciones_sheet_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: buho_cn_animaciones_cl1_0
+      name: CL_Zorro animaciones_sheet_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 11
-        width: 25
-        height: 20
+        x: 0
+        y: 0
+        width: 48
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4cbf36f5c1b74aa50800000000000000
-      internalID: 6531480721383750596
+      spriteID: 9714de07308fab0c0800000000000000
+      internalID: -4559058979096018567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_Zorro animaciones_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea680a91f5addc590800000000000000
+      internalID: -7652220089845905746
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 76f0590abdb5a174fa9dd7bc4dea5085
     internalID: 0
     vertices: []
     indices: 
@@ -133,9 +158,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      buho_cn_animaciones_cl1_0: 6531480721383750596
+      CL_Zorro animaciones_sheet_0: -4559058979096018567
+      CL_Zorro animaciones_sheet_1: -7652220089845905746
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
