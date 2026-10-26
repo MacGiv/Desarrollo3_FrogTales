@@ -25,6 +25,11 @@ namespace FrogGame.Gameplay
             }
             else
             {
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayPlayerTongueShot(brain.gameObject);
+                }
+
                 Vector2 direction = brain.MovementHandler.FacingDirection;
                 tongueCoroutine = brain.StartCoroutine(brain.TongueController.ShootTongueRoutine(direction, OnTongueComplete));
             }
