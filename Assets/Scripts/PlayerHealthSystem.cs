@@ -59,6 +59,11 @@ namespace FrogGame.Gameplay
             currentHealth -= damageAmount;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayPlayerDamage(gameObject);
+            }
+
             OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
             if (currentHealth <= 0)

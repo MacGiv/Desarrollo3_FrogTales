@@ -9,7 +9,13 @@ namespace FrogGame.Enemies
 
         public FoxChaseState(FoxBrain brain) => this.brain = brain;
 
-        public void Enter() { }
+        public void Enter()
+        {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnemyCombatAlertFox(brain.gameObject);
+            }
+        }
 
         public void LogicUpdate()
         {
