@@ -71,6 +71,11 @@ namespace FrogGame.Gameplay
 
             onCollected?.Invoke();
 
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnvItemsPickup(gameObject);
+            }
+
             if (pullTarget != null && TryGetComponent<IPickupable>(out var pickupable))
             {
                 pickupable.Collect(pullTarget.gameObject);

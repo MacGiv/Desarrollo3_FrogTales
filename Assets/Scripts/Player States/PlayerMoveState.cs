@@ -17,7 +17,14 @@ namespace FrogGame.Gameplay
 
         public void Enter()
         {
-            brain.Animator.Play("Locomotion");
+            if (brain.CarryHandler.IsCarrying)
+            {
+                brain.Animator.Play("CarryMove");
+            }
+            else
+            {
+                brain.Animator.Play("Move");
+            }
         }
 
         public void LogicUpdate()

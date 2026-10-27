@@ -39,6 +39,11 @@ namespace FrogGame.Gameplay
                 brain.InputHandler.DisableInput();
             }
 
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayPlayerFallWater(brain.gameObject);
+            }
+
             brain.Animator.Play("Drown");
             brain.MovementHandler.Stop();
             brain.transform.position = waterTileCenter;

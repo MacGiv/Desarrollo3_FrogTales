@@ -1,0 +1,21 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	1690668539	Music_States			\Default Work Unit\Music_States	
+
+State	ID	Name	State Group			Notes
+	89505537	Gameplay	Music_States			
+	251412225	Shop	Music_States			
+	580146960	BossFight	Music_States			
+	608898761	Dungeon	Music_States			
+	748895195	None	Music_States			
+	1562068129	Overworld	Music_States			
+	2607556080	Menu	Music_States			
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	393239870	SFX			\Default Work Unit\SFX	
+	2246998526	Main Audio Bus			\Default Work Unit\Main Audio Bus	
+	3991942870	Music			\Default Work Unit\Music	
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

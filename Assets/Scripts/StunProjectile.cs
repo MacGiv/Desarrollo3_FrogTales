@@ -34,7 +34,7 @@ namespace FrogGame.Gameplay
 
         /// <summary>
         /// Initializes projectile direction and velocity.
-        /// Inicializa la dirección y velocidad del proyectil.
+        /// Inicializa la direcciÃ³n y velocidad del proyectil.
         /// </summary>
         public void Setup(Vector2 direction)
         {
@@ -49,9 +49,14 @@ namespace FrogGame.Gameplay
         {
             int colLayer = 1 << collision.gameObject.layer;
 
-            // 1. Check obstacle collision / Choque contra pared u obstáculo
+            // 1. Check obstacle collision / Choque contra pared u obstÃ¡culo
             if ((colLayer & obstacleLayer) != 0)
             {
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayPlayerBoogerHit(gameObject);
+                }
+
                 Destroy(gameObject);
                 return;
             }
@@ -59,6 +64,11 @@ namespace FrogGame.Gameplay
             // 2. Check enemy/stunnable collision / Impacto contra enemigo o entidad aturdible
             if ((colLayer & enemyLayer) != 0)
             {
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayEnemyBoogerHit(gameObject);
+                }
+
                 if (collision.TryGetComponent<IStunnable>(out var stunnable))
                 {
                     stunnable.ApplyStun(stunDuration);
