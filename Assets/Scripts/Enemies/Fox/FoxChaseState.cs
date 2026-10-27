@@ -16,6 +16,11 @@ namespace FrogGame.Enemies
                 brain.AlertAnimator.gameObject.SetActive(true);
                 brain.AlertAnimator.Play("Alert");
             }
+            
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnemyCombatAlertFox(brain.gameObject);
+            }
         }
 
         public void LogicUpdate()

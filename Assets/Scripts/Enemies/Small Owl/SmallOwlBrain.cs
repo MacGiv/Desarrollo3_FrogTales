@@ -130,8 +130,19 @@ namespace FrogGame.Enemies
         public void TakeDamage(int damageAmount)
         {
             currentHealth -= damageAmount;
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnemyDamage(gameObject);
+            }
+
             if (currentHealth <= 0)
             {
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayEnemyDead(gameObject);
+                }
+
                 Destroy(gameObject);
             }
         }

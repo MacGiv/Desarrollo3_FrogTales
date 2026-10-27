@@ -19,12 +19,24 @@ namespace FrogGame.Gameplay
             if (collector.TryGetComponent<PlayerBrain>(out var brain) && brain.AmmoSystem != null)
             {
                 brain.AmmoSystem.AddArrows(ammoAmount);
+
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayEnvItemsPickup(gameObject);
+                }
+
                 Destroy(gameObject);
                 return true;
             }
             else if (collector.TryGetComponent<PlayerAmmoSystem>(out var ammoSystem))
             {
                 ammoSystem.AddArrows(ammoAmount);
+
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayEnvItemsPickup(gameObject);
+                }
+
                 Destroy(gameObject);
                 return true;
             }

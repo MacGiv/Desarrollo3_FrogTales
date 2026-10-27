@@ -18,6 +18,12 @@ namespace FrogGame.Gameplay
                 if (healthSystem.CurrentHealth < healthSystem.MaxHealth)
                 {
                     healthSystem.Heal(healAmount);
+
+                    if (AudioManager.Instance != null)
+                    {
+                        AudioManager.Instance.PlayEnvFlyHealth(gameObject);
+                    }
+
                     Destroy(gameObject);
                     return true;
                 }

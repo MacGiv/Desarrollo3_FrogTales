@@ -24,6 +24,11 @@ namespace FrogGame.Enemies
             // Transition to Swoop if player is in range and cooldown is ready
             if (brain.TargetPlayer != null && Time.time >= lastSwoopTime + brain.AttackCooldown)
             {
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayEnemyCombatAlertOwl(brain.gameObject);
+                }
+
                 brain.FSM.ChangeState(brain.SwoopState);
                 return;
             }

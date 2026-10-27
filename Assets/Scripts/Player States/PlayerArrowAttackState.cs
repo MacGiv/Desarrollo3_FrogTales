@@ -24,6 +24,11 @@ namespace FrogGame.Gameplay
             {
                 hasSpawnedArrow = false;
 
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayPlayerBowShot(brain.gameObject);
+                }
+
                 // Subscribe to C# Event from AnimationHandler
                 if (brain.AnimationHandler != null)
                 {

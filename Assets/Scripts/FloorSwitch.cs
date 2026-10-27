@@ -60,6 +60,11 @@ namespace FrogGame.World
 
         private void OnSwitchPressed()
         {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayEnvRockPushButton(gameObject);
+            }
+
             if (spriteRenderer != null && pressedSprite != null)
             {
                 spriteRenderer.sprite = pressedSprite;
