@@ -32,6 +32,12 @@ namespace FrogGame.Enemies
             {
                 brain.Animator.Play("Attack");
             }
+
+            if (brain.AlertAnimator != null)
+            {
+                brain.AlertAnimator.gameObject.SetActive(true);
+                brain.AlertAnimator.Play("Alert");
+            }
         }
 
         public void LogicUpdate()
@@ -66,6 +72,11 @@ namespace FrogGame.Enemies
         public void Exit()
         {
             brain.Rb.linearVelocity = Vector2.zero;
+
+            if (brain.AlertAnimator != null)
+            {
+                brain.AlertAnimator.gameObject.SetActive(false);
+            }
         }
     }
 }
