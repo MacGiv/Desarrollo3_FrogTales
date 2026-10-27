@@ -15,7 +15,15 @@ namespace FrogGame.Gameplay
         public void Enter()
         {
             brain.MovementHandler.Stop();
-            brain.Animator.Play("Idle");
+
+            if (brain.CarryHandler.IsCarrying)
+            {
+                brain.Animator.Play("CarryIdle");
+            }
+            else
+            {
+                brain.Animator.Play("Idle");
+            }
         }
 
         public void LogicUpdate()

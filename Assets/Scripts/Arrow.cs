@@ -59,6 +59,12 @@ namespace FrogGame.Gameplay
             if ((colLayer & obstacleLayer) != 0)
             {
                 hasHit = true;
+
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayPlayerBowHit(gameObject);
+                }
+
                 SpawnPickup();
                 Destroy(gameObject);
 
@@ -69,6 +75,11 @@ namespace FrogGame.Gameplay
             if ((colLayer & enemyLayer) != 0)
             {
                 hasHit = true;
+
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayEnemyArrowHit(gameObject);
+                }
 
                 IDamageable damageable = collision.GetComponent<IDamageable>();
 
