@@ -11,6 +11,12 @@ namespace FrogGame.Enemies
 
         public void Enter()
         {
+            if (brain.AlertAnimator != null)
+            {
+                brain.AlertAnimator.gameObject.SetActive(true);
+                brain.AlertAnimator.Play("Alert");
+            }
+            
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.PlayEnemyCombatAlertFox(brain.gameObject);
@@ -46,6 +52,11 @@ namespace FrogGame.Enemies
         public void Exit()
         {
             brain.Rb.linearVelocity = Vector2.zero;
+
+            if (brain.AlertAnimator != null)
+            {
+                brain.AlertAnimator.gameObject.SetActive(false);
+            }
         }
     }
 }

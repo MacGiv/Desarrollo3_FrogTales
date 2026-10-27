@@ -20,6 +20,8 @@ namespace FrogGame.Enemies
         public void Enter()
         {
             timer = 0f;
+
+            brain.Animator.Play("Stunned");
         }
 
         public void LogicUpdate()

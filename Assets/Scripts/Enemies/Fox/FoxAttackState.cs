@@ -39,14 +39,27 @@ namespace FrogGame.Enemies
             if (brain.TargetPlayer != null)
             {
                 IDamageable playerDamageable = brain.TargetPlayer.GetComponent<IDamageable>();
+
                 if (playerDamageable != null)
                 {
                     playerDamageable.TakeDamage(1);
+                }
+
+                if (brain.AlertAnimator != null)
+                {
+                    brain.AttackAnimator.gameObject.SetActive(true);
+                    brain.AttackAnimator.Play("FoxScratch");
                 }
             }
         }
 
         public void PhysicsUpdate() { }
-        public void Exit() { }
+        public void Exit()
+        {
+            if (brain.AttackAnimator != null)
+            {
+                brain.AttackAnimator.gameObject.SetActive(false);
+            }
+        }
     }
 }
