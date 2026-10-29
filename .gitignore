@@ -33,6 +33,11 @@ desktop.ini
 *.wwiseproj.user
 *.wsettings.user
 *.ak2up
+*.akd
+*.validationcache
+*.wsettings
+*.wem
+*.prof
 
 # Wwise internal cache and conversion builds
 .cache/
@@ -47,6 +52,22 @@ desktop.ini
 # Wwise backups
 *.bak
 *_backup*
+
+# Archivos de instalación
+WwiseUnityIntegration_*_Src.zip
+
+# Temporal cache project data (en carpeta de Assets de Unity)
+/[Aa]ssets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset*
+
+# Wwise Sound Banks
+*WwiseProject/GeneratedSoundBanks/
+
+# Wwise Documentation
+/[Aa]ssets/Wwise/Documentation.meta
+/[Aa]ssets/Wwise/Documentation/*
+
+# Wwise plugins
+/[Aa]ssets/Wwise/API/Runtime/Plugins.meta
 
 # ===================================
 # IDEs, Compilers & Solution Files
