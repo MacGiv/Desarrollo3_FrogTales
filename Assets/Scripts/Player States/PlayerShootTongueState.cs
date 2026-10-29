@@ -7,6 +7,7 @@ namespace FrogGame.Gameplay
     {
         private readonly PlayerBrain brain;
         private Coroutine tongueCoroutine;
+        private bool hasShotTongue;
 
         public PlayerShootTongueState(PlayerBrain brain) => this.brain = brain;
 
@@ -15,24 +16,37 @@ namespace FrogGame.Gameplay
             brain.InputHandler.ConsumeTongueInput();
             brain.MovementHandler.Stop();
 
-            brain.Animator.Play("ShootTongue");
+            hasShotTongue = false;
 
             if (brain.CarryHandler != null && brain.CarryHandler.IsCarrying)
             {
                 brain.CarryHandler.TryDropBox();
                 brain.FSM.ChangeState(brain.IdleState);
+
                 return;
             }
-            else
-            {
-                if (AudioManager.Instance != null)
-                {
-                    AudioManager.Instance.PlayPlayerTongueShot(brain.gameObject);
-                }
 
-                Vector2 direction = brain.MovementHandler.FacingDirection;
-                tongueCoroutine = brain.StartCoroutine(brain.TongueController.ShootTongueRoutine(direction, OnTongueComplete));
+            if (brain.AnimationHandler != null)
+            {
+                brain.AnimationHandler.OnTongueExtended += StartShootTongue;
             }
+
+            brain.Animator.Play("ShootTongue");
+        }
+
+        private void StartShootTongue()
+        {
+            if (hasShotTongue) return;
+
+            hasShotTongue = true;
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayPlayerTongueShot(brain.gameObject);
+            }
+
+            Vector2 direction = brain.MovementHandler.FacingDirection;
+            tongueCoroutine = brain.StartCoroutine(brain.TongueController.ShootTongueRoutine(direction, OnTongueComplete));
         }
 
         private void OnTongueComplete(TongueController.TongueHitResult result, Vector2 targetPos)
@@ -53,6 +67,11 @@ namespace FrogGame.Gameplay
 
         public void Exit()
         {
+            if (brain.AnimationHandler != null)
+            {
+                brain.AnimationHandler.OnTongueExtended -= StartShootTongue;
+            }
+
             if (tongueCoroutine != null)
             {
                 brain.StopCoroutine(tongueCoroutine);
