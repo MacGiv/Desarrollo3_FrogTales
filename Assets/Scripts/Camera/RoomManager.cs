@@ -5,6 +5,9 @@ namespace FrogGame.Camera
     using Unity.Cinemachine;
     using FrogGame.Gameplay;
 
+    /// <summary>
+    /// Manages room-based camera clamping, look-ahead tracking, and safe collision-free player transitions between rooms using closest edge detection.
+    /// </summary>
     public class RoomManager : MonoBehaviour
     {
         public static RoomManager Instance { get; private set; }
@@ -80,22 +83,18 @@ namespace FrogGame.Camera
             switch (currentRoom.Type)
             {
                 case RoomType.Horizontal:
-                    // Only update X memory when actively facing horizontally
                     if (facingDir.x != 0f)
                     {
                         lastLookAheadDirX = facingDir.x;
                     }
-
                     targetOffset.x = lastLookAheadDirX * lookAheadDistance;
                     break;
 
                 case RoomType.Vertical:
-                    // Only update Y memory when actively facing vertically
                     if (facingDir.y != 0f)
                     {
                         lastLookAheadDirY = facingDir.y;
                     }
-
                     targetOffset.y = lastLookAheadDirY * lookAheadDistance;
                     break;
 
@@ -173,40 +172,14 @@ namespace FrogGame.Camera
                 brain.HealthSystem?.TriggerInvincibility(roomTransitionInvincibility);
             }
 
-            Vector2 rawDir = (playerTransform.position - cameraTarget.position).normalized;
-            Vector2 entryDirection = Vector2.right;
+            // 1. Calculate direction deterministically based on the closest edge of the new room collider
+            Vector2 entryDirection = DetermineEntryDirection(playerTransform.position, newRoom);
 
-            if (rawDir != Vector2.zero)
-            {
-                if (Mathf.Abs(rawDir.x) >= Mathf.Abs(rawDir.y))
-                {
-                    entryDirection = new Vector2(Mathf.Sign(rawDir.x), 0f);
-                }
-                else
-                {
-                    entryDirection = new Vector2(0f, Mathf.Sign(rawDir.y));
-                }
-            }
-
-            float safeDistance = playerNudgeDistance;
             Collider2D playerCollider = playerTransform.GetComponent<Collider2D>();
-            Vector2 boxSize = playerCollider != null ? (Vector2)playerCollider.bounds.size : new Vector2(0.8f, 0.8f);
+            Vector2 playerSize = playerCollider != null ? (Vector2)playerCollider.bounds.size : new Vector2(0.8f, 0.8f);
 
-            RaycastHit2D hit = Physics2D.BoxCast(
-                playerTransform.position,
-                boxSize,
-                0f,
-                entryDirection,
-                playerNudgeDistance,
-                obstacleLayer
-            );
-
-            if (hit.collider != null)
-            {
-                safeDistance = Mathf.Max(0f, hit.distance - 0.1f);
-            }
-
-            Vector3 playerTargetPos = playerTransform.position + (Vector3)(entryDirection * safeDistance);
+            // 2. Calculate safe target position inside the new room avoiding Obstacles
+            Vector3 playerTargetPos = GetSafePlayerPosition(playerTransform.position, entryDirection, playerNudgeDistance, playerSize, newRoom);
             Vector3 targetCamPos = currentRoom.GetClampedCameraPosition(playerTargetPos, mainCamera);
 
             while (Vector3.Distance(cameraTarget.position, targetCamPos) > 0.05f)
@@ -235,6 +208,120 @@ namespace FrogGame.Camera
             }
 
             isTransitioning = false;
+        }
+
+        /// <summary>
+        /// Calculates entry direction by identifying which boundary edge of the target room the player crossed.
+        /// </summary>
+        private Vector2 DetermineEntryDirection(Vector3 playerPos, Room newRoom)
+        {
+            if (newRoom == null || newRoom.Collider == null) return Vector2.up;
+
+            Bounds bounds = newRoom.Collider.bounds;
+
+            // Absolute distances to each of the 4 borders of the destination room
+            float distLeft = Mathf.Abs(playerPos.x - bounds.min.x);
+            float distRight = Mathf.Abs(playerPos.x - bounds.max.x);
+            float distBottom = Mathf.Abs(playerPos.y - bounds.min.y);
+            float distTop = Mathf.Abs(playerPos.y - bounds.max.y);
+
+            // Find the closest border edge
+            float minDist = distLeft;
+            Vector2 entryDirection = Vector2.right; // Crossed Left edge -> Move Right
+
+            if (distRight < minDist)
+            {
+                minDist = distRight;
+                entryDirection = Vector2.left; // Crossed Right edge -> Move Left
+            }
+            if (distBottom < minDist)
+            {
+                minDist = distBottom;
+                entryDirection = Vector2.up; // Crossed Bottom edge -> Move Up
+            }
+            if (distTop < minDist)
+            {
+                minDist = distTop;
+                entryDirection = Vector2.down; // Crossed Top edge -> Move Down
+            }
+
+            return entryDirection;
+        }
+
+        /// <summary>
+        /// Places the player safely inside the new room bounds and adjusts orthogonally if overlapping walls.
+        /// </summary>
+        private Vector3 GetSafePlayerPosition(Vector3 startPos, Vector2 direction, float desiredDistance, Vector2 playerSize, Room newRoom)
+        {
+            Vector2 skinSize = new Vector2(Mathf.Max(0.1f, playerSize.x - 0.04f), Mathf.Max(0.1f, playerSize.y - 0.04f));
+            Bounds roomBounds = newRoom.Collider.bounds;
+
+            Vector3 candidatePos = startPos;
+
+            // Move candidate position past the crossed boundary into the new room
+            if (direction == Vector2.right)
+            {
+                candidatePos.x = roomBounds.min.x + desiredDistance;
+            }
+            else if (direction == Vector2.left)
+            {
+                candidatePos.x = roomBounds.max.x - desiredDistance;
+            }
+            else if (direction == Vector2.up)
+            {
+                candidatePos.y = roomBounds.min.y + desiredDistance;
+            }
+            else if (direction == Vector2.down)
+            {
+                candidatePos.y = roomBounds.max.y - desiredDistance;
+            }
+
+            // Clamp candidate position to ensure it is strictly within the room collider
+            candidatePos.x = Mathf.Clamp(candidatePos.x, roomBounds.min.x + (playerSize.x / 2f), roomBounds.max.x - (playerSize.x / 2f));
+            candidatePos.y = Mathf.Clamp(candidatePos.y, roomBounds.min.y + (playerSize.y / 2f), roomBounds.max.y - (playerSize.y / 2f));
+
+            // Depenetration check against Obstacles layer
+            if (Physics2D.OverlapBox(candidatePos, skinSize, 0f, obstacleLayer) != null)
+            {
+                int maxSteps = 12;
+                float stepSize = 0.1f;
+
+                for (int i = 1; i <= maxSteps; i++)
+                {
+                    float offset = stepSize * i;
+
+                    if (direction.x != 0f) // Moving horizontally -> Check Up and Down
+                    {
+                        Vector3 testUp = candidatePos + Vector3.up * offset;
+                        if (Physics2D.OverlapBox(testUp, skinSize, 0f, obstacleLayer) == null && roomBounds.Contains(testUp))
+                        {
+                            return testUp;
+                        }
+
+                        Vector3 testDown = candidatePos + Vector3.down * offset;
+                        if (Physics2D.OverlapBox(testDown, skinSize, 0f, obstacleLayer) == null && roomBounds.Contains(testDown))
+                        {
+                            return testDown;
+                        }
+                    }
+                    else // Moving vertically -> Check Left and Right
+                    {
+                        Vector3 testLeft = candidatePos + Vector3.left * offset;
+                        if (Physics2D.OverlapBox(testLeft, skinSize, 0f, obstacleLayer) == null && roomBounds.Contains(testLeft))
+                        {
+                            return testLeft;
+                        }
+
+                        Vector3 testRight = candidatePos + Vector3.right * offset;
+                        if (Physics2D.OverlapBox(testRight, skinSize, 0f, obstacleLayer) == null && roomBounds.Contains(testRight))
+                        {
+                            return testRight;
+                        }
+                    }
+                }
+            }
+
+            return candidatePos;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace FrogGame.Gameplay
     using FrogGame.UI;
 
     /// <summary>
-    /// Handles Gameboy-style interior transitions with fade effects, instant position/camera teleportation, and room updates.
+    /// Handles Gameboy-style interior transitions with fade effects, instant position/camera teleportation, safe positioning, and room updates.
     /// Maneja transiciones de interior estilo Gameboy con efectos de fade, teletransporte instantáneo de posición/cámara y cambio de sala.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
@@ -20,6 +20,9 @@ namespace FrogGame.Gameplay
         [Header("Transition Settings")]
         [SerializeField] private float fadeDuration = 0.3f;
         [SerializeField] private float blackHoldTime = 0.05f;
+
+        [Header("Collision Prevention")]
+        [SerializeField] private LayerMask obstacleLayer;
 
         private bool isTransitioning = false;
 
@@ -53,13 +56,20 @@ namespace FrogGame.Gameplay
                 yield return ScreenFader.Instance.FadeToBlackRoutine(fadeDuration);
             }
 
-            // 3. Teleport player position behind black screen
-            brain.transform.position = targetSpawnPoint.position;
+            // 3. Calculate safe spawn position to prevent spawning inside Obstacles layer
+            Vector3 safeSpawnPos = GetSafeSpawnPosition(brain);
+            brain.transform.position = safeSpawnPos;
+
+            // Set facing direction upon exit
+            if (brain.MovementHandler != null)
+            {
+                brain.MovementHandler.SetFacingDirection(exitFacingDirection);
+            }
 
             // 4. Instant camera & target snap to destination room
             if (destinationRoom != null && RoomManager.Instance != null)
             {
-                RoomManager.Instance.SnapToRoom(destinationRoom, targetSpawnPoint.position);
+                RoomManager.Instance.SnapToRoom(destinationRoom, safeSpawnPos);
             }
 
             // 5. Wait 1 frame so Unity updates physics/camera rendering while 100% black
@@ -78,6 +88,30 @@ namespace FrogGame.Gameplay
             // 7. Restore player control
             brain.InputHandler?.EnableInput();
             isTransitioning = false;
+        }
+
+        /// <summary>
+        /// Calculates a safe spawn position ensuring the player does not spawn inside an obstacle.
+        /// </summary>
+        private Vector3 GetSafeSpawnPosition(PlayerBrain brain)
+        {
+            Vector3 rawPos = targetSpawnPoint.position;
+            Collider2D playerCol = brain.GetComponent<Collider2D>();
+            Vector2 boxSize = playerCol != null ? (Vector2)playerCol.bounds.size : new Vector2(0.8f, 0.8f);
+
+            // Check if target position overlaps with any obstacle
+            Collider2D overlap = Physics2D.OverlapBox(rawPos, boxSize * 0.9f, 0f, obstacleLayer);
+            if (overlap != null)
+            {
+                // Nudge position along exitFacingDirection to clear obstacle
+                RaycastHit2D hit = Physics2D.BoxCast(rawPos, boxSize, 0f, exitFacingDirection, 1.5f, obstacleLayer);
+                if (hit.collider == null)
+                {
+                    rawPos += (Vector3)(exitFacingDirection.normalized * 0.5f);
+                }
+            }
+
+            return rawPos;
         }
 
         private void OnDrawGizmosSelected()
