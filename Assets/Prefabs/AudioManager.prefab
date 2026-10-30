@@ -48,12 +48,12 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: ae407f4de7e19b84eaba1292fcce7588, type: 2}
-  overworldState:
+  gameplayState:
     idInternal: 0
     valueGuidInternal: 
     groupIdInternal: 0
     groupGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 6ab2141d434da4a409b11cc71cc8801b, type: 2}
+    WwiseObjectReference: {fileID: 11400000, guid: 4bd1a34bdc4d0f34caab45319a8d9f4a, type: 2}
   shopState:
     idInternal: 0
     valueGuidInternal: 
@@ -127,10 +127,6 @@ MonoBehaviour:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 5b50c78a378743941be358b4d057fa9c, type: 2}
-  playMX:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: ae407f4de7e19b84eaba1292fcce7588, type: 2}
   playEnemyArrowHit:
     idInternal: 0
     valueGuidInternal: 

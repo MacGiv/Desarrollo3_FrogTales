@@ -40,6 +40,8 @@ desktop.ini
 *.prof
 
 # Wwise internal cache and conversion builds
+.backup
+cache
 .cache/
 /.cache/
 /**/.cache/
@@ -49,14 +51,13 @@ desktop.ini
 /**/Saves/
 /**/.backup/
 
-# Wwise backups
+# Wwise backups & installer archives
 *.bak
 *_backup*
-
-# Archivos de instalación
 WwiseUnityIntegration_*_Src.zip
+logRunSetup.txt
 
-# Temporal cache project data (en carpeta de Assets de Unity)
+# Temporary cache project data (in Unity Assets folder)
 /[Aa]ssets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset*
 
 # Wwise Sound Banks
@@ -68,6 +69,9 @@ WwiseUnityIntegration_*_Src.zip
 
 # Wwise plugins
 /[Aa]ssets/Wwise/API/Runtime/Plugins.meta
+/[Aa]ssets/Wwise/API/Runtime/Plugins/
+/[Aa]ssets/Wwise/ProjectDatabase/Runtime/Plugins.meta
+/[Aa]ssets/Wwise/ProjectDatabase/Runtime/Plugins/
 
 # ===================================
 # IDEs, Compilers & Solution Files
@@ -108,6 +112,7 @@ ExportedObj/
 sysinfo.txt
 mono_crash.*
 crashlytics-build.properties
+logRunSetup.txt
 
 # ===================================
 # Unity Packages & Generated Assets

@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5679310801268297800}
   - component: {fileID: 3644084050745931416}
-  - component: {fileID: 6431566732655671342}
   - component: {fileID: 3495860194225843885}
   - component: {fileID: 8090794418626947271}
   - component: {fileID: 9160455110133728120}
+  - component: {fileID: 5851884369762574894}
+  - component: {fileID: 1301384254183275476}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -63,15 +64,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.042873695
+    x: 0
     y: 0
-    width: 0.9146388
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 5
   orthographic: 1
-  orthographic size: 4.5
+  orthographic size: 3.9375
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -87,14 +88,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6431566732655671342
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4123816061760652154}
-  m_Enabled: 1
 --- !u!114 &3495860194225843885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +188,46 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!114 &5851884369762574894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123816061760652154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc0a8b3182058249b2122ed2c36a475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkGameObj
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  usePositionOffsetData: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  scalingFactor: 1
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &1301384254183275476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123816061760652154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d99b934f02cbb4795e6409761708f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkAudioListener
+  isDefaultListener: 1
+  bOverrideScalingFactor: 0
+  scalingFactor: -1
+  listenerId: 0
 --- !u!1 &5788399437775481065
 GameObject:
   m_ObjectHideFlags: 0
