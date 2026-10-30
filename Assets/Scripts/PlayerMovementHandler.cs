@@ -39,6 +39,25 @@ namespace FrogGame.Gameplay
             }
         }
 
+        /// <summary>
+        /// Explicitly sets the player's 4-cardinal facing direction for animations and interactions.
+        /// Establece explícitamente la orientación cardinal del jugador para animaciones e interacciones.
+        /// </summary>
+        public void SetFacingDirection(Vector2 direction)
+        {
+            if (direction == Vector2.zero) return;
+
+            // Snap direction vector to 4 cardinal directions (North, South, East, West)
+            if (Mathf.Abs(direction.x) >= Mathf.Abs(direction.y))
+            {
+                FacingDirection = new Vector2(Mathf.Sign(direction.x), 0f);
+            }
+            else
+            {
+                FacingDirection = new Vector2(0f, Mathf.Sign(direction.y));
+            }
+        }
+
         public void Stop() => rb.linearVelocity = Vector2.zero;
     }
 }
