@@ -4,7 +4,39 @@
 		<WorkUnit Name="Default Work Unit" ID="{16B45B26-4B53-4B52-A918-25DFD9899B6C}" PersistMode="Standalone">
 			<ChildrenList>
 				<WorkUnit Name="Music" ID="{BB7C2F8B-7290-40DB-AB73-A5F8866A5D39}" PersistMode="Reference"/>
-				<WorkUnit Name="SFX" ID="{AB9B15D0-1C1A-4E6C-8977-5F955B1262F5}" PersistMode="Reference"/>
+				<WorkUnit Name="SFX_Pablo" ID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}" PersistMode="Reference"/>
+				<WorkUnit Name="SFX_Made" ID="{0F90ADDC-87FC-4368-8FE5-14661FA0EC00}" PersistMode="Reference"/>
+				<Sound Name="Test sound" ID="{C04FD1B2-C5F6-4E98-BF24-F4F5AE3ABE79}" ShortID="1038220151">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{FF240F5C-0FDA-4740-8F0D-39D040BAEEE8}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{772D4C96-3665-4DBA-901C-DE4ABD1F9405}">
+							<PropertyList>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+								</Reference>
+							</ReferenceList>
+							<Language>SFX</Language>
+							<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="432275089"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{772D4C96-3665-4DBA-901C-DE4ABD1F9405}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</Containers>

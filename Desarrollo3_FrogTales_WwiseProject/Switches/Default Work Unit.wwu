@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{9BCD99B3-0739-410B-BF05-A5E33469C1CE}" SchemaVersion="133">
 	<Switches>
-		<WorkUnit Name="Default Work Unit" ID="{9BCD99B3-0739-410B-BF05-A5E33469C1CE}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{9BCD99B3-0739-410B-BF05-A5E33469C1CE}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="Arrow_Hit" ID="{FC03B567-A7D2-440A-B499-8C03771A3E0E}">
+					<ChildrenList>
+						<Switch Name="Wood" ID="{791B1483-69F7-4E68-8C12-FA0EE6AC74C8}"/>
+						<Switch Name="Metal" ID="{B83D731E-B65F-4A27-A75D-95AAF34EA817}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="Footsteps" ID="{3B3364A9-59F8-4477-8FA5-8833BF293E94}">
+					<ChildrenList>
+						<Switch Name="Grass" ID="{16F75875-4088-4132-9A44-D535736AA6CC}"/>
+						<Switch Name="Stone" ID="{B6AB4C54-813A-4503-8C96-D9EA8F85F3E6}"/>
+						<Switch Name="LargeGrass" ID="{2288F0B3-4E0F-4711-9C7A-20D80C5AF0EF}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="Enemy_Hit" ID="{6AA268C4-D5B5-492E-A9C0-487C33E49BDA}">
+					<ChildrenList>
+						<Switch Name="Fox" ID="{CB92FDC9-A1FE-4ADE-B319-6A74AAA78355}"/>
+						<Switch Name="Owl" ID="{2E5998CE-34D4-483A-812C-875A7EA09990}"/>
+						<Switch Name="Boss" ID="{23E12A14-31F9-465E-BB2C-C4CD878F880D}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</Switches>
 </WwiseDocument>

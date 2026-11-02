@@ -381,7 +381,7 @@
 							<ChildrenList>
 								<MusicSegment Name="Dungeon" ID="{DB672E20-7084-4665-8EA5-2711ABDDA6B3}" ShortID="963106859">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="91340.6144288036"/>
+										<Property Name="EndPosition" Type="Real64" Value="91656.0365543114"/>
 										<Property Name="PlaybackSpeed" Type="Real64">
 											<ValueList>
 												<Value>0.25</Value>
