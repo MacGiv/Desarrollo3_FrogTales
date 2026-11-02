@@ -4,8 +4,8 @@ namespace FrogGame.Gameplay
     using FrogGame.Core;
 
     /// <summary>
-    /// Projectile script that moves in a direction and damages enemies.
-    /// Script del proyectil que avanza e inflige daño a enemigos.
+    /// Projectile script that moves in a direction and damages enemies or bounces off obstacles and shields.
+    /// Script del proyectil que avanza e inflige daño a enemigos o rebota contra obstáculos y escudos.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
@@ -20,6 +20,7 @@ namespace FrogGame.Gameplay
         [Header("Collision Layers")]
         [SerializeField] private LayerMask obstacleLayer;
         [SerializeField] private LayerMask enemyLayer;
+        [SerializeField] private LayerMask shieldLayer; // Capa exclusiva para escudos de enemigos
 
         private Rigidbody2D rb;
         private bool hasHit;
@@ -55,8 +56,8 @@ namespace FrogGame.Gameplay
 
             int colLayer = 1 << collision.gameObject.layer;
 
-            // 1. Check if hit obstacle/wall/shield
-            if ((colLayer & obstacleLayer) != 0)
+            // 1. Check if hit obstacle, wall, or enemy shield
+            if (((colLayer & obstacleLayer) != 0) || ((colLayer & shieldLayer) != 0))
             {
                 hasHit = true;
 
@@ -71,7 +72,7 @@ namespace FrogGame.Gameplay
                 return;
             }
 
-            // 2. Check if hit enemy
+            // 2. Check if hit enemy body directly
             if ((colLayer & enemyLayer) != 0)
             {
                 hasHit = true;
