@@ -7,6 +7,7 @@ namespace FrogGame.UI
     {
         [Header("Panels References")]
         [SerializeField] private MainPanelController mainPanel;
+        [SerializeField] private SettingsPanelController settingsPanel;
 
         private void Awake() => SubscribeEvents();
 
@@ -22,6 +23,8 @@ namespace FrogGame.UI
             mainPanel.OnSettingsPressed += ShowSettingsPanel;
             mainPanel.OnCreditsPressed += ShowCreditsPanel;
             mainPanel.OnExitPressed += HandleExitPressed;
+
+            settingsPanel.OnBackPressed += ShowMainPanel;
         }
 
         private void UnsubscribeEvents()
@@ -30,6 +33,8 @@ namespace FrogGame.UI
             mainPanel.OnSettingsPressed -= ShowSettingsPanel;
             mainPanel.OnCreditsPressed -= ShowCreditsPanel;
             mainPanel.OnExitPressed -= HandleExitPressed;
+
+            settingsPanel.OnBackPressed -= ShowMainPanel;
         }
 
         #endregion
@@ -39,11 +44,13 @@ namespace FrogGame.UI
         private void ShowMainPanel()
         {
             mainPanel.Show();
+            settingsPanel.Hide();
         }
 
         private void ShowSettingsPanel()
         {
-            Debug.Log("Show Settings Panel!");
+            mainPanel.Hide();
+            settingsPanel.Show();
         }
 
         private void ShowCreditsPanel()
