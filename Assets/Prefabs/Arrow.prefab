@@ -126,10 +126,13 @@ MonoBehaviour:
   pickupArrowPrefab: {fileID: 4340830154474281819, guid: 53e86a3aef86f5a4da5d1912b3318cfa, type: 3}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 36992
+    m_Bits: 32896
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1024
+  shieldLayer:
+    serializedVersion: 2
+    m_Bits: 131072
 --- !u!1 &5156416670455041242
 GameObject:
   m_ObjectHideFlags: 0
