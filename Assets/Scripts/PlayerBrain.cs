@@ -16,6 +16,7 @@ namespace FrogGame.Gameplay
     [RequireComponent(typeof(PlayerSneezeHandler))]
     [RequireComponent(typeof(PlayerAnimationHandler))]
     [RequireComponent(typeof(PlayerGrappleCollisionDetector))]
+    [RequireComponent(typeof(PlayerAbilityTracker))]
     public class PlayerBrain : MonoBehaviour
     {
         [SerializeField] private GameObject arrowPrefab;
@@ -35,6 +36,7 @@ namespace FrogGame.Gameplay
         public PlayerSneezeHandler SneezeHandler { get; private set; }
         public PlayerAnimationHandler AnimationHandler { get; private set; }
         public PlayerGrappleCollisionDetector GrappleCollisionDetector { get; private set; }
+        public PlayerAbilityTracker AbilityTracker { get; private set; }
 
         // States instances / Instancias de Estados
         public PlayerIdleState IdleState { get; private set; }
@@ -63,6 +65,7 @@ namespace FrogGame.Gameplay
             SneezeHandler = GetComponent<PlayerSneezeHandler>();
             AnimationHandler = GetComponent<PlayerAnimationHandler>();
             GrappleCollisionDetector = GetComponent<PlayerGrappleCollisionDetector>();
+            AbilityTracker = GetComponent<PlayerAbilityTracker>();
 
             FSM = new FiniteStateMachine();
             IdleState = new PlayerIdleState(this);
@@ -72,7 +75,7 @@ namespace FrogGame.Gameplay
             GrappleState = new PlayerGrappleState(this);
             StunAttackState = new PlayerStunAttackState(this);
             DrownState = new PlayerDrownState(this);
-            HurtState = new PlayerHurtState(this); // <-- Instanciación agregada
+            HurtState = new PlayerHurtState(this);
         }
 
         private void Start()
