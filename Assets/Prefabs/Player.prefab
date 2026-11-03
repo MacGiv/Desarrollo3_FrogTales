@@ -362,6 +362,7 @@ GameObject:
   - component: {fileID: 1603623593437131}
   - component: {fileID: 1479032161450486169}
   - component: {fileID: 3253473108220971834}
+  - component: {fileID: 278519217810397165}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -715,6 +716,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 65536
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 262144
   feetOffset: {x: 0, y: -0.35}
   boxSize: {x: 0.1, y: 0.05}
   gizmoColor: {r: 1, g: 1, b: 0, a: 1}
@@ -905,6 +909,21 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
+--- !u!114 &278519217810397165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907015057044918926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a44460dfe4575a44ba7e62b6903d4c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PlayerAbilityTracker
+  hasTongue: 1
+  hasBow: 0
+  hasSneeze: 0
 --- !u!1 &9122732157630115378
 GameObject:
   m_ObjectHideFlags: 0

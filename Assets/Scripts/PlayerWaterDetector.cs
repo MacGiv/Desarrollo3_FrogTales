@@ -4,13 +4,14 @@ namespace FrogGame.Gameplay
     using UnityEngine.Tilemaps;
 
     /// <summary>
-    /// Detects standing surface layer (Ground or Water) using a Box Gizmo positioned at the player's feet.
+    /// Detects standing surface layer (Ground, Water, or Moving Platform) using a Box Gizmo positioned at the player's feet.
     /// </summary>
     public class PlayerWaterDetector : MonoBehaviour
     {
         [Header("Layer Detection")]
         [SerializeField] private LayerMask waterLayer;
         [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private LayerMask platformLayer;
 
         [Header("Feet Detection Settings")]
         [SerializeField] private Vector2 feetOffset = new Vector2(0f, -0.35f);
@@ -57,6 +58,13 @@ namespace FrogGame.Gameplay
 
             Vector2 feetPos = GetFeetPosition();
 
+            Collider2D platformHit = Physics2D.OverlapBox(feetPos, boxSize, 0f, platformLayer);
+            if (platformHit != null)
+            {
+                lastSafeTileCenter = feetPos;
+                return;
+            }
+
             Collider2D waterHit = Physics2D.OverlapBox(feetPos, boxSize, 0f, waterLayer);
 
             if (waterHit != null)
@@ -75,7 +83,6 @@ namespace FrogGame.Gameplay
                 if (currentGrid != null)
                 {
                     Vector3Int waterCell = currentGrid.WorldToCell(pointInsideWater);
-
                     waterCenter = currentGrid.GetCellCenterWorld(waterCell);
                 }
 
