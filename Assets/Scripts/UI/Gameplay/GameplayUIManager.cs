@@ -1,9 +1,9 @@
 namespace FrogGame.UI
 {
-    using FrogGame.Core;
     using UnityEngine;
     using UnityEngine.InputSystem;
     using UnityEngine.SceneManagement;
+    using FrogGame.Core;
 
     public class GameplayUIManager : MonoBehaviour
     {
@@ -12,6 +12,7 @@ namespace FrogGame.UI
 
         [Header("Panels References")]
         [SerializeField] private PausePanelController pausePanel;
+        [SerializeField] private OptionsPanelController optionsPanel;
 
         [Header("Input Setup")]
         [SerializeField] private InputActionAsset inputActions;
@@ -44,8 +45,11 @@ namespace FrogGame.UI
             }
 
             pausePanel.OnContinuePressed += HandleContinuePressed;
-            pausePanel.OnOptionsPressed += HandleOptionsPressed;
+            pausePanel.OnOptionsPressed += ShowOptionsPanel;
             pausePanel.OnQuitToMenuPressed += HandleQuitToMenuPressed;
+
+            optionsPanel.OnBackPressed += ShowPausePanel;
+
         }
 
         private void UnsubscribeEvents()
@@ -56,24 +60,36 @@ namespace FrogGame.UI
             }
 
             pausePanel.OnContinuePressed -= HandleContinuePressed;
-            pausePanel.OnOptionsPressed -= HandleOptionsPressed;
+            pausePanel.OnOptionsPressed -= ShowOptionsPanel;
             pausePanel.OnQuitToMenuPressed -= HandleQuitToMenuPressed;
+
+            optionsPanel.OnBackPressed -= ShowPausePanel;
         }
 
         #endregion
 
         #region Panel Navigation
 
-        private void HideAllPanels()
-        {
-            pausePanel.Hide();
-            SetPauseState(false);
-        }
-
         private void ShowPausePanel()
         {
             pausePanel.Show();
+            optionsPanel.Hide();
+
             SetPauseState(true);
+        }
+
+        private void ShowOptionsPanel()
+        {
+            pausePanel.Hide();
+            optionsPanel.Show();
+        }
+
+        private void HideAllPanels()
+        {
+            pausePanel.Hide();
+            optionsPanel.Hide();
+
+            SetPauseState(false);
         }
 
         private void SetPauseState(bool isPaused)
@@ -109,8 +125,6 @@ namespace FrogGame.UI
         }
 
         private void HandleContinuePressed() => HideAllPanels();
-
-        private void HandleOptionsPressed() => Debug.Log("Options!");
 
         private void HandleQuitToMenuPressed()
         {
