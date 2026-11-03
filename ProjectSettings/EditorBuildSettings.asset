@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Artist Scenes/GameplayTest_Artist_Meseta.unity
     guid: c04d4123c8749664fb4b66a263150978
+  - enabled: 1
+    path: Assets/Scenes/Artist Scenes/GameplayTest_Artist_Manglar.unity
+    guid: f9be646f27c02844bbbc47b1e034c89b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
