@@ -541,10 +541,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4325034961570858784, guid: e298163363312a24797ecfdc1a063d65, type: 3}
-      propertyPath: settingsPanel
-      value: 
-      objectReference: {fileID: 1466684155356060256}
     - target: {fileID: 5729906606508530003, guid: e298163363312a24797ecfdc1a063d65, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -646,17 +642,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e298163363312a24797ecfdc1a063d65, type: 3}
---- !u!114 &1466684155356060256 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4441776981467082885, guid: e298163363312a24797ecfdc1a063d65, type: 3}
-  m_PrefabInstance: {fileID: 1466684155356060255}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c08a3a707f7357418229f075657aa9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.SettingsPanelController
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

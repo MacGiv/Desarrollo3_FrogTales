@@ -5,7 +5,7 @@ namespace FrogGame.UI
     using UnityEngine.UI;
     using FrogGame.Core;
 
-    public class SettingsPanelController : UIPanel
+    public class OptionsPanelController : UIPanel
     {
         [Header("Button References")]
         [SerializeField] private Button backButton;

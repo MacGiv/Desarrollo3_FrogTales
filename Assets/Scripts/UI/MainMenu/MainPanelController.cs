@@ -9,12 +9,12 @@ namespace FrogGame.UI
     {
         [Header("Button References")]
         [SerializeField] private Button playButton;
-        [SerializeField] private Button settingsButton;
+        [SerializeField] private Button optionsButton;
         [SerializeField] private Button creditsButton;
         [SerializeField] private Button exitButton;
 
         public event Action OnPlayPressed;
-        public event Action OnSettingsPressed;
+        public event Action OnOptionsPressed;
         public event Action OnCreditsPressed;
         public event Action OnExitPressed;
 
@@ -23,7 +23,7 @@ namespace FrogGame.UI
             base.Awake();
 
             playButton.onClick.AddListener(HandlePlayClicked);
-            settingsButton.onClick.AddListener(HandleSettingsClicked);
+            optionsButton.onClick.AddListener(HandleOptionsClicked);
             creditsButton.onClick.AddListener(HandleCreditsClicked);
             exitButton.onClick.AddListener(HandleExitClicked);
         }
@@ -37,14 +37,14 @@ namespace FrogGame.UI
         private void OnDestroy()
         {
             playButton.onClick.RemoveListener(HandlePlayClicked);
-            settingsButton.onClick.RemoveListener(HandleSettingsClicked);
+            optionsButton.onClick.RemoveListener(HandleOptionsClicked);
             creditsButton.onClick.RemoveListener(HandleCreditsClicked);
             exitButton.onClick.RemoveListener(HandleExitClicked);
         }
 
         private void HandlePlayClicked() => OnPlayPressed?.Invoke();
 
-        private void HandleSettingsClicked() => OnSettingsPressed?.Invoke();
+        private void HandleOptionsClicked() => OnOptionsPressed?.Invoke();
 
         private void HandleCreditsClicked() => OnCreditsPressed?.Invoke();
 

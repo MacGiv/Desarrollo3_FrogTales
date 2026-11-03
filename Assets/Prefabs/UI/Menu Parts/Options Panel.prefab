@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Settings
+  m_text: Options
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4256252556442667003}
   - component: {fileID: 8161287992732935813}
   - component: {fileID: 6258610660579797699}
-  - component: {fileID: 2284273483543029276}
+  - component: {fileID: 7900017501779903454}
   m_Layer: 5
   m_Name: Options Panel
   m_TagString: Untagged
@@ -228,7 +228,7 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &2284273483543029276
+--- !u!114 &7900017501779903454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,9 +237,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7178727461878619634}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c08a3a707f7357418229f075657aa9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d67bdf21fbae8240857235479a97049, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.SettingsPanelController
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.OptionsPanelController
   defaultSelected: {fileID: 4412565651072908816}
   backButton: {fileID: 4412565651072908816}
 --- !u!1 &7685709390495262024

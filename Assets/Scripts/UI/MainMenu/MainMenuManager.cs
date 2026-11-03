@@ -7,7 +7,7 @@ namespace FrogGame.UI
     {
         [Header("Panels References")]
         [SerializeField] private MainPanelController mainPanel;
-        [SerializeField] private SettingsPanelController settingsPanel;
+        [SerializeField] private OptionsPanelController optionsPanel;
         [SerializeField] private CreditsPanelController creditsPanel;
 
         private void Awake() => SubscribeEvents();
@@ -21,11 +21,11 @@ namespace FrogGame.UI
         private void SubscribeEvents()
         {
             mainPanel.OnPlayPressed += HandlePlayPressed;
-            mainPanel.OnSettingsPressed += ShowSettingsPanel;
+            mainPanel.OnOptionsPressed += ShowOptionsPanel;
             mainPanel.OnCreditsPressed += ShowCreditsPanel;
             mainPanel.OnExitPressed += HandleExitPressed;
 
-            settingsPanel.OnBackPressed += ShowMainPanel;
+            optionsPanel.OnBackPressed += ShowMainPanel;
 
             creditsPanel.OnBackPressed += ShowMainPanel;
         }
@@ -33,11 +33,11 @@ namespace FrogGame.UI
         private void UnsubscribeEvents()
         {
             mainPanel.OnPlayPressed -= HandlePlayPressed;
-            mainPanel.OnSettingsPressed -= ShowSettingsPanel;
+            mainPanel.OnOptionsPressed -= ShowOptionsPanel;
             mainPanel.OnCreditsPressed -= ShowCreditsPanel;
             mainPanel.OnExitPressed -= HandleExitPressed;
 
-            settingsPanel.OnBackPressed -= ShowMainPanel;
+            optionsPanel.OnBackPressed -= ShowMainPanel;
 
             creditsPanel.OnBackPressed -= ShowMainPanel;
         }
@@ -49,21 +49,21 @@ namespace FrogGame.UI
         private void ShowMainPanel()
         {
             mainPanel.Show();
-            settingsPanel.Hide();
+            optionsPanel.Hide();
             creditsPanel.Hide();
         }
 
-        private void ShowSettingsPanel()
+        private void ShowOptionsPanel()
         {
             mainPanel.Hide();
-            settingsPanel.Show();
+            optionsPanel.Show();
             creditsPanel.Hide();
         }
 
         private void ShowCreditsPanel()
         {
             mainPanel.Hide();
-            settingsPanel.Hide();
+            optionsPanel.Hide();
             creditsPanel.Show();
         }
 

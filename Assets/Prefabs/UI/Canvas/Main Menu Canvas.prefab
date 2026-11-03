@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.MainMenuManager
   mainPanel: {fileID: 2699931870753802034}
-  settingsPanel: {fileID: 0}
+  optionsPanel: {fileID: 5743639901442856263}
   creditsPanel: {fileID: 3241142388862259749}
 --- !u!1 &3589011778768031573
 GameObject:
@@ -633,7 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.MainPanelController
   defaultSelected: {fileID: 803315199596307830}
   playButton: {fileID: 803315199596307830}
-  settingsButton: {fileID: 5941553744634216465}
+  optionsButton: {fileID: 5941553744634216465}
   creditsButton: {fileID: 1562409810660753172}
   exitButton: {fileID: 3635056442815974135}
 --- !u!1 &8791843857035458319
@@ -963,11 +963,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6613199272075179390, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
       propertyPath: m_text
-      value: Settings
+      value: Options
       objectReference: {fileID: 0}
     - target: {fileID: 7715592521344964931, guid: d89f659cfea4cdb4993d559fa2d1ac2a, type: 3}
       propertyPath: m_Name
-      value: Settings Button
+      value: Options Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1111,6 +1111,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+--- !u!114 &5743639901442856263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7900017501779903454, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
+  m_PrefabInstance: {fileID: 2456434325000230553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d67bdf21fbae8240857235479a97049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FrogGame.UI.OptionsPanelController
 --- !u!224 &7321021984527173762 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5156195736578579995, guid: e4431e8182e1a8341b00c478e4b50c72, type: 3}
