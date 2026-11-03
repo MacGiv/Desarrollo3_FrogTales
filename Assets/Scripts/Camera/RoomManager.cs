@@ -165,15 +165,27 @@ namespace FrogGame.Camera
             PlayerBrain brain = playerTransform.GetComponent<PlayerBrain>();
             if (brain != null) cachedPlayerBrain = brain;
 
+            // 1. Calculate direction deterministically based on closest edge
+            Vector2 entryDirection = DetermineEntryDirection(playerTransform.position, newRoom);
+
             if (brain != null)
             {
                 brain.InputHandler?.DisableInput();
                 brain.MovementHandler?.Stop();
-                brain.HealthSystem?.TriggerInvincibility(roomTransitionInvincibility);
-            }
 
-            // 1. Calculate direction deterministically based on the closest edge of the new room collider
-            Vector2 entryDirection = DetermineEntryDirection(playerTransform.position, newRoom);
+                // Orient player facing direction and trigger movement animation
+                brain.MovementHandler?.SetFacingDirection(entryDirection);
+
+                if (brain.Animator != null)
+                {
+                    brain.Animator.SetBool("IsMoving", true);
+                    brain.Animator.SetFloat("MoveX", entryDirection.x);
+                    brain.Animator.SetFloat("MoveY", entryDirection.y);
+                }
+
+                // Silent invincibility (no blinking) during camera transition
+                brain.HealthSystem?.TriggerInvincibility(roomTransitionInvincibility, showFlash: false);
+            }
 
             Collider2D playerCollider = playerTransform.GetComponent<Collider2D>();
             Vector2 playerSize = playerCollider != null ? (Vector2)playerCollider.bounds.size : new Vector2(0.8f, 0.8f);
@@ -204,6 +216,11 @@ namespace FrogGame.Camera
 
             if (brain != null)
             {
+                if (brain.Animator != null)
+                {
+                    brain.Animator.SetBool("IsMoving", false);
+                }
+
                 brain.InputHandler?.EnableInput();
             }
 
