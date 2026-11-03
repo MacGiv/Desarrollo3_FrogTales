@@ -13,7 +13,9 @@ namespace FrogGame.Gameplay
             Collectible,
             Shield,
             HeavyBlock,
-            CarriableBox
+            CarriableBox,
+            AbilityBow,  
+            AbilitySneeze
         }
 
         [Header("Item Settings")]
@@ -93,7 +95,6 @@ namespace FrogGame.Gameplay
                         {
                             healthSystem.SetShieldState(true);
                         }
-
                         Destroy(gameObject);
                     }
                     break;
@@ -104,12 +105,28 @@ namespace FrogGame.Gameplay
                     break;
 
                 case ItemType.CarriableBox:
-                    // Notificar al PlayerCarryHandler que la caja llegó a la rana
                     if (pullTarget != null && pullTarget.TryGetComponent<PlayerCarryHandler>(out var carryHandler))
                     {
                         carryHandler.AttachBox(this);
                     }
                     isBeingPulled = false;
+                    break;
+
+                case ItemType.AbilityBow:
+                    if (pullTarget != null && pullTarget.TryGetComponent<PlayerBrain>(out var brainBow))
+                    {
+                        brainBow.AbilityTracker?.UnlockBow();
+                        brainBow.AmmoSystem?.AddArrows(10);
+                    }
+                    Destroy(gameObject);
+                    break;
+
+                case ItemType.AbilitySneeze:
+                    if (pullTarget != null && pullTarget.TryGetComponent<PlayerBrain>(out var brainSneeze))
+                    {
+                        brainSneeze.AbilityTracker?.UnlockSneeze();
+                    }
+                    Destroy(gameObject);
                     break;
             }
         }
