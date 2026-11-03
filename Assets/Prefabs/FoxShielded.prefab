@@ -294,7 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4223582157631518787}
   - component: {fileID: 4390910166247411843}
-  m_Layer: 12
+  m_Layer: 17
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 965451735293370431}
   - component: {fileID: 7937907707542806589}
   - component: {fileID: 5472755934733554684}
-  m_Layer: 12
+  m_Layer: 17
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}

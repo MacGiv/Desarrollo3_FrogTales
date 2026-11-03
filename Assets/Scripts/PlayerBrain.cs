@@ -16,6 +16,7 @@ namespace FrogGame.Gameplay
     [RequireComponent(typeof(PlayerSneezeHandler))]
     [RequireComponent(typeof(PlayerAnimationHandler))]
     [RequireComponent(typeof(PlayerGrappleCollisionDetector))]
+    [RequireComponent(typeof(PlayerAbilityTracker))]
     public class PlayerBrain : MonoBehaviour
     {
         [SerializeField] private GameObject arrowPrefab;
@@ -35,6 +36,7 @@ namespace FrogGame.Gameplay
         public PlayerSneezeHandler SneezeHandler { get; private set; }
         public PlayerAnimationHandler AnimationHandler { get; private set; }
         public PlayerGrappleCollisionDetector GrappleCollisionDetector { get; private set; }
+        public PlayerAbilityTracker AbilityTracker { get; private set; }
 
         // States instances / Instancias de Estados
         public PlayerIdleState IdleState { get; private set; }
@@ -44,6 +46,7 @@ namespace FrogGame.Gameplay
         public PlayerGrappleState GrappleState { get; private set; }
         public PlayerStunAttackState StunAttackState { get; private set; }
         public PlayerDrownState DrownState { get; private set; }
+        public PlayerHurtState HurtState { get; private set; }
 
         public Transform ArrowSpawnPoint => arrowSpawnPoint;
         public GameObject StunPrefab => stunPrefab;
@@ -62,6 +65,7 @@ namespace FrogGame.Gameplay
             SneezeHandler = GetComponent<PlayerSneezeHandler>();
             AnimationHandler = GetComponent<PlayerAnimationHandler>();
             GrappleCollisionDetector = GetComponent<PlayerGrappleCollisionDetector>();
+            AbilityTracker = GetComponent<PlayerAbilityTracker>();
 
             FSM = new FiniteStateMachine();
             IdleState = new PlayerIdleState(this);
@@ -71,6 +75,7 @@ namespace FrogGame.Gameplay
             GrappleState = new PlayerGrappleState(this);
             StunAttackState = new PlayerStunAttackState(this);
             DrownState = new PlayerDrownState(this);
+            HurtState = new PlayerHurtState(this);
         }
 
         private void Start()
@@ -90,8 +95,19 @@ namespace FrogGame.Gameplay
         }
 
         /// <summary>
+        /// Transitions to HurtState if not currently drowning or already in HurtState.
+        /// Transiciona a HurtState si no está ahogándose o ya en estado de daño.
+        /// </summary>
+        public void TriggerHurtState()
+        {
+            if (FSM != null && FSM.CurrentState != HurtState && FSM.CurrentState != DrownState)
+            {
+                FSM.ChangeState(HurtState);
+            }
+        }
+
+        /// <summary>
         /// Updates MoveX and MoveY parameters in Animator so 2D Blend Trees select the correct directional clip.
-        /// Actualiza los parámetros MoveX y MoveY en el Animator para que los Blend Trees 2D elijan el clip correcto.
         /// </summary>
         private void UpdateAnimationDirectionParameters()
         {

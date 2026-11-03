@@ -38,10 +38,10 @@ namespace FrogGame.Gameplay
                 return;
             }
 
-            // 2. Arrow input: Blocked if carrying an object
+            // 2. Arrow input: Blocked if carrying an object or if bow is locked
             if (brain.InputHandler.ArrowPressed)
             {
-                if (isCarrying)
+                if (isCarrying || (brain.AbilityTracker != null && !brain.AbilityTracker.HasBow))
                 {
                     brain.InputHandler.ConsumeArrowInput();
                 }
@@ -52,10 +52,10 @@ namespace FrogGame.Gameplay
                 }
             }
 
-            // 3. Stun input: Blocked if carrying an object
+            // 3. Stun input: Blocked if carrying an object or if sneeze is locked
             if (brain.InputHandler.StunPressed)
             {
-                if (isCarrying)
+                if (isCarrying || (brain.AbilityTracker != null && !brain.AbilityTracker.HasSneeze))
                 {
                     brain.InputHandler.ConsumeStunInput();
                 }

@@ -7,7 +7,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Manages the player's health, damage reception, invincibility frames, and healing.
-    /// Gestiona la vida del jugador, recepción de daño, cuadros de invencibilidad y curación.
+    /// Gestiona la vida del jugador, recepción de daño, cuadros de invulnerabilidad y curación.
     /// </summary>
     public class PlayerHealthSystem : MonoBehaviour, IDamageable
     {
@@ -28,12 +28,16 @@ namespace FrogGame.Gameplay
         public int MaxHealth => maxHealth;
         public bool IsInvincible => isInvincible;
 
-        // Events to notify UI or managers without direct coupling
+        // Events
         public static event Action<int, int> OnHealthChanged;
         public static event Action<bool> OnShieldChanged;
         public static event Action OnPlayerDied;
 
-        private void Awake() => currentHealth = maxHealth;
+        private void Awake()
+        {
+            currentHealth = maxHealth;
+            if (playerSprite == null) playerSprite = GetComponentInChildren<SpriteRenderer>();
+        }
 
         private void Start()
         {
@@ -42,8 +46,7 @@ namespace FrogGame.Gameplay
         }
 
         /// <summary>
-        /// Decreases player health if not invincible.
-        /// Recibe daño si el jugador no está en periodo de invulnerabilidad.
+        /// Decreases player health if not invincible. Triggers HurtState and invincibility frames.
         /// </summary>
         public void TakeDamage(int damageAmount)
         {
@@ -72,22 +75,27 @@ namespace FrogGame.Gameplay
             }
             else
             {
-                TriggerInvincibility(invincibilityDuration);
+                // Notifica a la FSM a través de PlayerBrain (ignora si está en DrownState)
+                if (TryGetComponent<PlayerBrain>(out var brain))
+                {
+                    brain.TriggerHurtState();
+                }
+
+                TriggerInvincibility(invincibilityDuration, showFlash: true);
             }
         }
 
         /// <summary>
-        /// Triggers temporary invincibility frames with blinking visual feedback.
-        /// Activa cuadros de invulnerabilidad temporales con parpadeo visual.
+        /// Triggers temporary invincibility frames. Visual blinking is optional (disabled during room transitions).
         /// </summary>
-        public void TriggerInvincibility(float duration)
+        public void TriggerInvincibility(float duration, bool showFlash = true)
         {
             if (invincibilityCoroutine != null)
             {
                 StopCoroutine(invincibilityCoroutine);
             }
 
-            invincibilityCoroutine = StartCoroutine(InvincibilityRoutine(duration));
+            invincibilityCoroutine = StartCoroutine(InvincibilityRoutine(duration, showFlash));
         }
 
         /// <summary>
@@ -109,27 +117,34 @@ namespace FrogGame.Gameplay
             OnShieldChanged?.Invoke(isShieldOn);
         }
 
-        private IEnumerator InvincibilityRoutine(float duration)
+        private IEnumerator InvincibilityRoutine(float duration, bool showFlash)
         {
             isInvincible = true;
 
-            float timer = 0f;
-            float flashInterval = 0.1f;
-
-            while (timer < duration)
+            if (showFlash)
             {
-                if (playerSprite != null)
+                float timer = 0f;
+                float flashInterval = 0.1f;
+
+                while (timer < duration)
                 {
-                    playerSprite.enabled = !playerSprite.enabled;
+                    if (playerSprite != null)
+                    {
+                        playerSprite.enabled = !playerSprite.enabled;
+                    }
+
+                    yield return new WaitForSeconds(flashInterval);
+                    timer += flashInterval;
                 }
 
-                yield return new WaitForSeconds(flashInterval);
-                timer += flashInterval;
+                if (playerSprite != null)
+                {
+                    playerSprite.enabled = true;
+                }
             }
-
-            if (playerSprite != null)
+            else
             {
-                playerSprite.enabled = true;
+                yield return new WaitForSeconds(duration);
             }
 
             isInvincible = false;

@@ -1,8 +1,9 @@
 namespace FrogGame.Core
 {
+    using System;
     using UnityEngine;
-    using UnityEngine.SceneManagement;
     using UnityEngine.InputSystem;
+    using UnityEngine.SceneManagement;
     using FrogGame.Gameplay;
 
     /// <summary>
@@ -20,7 +21,9 @@ namespace FrogGame.Core
         [SerializeField] private InputActionReference pauseAction;
         [SerializeField] private InputActionReference restartAction;
 
-        private bool isPaused = false;
+        public bool IsPaused { get; private set; }
+
+        public event Action<bool> OnPauseToggled;
 
         private void OnEnable()
         {
@@ -56,35 +59,15 @@ namespace FrogGame.Core
             }
         }
 
-        private void Start()
-        {
-            Time.timeScale = 1f;
-
-            if (pauseCanvas != null)
-            {
-                pauseCanvas.SetActive(false);
-            }
-        }
-
         private void OnPausePerformed(InputAction.CallbackContext context)
         {
-            TogglePause();
+            IsPaused = !IsPaused;
+            OnPauseToggled?.Invoke(IsPaused);
         }
 
         private void OnRestartPerformed(InputAction.CallbackContext context)
         {
             RestartScene();
-        }
-
-        public void TogglePause()
-        {
-            isPaused = !isPaused;
-            Time.timeScale = isPaused ? 0f : 1f;
-
-            if (pauseCanvas != null)
-            {
-                pauseCanvas.SetActive(isPaused);
-            }
         }
 
         private void HandlePlayerDied()
