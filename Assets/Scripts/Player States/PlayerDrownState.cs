@@ -1,14 +1,17 @@
 namespace FrogGame.Gameplay
 {
+    using System;
     using System.Collections;
     using UnityEngine;
     using FrogGame.Core;
 
     /// <summary>
-    /// Handles the drowning sequence, damage application post-respawn, input locking, and animation trigger.
+    /// Handles the drowning sequence, damage application post-respawn, input locking, and drowning events.
     /// </summary>
     public class PlayerDrownState : IState
     {
+        public static event Action OnPlayerDrowned;
+
         private readonly PlayerBrain brain;
 
         private Vector3 waterTileCenter;
@@ -33,7 +36,9 @@ namespace FrogGame.Gameplay
 
         public void Enter()
         {
-            // Lock inputs and stop movement
+            // Notify active platforms and level managers that the player has drowned
+            OnPlayerDrowned?.Invoke();
+
             if (brain.InputHandler != null)
             {
                 brain.InputHandler.DisableInput();
