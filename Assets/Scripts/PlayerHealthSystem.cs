@@ -7,7 +7,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Manages the player's health, damage reception, invincibility frames, and healing.
-    /// Gestiona la vida del jugador, recepción de daño, cuadros de invulnerabilidad y curación.
+    /// Synchronizes helmet/shield loss with PlayerBrain animator controller swapping.
     /// </summary>
     public class PlayerHealthSystem : MonoBehaviour, IDamageable
     {
@@ -46,7 +46,7 @@ namespace FrogGame.Gameplay
         }
 
         /// <summary>
-        /// Decreases player health if not invincible. Triggers HurtState and invincibility frames.
+        /// Decreases player health if not invincible. Breaks helmet/shield or triggers HurtState and invincibility frames.
         /// </summary>
         public void TakeDamage(int damageAmount)
         {
@@ -54,6 +54,13 @@ namespace FrogGame.Gameplay
             {
                 isShieldOn = false;
                 OnShieldChanged?.Invoke(isShieldOn);
+
+                if (TryGetComponent<PlayerBrain>(out var brainShield))
+                {
+                    brainShield.SetHelmetEquipped(false);
+                }
+
+                TriggerInvincibility(invincibilityDuration, showFlash: true);
                 return;
             }
 
@@ -61,6 +68,11 @@ namespace FrogGame.Gameplay
 
             currentHealth -= damageAmount;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+            if (TryGetComponent<PlayerBrain>(out var brain))
+            {
+                brain.SetHelmetEquipped(false);
+            }
 
             if (AudioManager.Instance != null)
             {
@@ -75,10 +87,9 @@ namespace FrogGame.Gameplay
             }
             else
             {
-                // Notifica a la FSM a través de PlayerBrain (ignora si está en DrownState)
-                if (TryGetComponent<PlayerBrain>(out var brain))
+                if (TryGetComponent<PlayerBrain>(out var hurtBrain))
                 {
-                    brain.TriggerHurtState();
+                    hurtBrain.TriggerHurtState();
                 }
 
                 TriggerInvincibility(invincibilityDuration, showFlash: true);
@@ -115,6 +126,11 @@ namespace FrogGame.Gameplay
         {
             isShieldOn = equipped;
             OnShieldChanged?.Invoke(isShieldOn);
+
+            if (TryGetComponent<PlayerBrain>(out var brain))
+            {
+                brain.SetHelmetEquipped(equipped);
+            }
         }
 
         private IEnumerator InvincibilityRoutine(float duration, bool showFlash)
