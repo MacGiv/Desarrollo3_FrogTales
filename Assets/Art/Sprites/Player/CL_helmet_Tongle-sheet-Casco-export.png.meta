@@ -1,0 +1,1003 @@
+fileFormatVersion: 2
+guid: d508921c1d2804d469672ec83ebcd210
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5842384271828373034
+    second: CL_helmet_Tongle-sheet-Casco-export_0
+  - first:
+      213: -2072104616611703513
+    second: CL_helmet_Tongle-sheet-Casco-export_1
+  - first:
+      213: 4818552499742299589
+    second: CL_helmet_Tongle-sheet-Casco-export_2
+  - first:
+      213: 4546744559228392641
+    second: CL_helmet_Tongle-sheet-Casco-export_3
+  - first:
+      213: -6787760081382270831
+    second: CL_helmet_Tongle-sheet-Casco-export_4
+  - first:
+      213: 3879815127575993508
+    second: CL_helmet_Tongle-sheet-Casco-export_5
+  - first:
+      213: -1420657540785871959
+    second: CL_helmet_Tongle-sheet-Casco-export_6
+  - first:
+      213: -1626539224442089949
+    second: CL_helmet_Tongle-sheet-Casco-export_7
+  - first:
+      213: -4538462136681003284
+    second: CL_helmet_Tongle-sheet-Casco-export_8
+  - first:
+      213: 8814811068993830043
+    second: CL_helmet_Tongle-sheet-Casco-export_9
+  - first:
+      213: 2821218989295021514
+    second: CL_helmet_Tongle-sheet-Casco-export_10
+  - first:
+      213: -5573585585153507895
+    second: CL_helmet_Tongle-sheet-Casco-export_11
+  - first:
+      213: 5061205184449003705
+    second: CL_helmet_Tongle-sheet-Casco-export_12
+  - first:
+      213: -3302411862210914310
+    second: CL_helmet_Tongle-sheet-Casco-export_13
+  - first:
+      213: 3991324363088774178
+    second: CL_helmet_Tongle-sheet-Casco-export_14
+  - first:
+      213: 7481707885311156772
+    second: CL_helmet_Tongle-sheet-Casco-export_15
+  - first:
+      213: -672335756290177764
+    second: CL_helmet_Tongle-sheet-Casco-export_16
+  - first:
+      213: -1762897329034951261
+    second: CL_helmet_Tongle-sheet-Casco-export_17
+  - first:
+      213: -6961965004813506434
+    second: CL_helmet_Tongle-sheet-Casco-export_18
+  - first:
+      213: -9017892760461407156
+    second: CL_helmet_Tongle-sheet-Casco-export_19
+  - first:
+      213: 6823579669194530329
+    second: CL_helmet_Tongle-sheet-Casco-export_20
+  - first:
+      213: -8081227449908464623
+    second: CL_helmet_Tongle-sheet-Casco-export_21
+  - first:
+      213: 8195443580827716057
+    second: CL_helmet_Tongle-sheet-Casco-export_22
+  - first:
+      213: -6961011431812902460
+    second: CL_helmet_Tongle-sheet-Casco-export_23
+  - first:
+      213: -2608094105956642060
+    second: CL_helmet_Tongle-sheet-Casco-export_24
+  - first:
+      213: -7369747044713882936
+    second: CL_helmet_Tongle-sheet-Casco-export_25
+  - first:
+      213: 674348177776267365
+    second: CL_helmet_Tongle-sheet-Casco-export_26
+  - first:
+      213: -2842659764149878463
+    second: CL_helmet_Tongle-sheet-Casco-export_27
+  - first:
+      213: -1684272690977437685
+    second: CL_helmet_Tongle-sheet-Casco-export_28
+  - first:
+      213: 3026684672039687369
+    second: CL_helmet_Tongle-sheet-Casco-export_29
+  - first:
+      213: 3688027129098614658
+    second: CL_helmet_Tongle-sheet-Casco-export_30
+  - first:
+      213: -2732343049997576892
+    second: CL_helmet_Tongle-sheet-Casco-export_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2ec8ab7a81541150800000000000000
+      internalID: 5842384271828373034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 725996564d76e33e0800000000000000
+      internalID: -2072104616611703513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c5d5bef7ffeed240800000000000000
+      internalID: 4818552499742299589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c49f314618491f30800000000000000
+      internalID: 4546744559228392641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19812a84b280dc1a0800000000000000
+      internalID: -6787760081382270831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ac9a596d4fd7d530800000000000000
+      internalID: 3879815127575993508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a36afd5e7fc84ce0800000000000000
+      internalID: -1420657540785871959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32ec3e1713f5d69e0800000000000000
+      internalID: -1626539224442089949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce681948bb42401c0800000000000000
+      internalID: -4538462136681003284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9cfe81e6ff745a70800000000000000
+      internalID: 8814811068993830043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acd248a29bbf62720800000000000000
+      internalID: 2821218989295021514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_11
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cdffafb075a6a2b0800000000000000
+      internalID: -5573585585153507895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b0c272cc430d3640800000000000000
+      internalID: 5061205184449003705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af7d1e288e97b22d0800000000000000
+      internalID: -3302411862210914310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 224c44d7c58046730800000000000000
+      internalID: 3991324363088774178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_15
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 422e5319ead54d760800000000000000
+      internalID: 7481707885311156772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_16
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c15c78c11326ba6f0800000000000000
+      internalID: -672335756290177764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_17
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a5036f283ee887e0800000000000000
+      internalID: -1762897329034951261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_18
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e78e365d6b1226f90800000000000000
+      internalID: -6961965004813506434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_19
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4c812e20520ad280800000000000000
+      internalID: -9017892760461407156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_20
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91edae66e8932be50800000000000000
+      internalID: 6823579669194530329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_21
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 114f1135376b9df80800000000000000
+      internalID: -8081227449908464623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_22
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9cdf3f3801cb170800000000000000
+      internalID: 8195443580827716057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_23
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c1db59dbf4856f90800000000000000
+      internalID: -6961011431812902460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_24
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f21aa99a303ecbd0800000000000000
+      internalID: -2608094105956642060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_25
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ca18530c1669b990800000000000000
+      internalID: -7369747044713882936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_26
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56059474814cb5900800000000000000
+      internalID: 674348177776267365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_27
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1410d8c6108dc88d0800000000000000
+      internalID: -2842659764149878463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_28
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b08066549e240a8e0800000000000000
+      internalID: -1684272690977437685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_29
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c49b045ca1f00a20800000000000000
+      internalID: 3026684672039687369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_30
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2873de742218e2330800000000000000
+      internalID: 3688027129098614658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CL_helmet_Tongle-sheet-Casco-export_31
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 0
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 445136cf874c41ad0800000000000000
+      internalID: -2732343049997576892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: de994ec6224f613478347c11694af440
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":17.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      CL_helmet_Tongle-sheet-Casco-export_0: 5842384271828373034
+      CL_helmet_Tongle-sheet-Casco-export_1: -2072104616611703513
+      CL_helmet_Tongle-sheet-Casco-export_10: 2821218989295021514
+      CL_helmet_Tongle-sheet-Casco-export_11: -5573585585153507895
+      CL_helmet_Tongle-sheet-Casco-export_12: 5061205184449003705
+      CL_helmet_Tongle-sheet-Casco-export_13: -3302411862210914310
+      CL_helmet_Tongle-sheet-Casco-export_14: 3991324363088774178
+      CL_helmet_Tongle-sheet-Casco-export_15: 7481707885311156772
+      CL_helmet_Tongle-sheet-Casco-export_16: -672335756290177764
+      CL_helmet_Tongle-sheet-Casco-export_17: -1762897329034951261
+      CL_helmet_Tongle-sheet-Casco-export_18: -6961965004813506434
+      CL_helmet_Tongle-sheet-Casco-export_19: -9017892760461407156
+      CL_helmet_Tongle-sheet-Casco-export_2: 4818552499742299589
+      CL_helmet_Tongle-sheet-Casco-export_20: 6823579669194530329
+      CL_helmet_Tongle-sheet-Casco-export_21: -8081227449908464623
+      CL_helmet_Tongle-sheet-Casco-export_22: 8195443580827716057
+      CL_helmet_Tongle-sheet-Casco-export_23: -6961011431812902460
+      CL_helmet_Tongle-sheet-Casco-export_24: -2608094105956642060
+      CL_helmet_Tongle-sheet-Casco-export_25: -7369747044713882936
+      CL_helmet_Tongle-sheet-Casco-export_26: 674348177776267365
+      CL_helmet_Tongle-sheet-Casco-export_27: -2842659764149878463
+      CL_helmet_Tongle-sheet-Casco-export_28: -1684272690977437685
+      CL_helmet_Tongle-sheet-Casco-export_29: 3026684672039687369
+      CL_helmet_Tongle-sheet-Casco-export_3: 4546744559228392641
+      CL_helmet_Tongle-sheet-Casco-export_30: 3688027129098614658
+      CL_helmet_Tongle-sheet-Casco-export_31: -2732343049997576892
+      CL_helmet_Tongle-sheet-Casco-export_4: -6787760081382270831
+      CL_helmet_Tongle-sheet-Casco-export_5: 3879815127575993508
+      CL_helmet_Tongle-sheet-Casco-export_6: -1420657540785871959
+      CL_helmet_Tongle-sheet-Casco-export_7: -1626539224442089949
+      CL_helmet_Tongle-sheet-Casco-export_8: -4538462136681003284
+      CL_helmet_Tongle-sheet-Casco-export_9: 8814811068993830043
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
