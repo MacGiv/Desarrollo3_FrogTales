@@ -5,7 +5,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Trigger-based moving platform for top-down gameplay.
-    /// Moves the player smoothly while standing on it and activates when reaching the center tile (3x3 grid).
+    /// Supports bi-directional travel (Point A <-> Point B) and resets to the current trip's origin shore upon player drowning.
     /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
@@ -26,6 +26,7 @@ namespace FrogGame.Gameplay
 
         private Rigidbody2D rb;
         private Vector3 targetPosition;
+        private Vector3 currentOrigin; // Dynamic origin shore for current trip
         private Vector3 lastPlatformPosition;
 
         private Transform playerTransform;
@@ -40,20 +41,50 @@ namespace FrogGame.Gameplay
             rb.useFullKinematicContacts = true;
         }
 
+        private void OnEnable()
+        {
+            PlayerDrownState.OnPlayerDrowned += HandlePlayerDrowned;
+        }
+
+        private void OnDisable()
+        {
+            PlayerDrownState.OnPlayerDrowned -= HandlePlayerDrowned;
+        }
+
         private void Start()
         {
-            if (pointA != null)
+            if (pointA != null && pointB != null)
             {
-                transform.position = pointA.position;
-                targetPosition = pointB != null ? pointB.position : pointA.position;
+                currentOrigin = pointA.position;
+                targetPosition = pointB.position;
             }
 
-            lastPlatformPosition = transform.position;
+            ResetToCurrentOrigin();
+        }
 
-            if (mode == PlatformMode.Always)
+        private void HandlePlayerDrowned()
+        {
+            isPlayerOnPlatform = false;
+            playerTransform = null;
+
+            if (mode == PlatformMode.OnTrigger)
             {
-                isMoving = true;
+                ResetToCurrentOrigin();
             }
+        }
+
+        /// <summary>
+        /// Resets the platform to the starting shore of its current journey leg.
+        /// </summary>
+        public void ResetToCurrentOrigin()
+        {
+            StopAllCoroutines();
+            isWaiting = false;
+            isMoving = (mode == PlatformMode.Always);
+
+            transform.position = currentOrigin;
+            rb.position = currentOrigin;
+            lastPlatformPosition = currentOrigin;
         }
 
         private void FixedUpdate()
@@ -131,6 +162,8 @@ namespace FrogGame.Gameplay
 
             yield return new WaitForSeconds(waitTimeAtWaypoints);
 
+            // The reached waypoint becomes the new origin for the return trip
+            currentOrigin = targetPosition;
             targetPosition = (targetPosition == pointA.position) ? pointB.position : pointA.position;
             isWaiting = false;
         }
