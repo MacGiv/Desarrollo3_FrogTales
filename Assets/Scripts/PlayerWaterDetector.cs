@@ -5,6 +5,7 @@ namespace FrogGame.Gameplay
 
     /// <summary>
     /// Detects standing surface layer (Ground, Water, or Moving Platform) using a Box Gizmo positioned at the player's feet.
+    /// Preserves ground-based respawn coordinates when standing on moving platforms.
     /// </summary>
     public class PlayerWaterDetector : MonoBehaviour
     {
@@ -58,13 +59,14 @@ namespace FrogGame.Gameplay
 
             Vector2 feetPos = GetFeetPosition();
 
+            // 1. Stand on platform: Ignore water checks BUT keep previous ground position as safe respawn point
             Collider2D platformHit = Physics2D.OverlapBox(feetPos, boxSize, 0f, platformLayer);
             if (platformHit != null)
             {
-                lastSafeTileCenter = feetPos;
                 return;
             }
 
+            // 2. Check for water trigger collider
             Collider2D waterHit = Physics2D.OverlapBox(feetPos, boxSize, 0f, waterLayer);
 
             if (waterHit != null)
@@ -91,6 +93,7 @@ namespace FrogGame.Gameplay
                 return;
             }
 
+            // 3. Check for water tilemap tiles and update ground safe point
             if (currentGrid != null)
             {
                 Vector3Int feetCellPos = currentGrid.WorldToCell(feetPos);
