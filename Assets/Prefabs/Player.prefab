@@ -463,6 +463,8 @@ MonoBehaviour:
   stunPrefab: {fileID: 5044923897897041203, guid: ec5ccadf56f19114eba19d4aad5b9054, type: 3}
   arrowSpawnPoint: {fileID: 2473404711069442025}
   carryHandler: {fileID: 0}
+  helmetAnimatorOverride: {fileID: 22100000, guid: 9d5b456f269621b47aeb30ac09c472f4, type: 2}
+  startWithHelmet: 1
 --- !u!114 &4998396240059985195
 MonoBehaviour:
   m_ObjectHideFlags: 0
