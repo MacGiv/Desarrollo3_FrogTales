@@ -19,10 +19,18 @@ namespace FrogGame.Gameplay
     [RequireComponent(typeof(PlayerAbilityTracker))]
     public class PlayerBrain : MonoBehaviour
     {
+        [Header("Weapon Prefabs & Spawns")]
         [SerializeField] private GameObject arrowPrefab;
         [SerializeField] private GameObject stunPrefab;
         [SerializeField] private Transform arrowSpawnPoint;
         [SerializeField] private PlayerCarryHandler carryHandler;
+
+        [Header("Helmet Animation Settings")]
+        [SerializeField] private AnimatorOverrideController helmetAnimatorOverride;
+        [SerializeField] private bool startWithHelmet = false;
+
+        private RuntimeAnimatorController defaultAnimatorController;
+        private bool isHelmetEquipped = false;
 
         public FiniteStateMachine FSM { get; private set; }
         public Animator Animator { get; private set; }
@@ -37,6 +45,8 @@ namespace FrogGame.Gameplay
         public PlayerAnimationHandler AnimationHandler { get; private set; }
         public PlayerGrappleCollisionDetector GrappleCollisionDetector { get; private set; }
         public PlayerAbilityTracker AbilityTracker { get; private set; }
+
+        public bool IsHelmetEquipped => isHelmetEquipped;
 
         // States instances / Instancias de Estados
         public PlayerIdleState IdleState { get; private set; }
@@ -67,6 +77,12 @@ namespace FrogGame.Gameplay
             GrappleCollisionDetector = GetComponent<PlayerGrappleCollisionDetector>();
             AbilityTracker = GetComponent<PlayerAbilityTracker>();
 
+            // Cache the base RuntimeAnimatorController
+            if (Animator != null)
+            {
+                defaultAnimatorController = Animator.runtimeAnimatorController;
+            }
+
             FSM = new FiniteStateMachine();
             IdleState = new PlayerIdleState(this);
             MoveState = new PlayerMoveState(this);
@@ -81,6 +97,11 @@ namespace FrogGame.Gameplay
         private void Start()
         {
             FSM.Initialize(IdleState);
+
+            if (startWithHelmet)
+            {
+                SetHelmetEquipped(true);
+            }
         }
 
         private void Update()
@@ -92,6 +113,32 @@ namespace FrogGame.Gameplay
         private void FixedUpdate()
         {
             FSM.CurrentState.PhysicsUpdate();
+        }
+
+        /// <summary>
+        /// Equips or unequips the helmet, swapping the runtime animator controller and forcing an immediate frame refresh.
+        /// </summary>
+        public void SetHelmetEquipped(bool equipped)
+        {
+            isHelmetEquipped = equipped;
+
+            if (Animator == null) return;
+
+            AnimatorStateInfo stateInfo = Animator.GetCurrentAnimatorStateInfo(0);
+            int currentShortNameHash = stateInfo.shortNameHash;
+            float currentNormalizedTime = stateInfo.normalizedTime;
+
+            if (isHelmetEquipped && helmetAnimatorOverride != null)
+            {
+                Animator.runtimeAnimatorController = helmetAnimatorOverride;
+            }
+            else if (defaultAnimatorController != null)
+            {
+                Animator.runtimeAnimatorController = defaultAnimatorController;
+            }
+
+            Animator.Play(currentShortNameHash, 0, currentNormalizedTime);
+            Animator.Update(0f);
         }
 
         /// <summary>
