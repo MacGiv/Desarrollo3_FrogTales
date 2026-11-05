@@ -7,6 +7,7 @@
 					<ChildrenList>
 						<Switch Name="Wood" ID="{791B1483-69F7-4E68-8C12-FA0EE6AC74C8}"/>
 						<Switch Name="Metal" ID="{B83D731E-B65F-4A27-A75D-95AAF34EA817}"/>
+						<Switch Name="Grass" ID="{2A1D040B-AE64-42AD-8B4C-226327FE93A1}"/>
 					</ChildrenList>
 				</SwitchGroup>
 				<SwitchGroup Name="Footsteps" ID="{3B3364A9-59F8-4477-8FA5-8833BF293E94}">

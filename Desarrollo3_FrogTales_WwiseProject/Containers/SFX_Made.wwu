@@ -160,6 +160,38 @@
 												<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{73BA5BAE-1AAE-4F93-BC57-4D7BE8355510}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="Player_Bow_Hit_Grass" ID="{985792E6-E33B-4AB4-9912-F83AA76B99AC}" ShortID="1050650305">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX" ID="{FF240F5C-0FDA-4740-8F0D-39D040BAEEE8}" WorkUnitID="{3B8DA725-387C-4A1B-A525-5AB4BF4E086A}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="674208__imataco__strong-select-level-up-sound" ID="{401B9E33-F48A-45B3-A8F8-15BD3887D7C7}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.11926"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.15742"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3FD616EC-BB3E-4046-B2E4-DC3840789654}"/>
+														</Reference>
+													</ReferenceList>
+													<Language>SFX</Language>
+													<AudioFile>674208__imataco__strong-select-level-up-sound.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="335759465"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="674208__imataco__strong-select-level-up-sound" ID="{401B9E33-F48A-45B3-A8F8-15BD3887D7C7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
@@ -167,10 +199,19 @@
 												<ItemRef Name="Player_Bow_Hit_Wood" ID="{A3CCF316-774F-49C3-A7D3-D76BC2CF789F}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
+												<ItemRef Name="Player_Bow_Hit_Grass" ID="{985792E6-E33B-4AB4-9912-F83AA76B99AC}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
 												<ItemRef Name="Player_Bow_Hit_Metal" ID="{7FC385EF-7FF1-4C21-8339-73C08C67BC30}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
 										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Grass" ID="{2A1D040B-AE64-42AD-8B4C-226327FE93A1}"/>
+												<ItemList>
+													<ItemRef Name="Player_Bow_Hit_Grass" ID="{985792E6-E33B-4AB4-9912-F83AA76B99AC}"/>
+												</ItemList>
+											</Grouping>
 											<Grouping>
 												<SwitchRef Name="Metal" ID="{B83D731E-B65F-4A27-A75D-95AAF34EA817}"/>
 												<ItemList>
