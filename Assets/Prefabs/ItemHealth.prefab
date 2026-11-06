@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9089701296348268939}
   - component: {fileID: 457866104478743749}
   - component: {fileID: 472624699763272610}
+  - component: {fileID: 1256701075066239704}
   m_Layer: 12
   m_Name: ItemHealth
   m_TagString: Untagged
@@ -115,6 +116,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FrogGame.Gameplay.PickupHealth
   healAmount: 1
+--- !u!95 &1256701075066239704
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228230958259665518}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 787bc16e34f8d594cb8b79b2818b38ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6820934960348043441
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +219,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 07ad4d6c89022cd46b0b9bc237b1d8a3, type: 3}
+  m_Sprite: {fileID: -6299609199233111106, guid: d2db26bc9ff77f143a32750e984ca757, type: 3}
   m_Color: {r: 1, g: 0.7783019, b: 0.95192915, a: 1}
   m_FlipX: 0
   m_FlipY: 0
