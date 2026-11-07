@@ -691,6 +691,7 @@
 								</Sound>
 								<Sound Name="Env_Fly_Health" ID="{0F1CCD85-7279-4E83-9A8A-2EB51D03C88C}" ShortID="161023939">
 									<PropertyList>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ModifierList>
 												<ModifierInfo>
@@ -733,6 +734,26 @@
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{F699CC70-3F59-40A5-B23B-D871FF66594B}" ShortID="96022484">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Parametric EQ (Custom)" ID="{B2E16EB9-3A8E-403D-A2C7-8BCBE77629BE}" ShortID="450117453" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																<PropertyList>
+																	<Property Name="FilterTypeBand3" Type="int32" Value="5"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="2337.428"/>
+																	<Property Name="GainBand3" Type="Real32" Value="3.098734"/>
+																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
 									<ActiveSourceList>
 										<ActiveSource Name="LifeUp" ID="{F7D1D04F-EF3D-408B-95C3-871E517AEA3E}" Platform="Linked"/>
 									</ActiveSourceList>

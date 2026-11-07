@@ -15,8 +15,12 @@
 					</ChildrenList>
 				</Event>
 				<Folder Name="Enemies" ID="{0458EDB3-5B5B-4842-9AC2-833FC4B30968}" ShortID="536304229">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="10"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
-						<Event Name="Play_Enemy_BoogerHit" ID="{61888656-4A37-463F-ACE5-DC665EB5A687}">
+						<Event Name="Play_Enemy_Booger_Hit" ID="{61888656-4A37-463F-ACE5-DC665EB5A687}">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="10"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
@@ -124,6 +128,10 @@
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Enviroment" ID="{2AC17944-6380-4A7B-8705-6A3ACA744101}" ShortID="450412344">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="13"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
 						<Event Name="Play_Env_Doors_Open" ID="{1FE709CF-1233-4386-A023-4C63DEF2108C}">
 							<PropertyList>
@@ -233,6 +241,10 @@
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{ABEA450F-427B-414E-8180-A3A0F01FCF35}" ShortID="192317843">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="8"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
 						<Event Name="Play_MX" ID="{A9F60DCC-D692-4271-8B28-2FC36CA84D5F}">
 							<PropertyList>
@@ -255,6 +267,10 @@
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Player" ID="{D3C2F0BC-7608-433D-8A2D-3B298855E424}" ShortID="151687905">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="4"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
 					<ChildrenList>
 						<Event Name="Play_Player_Booger_Shot" ID="{E3B2126A-FFCB-4F16-BE9B-891264E887B0}">
 							<PropertyList>
