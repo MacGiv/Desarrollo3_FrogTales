@@ -17,11 +17,18 @@
 						<Switch Name="LargeGrass" ID="{2288F0B3-4E0F-4711-9C7A-20D80C5AF0EF}"/>
 					</ChildrenList>
 				</SwitchGroup>
-				<SwitchGroup Name="Enemy_Hit" ID="{6AA268C4-D5B5-492E-A9C0-487C33E49BDA}">
+				<SwitchGroup Name="Enemy_Dead" ID="{6AA268C4-D5B5-492E-A9C0-487C33E49BDA}">
 					<ChildrenList>
 						<Switch Name="Fox" ID="{CB92FDC9-A1FE-4ADE-B319-6A74AAA78355}"/>
 						<Switch Name="Owl" ID="{2E5998CE-34D4-483A-812C-875A7EA09990}"/>
 						<Switch Name="Boss" ID="{23E12A14-31F9-465E-BB2C-C4CD878F880D}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="Enemy_Alert" ID="{997BF7DA-E0B3-4468-ADF2-28E7D483BC57}">
+					<ChildrenList>
+						<Switch Name="Fox" ID="{E73472D7-5AD9-4F26-923C-949A242A0D5B}"/>
+						<Switch Name="Owl" ID="{C5B7F6C8-8149-4AF1-819C-E3948F5281FD}"/>
+						<Switch Name="Boss" ID="{0645E164-48DC-4436-AAC8-F62D1BDB3B20}"/>
 					</ChildrenList>
 				</SwitchGroup>
 			</ChildrenList>

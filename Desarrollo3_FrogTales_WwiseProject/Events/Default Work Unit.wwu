@@ -70,7 +70,7 @@
 								<Action Name="" ID="{CC93F68C-347C-4090-B1AB-2C097D0D54DC}" ShortID="230775764">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Enemy_Damage" ID="{CD1547AC-557C-4ECB-AE1F-3A2E9A2EB542}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+											<ObjectRef Name="Enemy_Hit" ID="{AACA08B3-1EAB-4CBE-BC38-DF8890C2F320}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -85,22 +85,7 @@
 								<Action Name="" ID="{8D91BE80-FD9D-49EA-B49D-72630C5B7996}" ShortID="891126611">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Enemy_Dead" ID="{AACA08B3-1EAB-4CBE-BC38-DF8890C2F320}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Play_Enemy_Boss_Dead" ID="{A4B151E0-872D-4B6A-BAC2-C34C71ACBA00}">
-							<PropertyList>
-								<Property Name="Color" Type="int16" Value="10"/>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-							<ChildrenList>
-								<Action Name="" ID="{F91189A6-DB0E-4B79-96CA-C0B1BAF949ED}" ShortID="10746519">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Enemy_Boss_Dead" ID="{B806B801-B3DD-4E57-88AF-A1E7D52E5832}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+											<ObjectRef Name="Enemy_Dead" ID="{CD1547AC-557C-4ECB-AE1F-3A2E9A2EB542}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -116,6 +101,21 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Enemy_Attack" ID="{E3EB9869-6E8C-469A-84FE-FBF6853D763A}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Enemy_Alert_Attack" ID="{BFD9A224-0BB7-46E7-A2B4-EA1935301F27}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{292A2086-6857-4974-AB80-A75782F05210}" ShortID="690512914">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Enemy_Alert_Attack" ID="{14B1FE48-1B42-4C66-A8F7-B87740C0EF7F}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -179,7 +179,7 @@
 								<Action Name="" ID="{D2D1EF75-73F0-4F62-87E2-748CF3F29686}" ShortID="601114326">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Env_Rock_Drop" ID="{2D94B6EA-91BD-4213-A4B9-B337C6AC660D}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+											<ObjectRef Name="Env_Rock_Drop" ID="{BE991E46-66F4-4B95-AEA2-DA130404A4A9}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -194,7 +194,7 @@
 								<Action Name="" ID="{B2836C1A-4A2A-4902-83BE-8602AC98D9C8}" ShortID="470911456">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Env_Rock_PushButton" ID="{230BAB38-4F45-4991-B5FC-83CF498EFC1D}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+											<ObjectRef Name="Env_Rock" ID="{230BAB38-4F45-4991-B5FC-83CF498EFC1D}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -210,6 +210,21 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Env_Player_PushButton" ID="{6ED852F3-5EE5-4814-9EA6-48473575AB16}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Platform" ID="{16167E3E-6406-413F-8D79-074B4BA96A52}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="13"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{C9A3672E-70BE-40BC-BBC8-2B93E4DF863B}" ShortID="96159368">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Platform" ID="{D324B405-CCE1-492E-B66A-69F636AFD6B9}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -355,7 +370,7 @@
 								<Action Name="" ID="{B7B41C0B-BE90-4051-B10E-5CE4F64BBCF1}" ShortID="1040780217">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Player_Footsteps" ID="{3454C843-B37D-480B-93E4-05333C8A80FF}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
+											<ObjectRef Name="Player_Footsteps" ID="{F77367C5-317F-49B1-8743-944DFE0F705B}" WorkUnitID="{D5D446C3-4281-4D48-8C77-67852B7B52BF}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
